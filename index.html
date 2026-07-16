@@ -38,6 +38,15 @@
     e.target.value = v;
   });
 
+
+  // Dor tabs
+  function switchDor(id, btn) {
+    document.querySelectorAll('.dor-tab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.dor-pane').forEach(p => p.classList.remove('on'));
+    document.getElementById('dor-' + id).classList.add('on');
+  }
+
 </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -527,6 +536,64 @@
     .form-note { text-align: center; margin-top: 1rem; font-size: .8rem; color: var(--muted); }
     .form-note strong { color: var(--cyan); }
 
+
+    /* ─── SEÇÃO DOR ─── */
+    .dor-section { background: var(--surface); }
+    .dor-intro { text-align: center; margin-bottom: 3.5rem; }
+    .dor-intro .s-sub { max-width: 480px; margin: 0 auto; }
+
+    .dor-tabs {
+      display: flex; gap: .4rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .dor-tab {
+      font-family: inherit; font-size: 13px; font-weight: 600;
+      padding: .5rem 1.1rem; border-radius: 8px; border: none;
+      cursor: pointer; background: var(--card);
+      border: 1px solid var(--border); color: var(--muted);
+      transition: all .2s;
+    }
+    .dor-tab.on {
+      background: rgba(124,58,237,.15);
+      border-color: rgba(124,58,237,.4);
+      color: var(--white);
+    }
+
+    .dor-pane { display: none; }
+    .dor-pane.on { display: block; }
+
+    .dor-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+      max-width: 780px; margin: 0 auto;
+    }
+    .dor-card-title {
+      font-size: 1.4rem; font-weight: 700; color: var(--white);
+      line-height: 1.3; margin-bottom: .5rem; letter-spacing: -.02em;
+    }
+    .dor-card-subtitle {
+      font-size: .9rem; color: var(--muted); margin-bottom: 2rem;
+    }
+    .dor-list {
+      list-style: none; display: flex; flex-direction: column; gap: .85rem;
+      margin-bottom: 2rem;
+    }
+    .dor-list li {
+      display: flex; align-items: flex-start; gap: .85rem;
+      font-size: .975rem; color: var(--text); line-height: 1.6;
+    }
+    .dor-check {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      background: var(--purple2);
+      margin-top: 8px;
+    }
+    .dor-resolve {
+      background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.2);
+      border-radius: 12px; padding: 1rem 1.25rem;
+      font-size: .9rem; color: var(--text); line-height: 1.7;
+    }
+    .dor-resolve strong { color: var(--cyan); }
+
   </style>
 </head>
 <body>
@@ -539,6 +606,7 @@
     <span class="nav-name">CH Automações</span>
   </div>
   <div class="nav-links">
+    <a href="#dores">Você se identifica?</a>
     <a href="#como-funciona">Como funciona</a>
     <a href="#nichos">Nichos</a>
     <a href="#precos">Preços</a>
@@ -639,6 +707,122 @@
     <div class="stat"><div class="stat-val">R$<em>120</em></div><div class="stat-lbl">plano inicial por mês</div></div>
   </div>
 </div>
+
+<!-- DOR DOS NICHOS -->
+<section class="dor-section" id="dores">
+  <div class="container">
+    <div class="dor-intro">
+      <p class="s-lbl" style="justify-content:center;display:flex">Você se identifica?</p>
+      <h2 class="s-title">Reconhece alguma<br>dessas situações?</h2>
+      <p class="s-sub">Escolha o seu segmento. Se você se identificar com 3 ou mais perguntas, o CH Intelligence foi feito para você.</p>
+    </div>
+
+    <div class="dor-tabs">
+      <button class="dor-tab on"  onclick="switchDor('barbearia',this)">✂️ Barbearia</button>
+      <button class="dor-tab"     onclick="switchDor('clinica',this)">🏥 Clínica</button>
+      <button class="dor-tab"     onclick="switchDor('advocacia',this)">⚖️ Advocacia</button>
+      <button class="dor-tab"     onclick="switchDor('corretor',this)">🛡️ Corretor</button>
+      <button class="dor-tab"     onclick="switchDor('academia',this)">💪 Academia</button>
+    </div>
+
+    <!-- BARBEARIA -->
+    <div class="dor-pane on" id="dor-barbearia">
+      <div class="dor-card">
+        <p class="dor-card-title">Você para de cortar pra responder<br>o WhatsApp no meio do atendimento?</p>
+        <p class="dor-card-subtitle">Se respondeu sim para 3 ou mais dessas perguntas, você está perdendo dinheiro todo dia.</p>
+        <ul class="dor-list">
+          <li><span class="dor-check"></span>Você ainda agenda pelo WhatsApp e depois esquece de confirmar — e o cliente some no dia?</li>
+          <li><span class="dor-check"></span>No final do mês você trabalhou muito, mas não sabe exatamente quanto sobrou?</li>
+          <li><span class="dor-check"></span>Você não sabe quais clientes não voltaram nos últimos 30 dias — e provavelmente foram para o concorrente?</li>
+          <li><span class="dor-check"></span>Você depende da sua memória para lembrar as preferências de cada cliente?</li>
+          <li><span class="dor-check"></span>Seu cliente fiel não tem nenhum benefício por isso — nenhum desconto, nenhum ponto, nenhum reconhecimento?</li>
+        </ul>
+        <div class="dor-resolve">
+          <strong>O CH Intelligence resolve tudo isso:</strong> a Thays agenda pelo WhatsApp enquanto você corta, o sistema avisa clientes inativos, controla suas despesas e receitas, e o programa de fidelidade VIP faz seu cliente preferir você ao invés do concorrente.
+        </div>
+      </div>
+    </div>
+
+    <!-- CLÍNICA -->
+    <div class="dor-pane" id="dor-clinica">
+      <div class="dor-card">
+        <p class="dor-card-title">Você sabe quantos pacientes<br>não voltaram este mês?</p>
+        <p class="dor-card-subtitle">A maioria dos profissionais de saúde só descobre que o paciente sumiu semanas depois.</p>
+        <ul class="dor-list">
+          <li><span class="dor-check"></span>Você ainda anota as sessões em papel ou bloco e depois não encontra quando precisa?</li>
+          <li><span class="dor-check"></span>Algum paciente sumiu depois da 2ª sessão e você só percebeu muito tempo depois?</li>
+          <li><span class="dor-check"></span>O lembrete de retorno dos seus pacientes é feito por você, manualmente, no WhatsApp?</li>
+          <li><span class="dor-check"></span>Você consegue ver o histórico completo de um paciente em menos de 30 segundos?</li>
+          <li><span class="dor-check"></span>No final do mês, você sabe exatamente quanto está em aberto para receber?</li>
+        </ul>
+        <div class="dor-resolve">
+          <strong>O CH Intelligence resolve tudo isso:</strong> prontuário eletrônico completo por sessão, alertas automáticos de pacientes sem retorno, lembretes via WhatsApp antes da consulta e controle financeiro integrado — tudo em um único lugar.
+        </div>
+      </div>
+    </div>
+
+    <!-- ADVOCACIA -->
+    <div class="dor-pane" id="dor-advocacia">
+      <div class="dor-card">
+        <p class="dor-card-title">Você já perdeu o sono preocupado<br>com um prazo que não lembra se registrou?</p>
+        <p class="dor-card-subtitle">Prazo perdido na advocacia não é só prejuízo financeiro — é responsabilidade profissional.</p>
+        <ul class="dor-list">
+          <li><span class="dor-check"></span>Você ainda controla processos e prazos em planilha ou caderno — e torce para não esquecer nenhum?</li>
+          <li><span class="dor-check"></span>Seu cliente liga pedindo novidades e você precisa correr para buscar o processo e montar uma resposta?</li>
+          <li><span class="dor-check"></span>Você sabe exatamente quanto de honorário está em aberto neste momento?</li>
+          <li><span class="dor-check"></span>Você perde horas por semana em tarefas administrativas que poderiam estar automatizadas?</li>
+          <li><span class="dor-check"></span>Já perdeu um cliente para a concorrência por demora no atendimento do primeiro contato?</li>
+        </ul>
+        <div class="dor-resolve">
+          <strong>O CH Intelligence resolve tudo isso:</strong> gestão de processos e prazos com alertas automáticos antes do vencimento, histórico completo por cliente, controle de honorários e a Thays I.A que atende o primeiro contato pelo WhatsApp enquanto você advoga.
+        </div>
+      </div>
+    </div>
+
+    <!-- CORRETOR -->
+    <div class="dor-pane" id="dor-corretor">
+      <div class="dor-card">
+        <p class="dor-card-title">Algum cliente já renovou com outro corretor<br>porque você não lembrou de ligar antes?</p>
+        <p class="dor-card-subtitle">Apólice vencida sem aviso é receita perdida — e o cliente que você trabalhou para conquistar vai embora.</p>
+        <ul class="dor-list">
+          <li><span class="dor-check"></span>Você ainda controla sua carteira de apólices em planilha — e torce para não perder nenhum vencimento?</li>
+          <li><span class="dor-check"></span>Você sabe quais apólices vencem nos próximos 30, 60 e 90 dias neste exato momento?</li>
+          <li><span class="dor-check"></span>Seu cliente se sente esquecido durante todo o período de vigência — só ouve de você perto do vencimento?</li>
+          <li><span class="dor-check"></span>Você tem controle claro de todas as comissões que tem a receber este mês?</li>
+          <li><span class="dor-check"></span>O processo de renovação hoje exige vários passos manuais que poderiam ser feitos com 1 clique?</li>
+        </ul>
+        <div class="dor-resolve">
+          <strong>O CH Intelligence resolve tudo isso:</strong> alertas automáticos de vencimento em 30, 60 e 90 dias, renovação com 1 clique, carta de renovação em PDF automática, controle de sinistros e a Thays I.A mantendo contato com o cliente durante todo o ano.
+        </div>
+      </div>
+    </div>
+
+    <!-- ACADEMIA -->
+    <div class="dor-pane" id="dor-academia">
+      <div class="dor-card">
+        <p class="dor-card-title">Você sabe quais alunos estão prestes<br>a desistir antes que eles desistam?</p>
+        <p class="dor-card-subtitle">70% dos iniciantes abandonam em até 90 dias. Sem dados, você só descobre quando já é tarde demais.</p>
+        <ul class="dor-list">
+          <li><span class="dor-check"></span>Você controla a frequência dos alunos manualmente — ou simplesmente não controla?</li>
+          <li><span class="dor-check"></span>Algum aluno sumiu e você só percebeu quando ele cancelou ou parou de pagar?</li>
+          <li><span class="dor-check"></span>Você tem o histórico de evolução (peso, medidas, avaliações) de cada aluno em um lugar só e acessível?</li>
+          <li><span class="dor-check"></span>Suas turmas são gerenciadas no papel ou no WhatsApp — sem lista de presença digital?</li>
+          <li><span class="dor-check"></span>No final do mês, você sabe exatamente quais turmas estão cheias, quais estão vazias e quanto entrou de receita?</li>
+        </ul>
+        <div class="dor-resolve">
+          <strong>O CH Intelligence resolve tudo isso:</strong> ficha completa do aluno com avaliações físicas e histórico de evolução, alertas de alunos sem presença há mais de 7 dias, lista de presença digital por turma e controle financeiro integrado.
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#comecar" class="btn-p" style="display:inline-flex;font-size:15px">
+        Quero resolver isso agora →
+      </a>
+    </div>
+  </div>
+</section>
+
 
 <!-- COMO FUNCIONA -->
 <section id="como-funciona">
@@ -1097,7 +1281,8 @@
       <div>
         <h5>Produto</h5>
         <ul>
-          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#dores">Você se identifica?</a>
+    <a href="#como-funciona">Como funciona</a></li>
           <li><a href="#produtos">Produtos</a></li>
           <li><a href="#precos">Preços</a></li>
           <li><a href="https://app.chautomacoes.com.br">Acessar sistema</a></li>
@@ -1197,6 +1382,15 @@
     else if (v.length > 0) v = '(' + v;
     e.target.value = v;
   });
+
+
+  // Dor tabs
+  function switchDor(id, btn) {
+    document.querySelectorAll('.dor-tab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.dor-pane').forEach(p => p.classList.remove('on'));
+    document.getElementById('dor-' + id).classList.add('on');
+  }
 
 </script>
 </body>
