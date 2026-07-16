@@ -13,7 +13,32 @@
   <meta property="og:title" content="CH Automações | CRM com IA para Pequenas Empresas" />
   <meta property="og:description" content="CRM com agente de IA Thays no WhatsApp. 15 dias grátis. Feito para barbearia, clínica, advocacia, corretor e fitness." />
   <meta property="og:locale" content="pt_BR" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CH Intelligence","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"CRM inteligente com agente de IA para WhatsApp. Módulos especializados por nicho.","offers":{"@type":"Offer","price":"120.00","priceCurrency":"BRL"},"publisher":{"@type":"Organization","name":"CH Automações","url":"https://chautomacoes.com.br","address":{"@type":"PostalAddress","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CH Intelligence","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"CRM inteligente com agente de IA para WhatsApp. Módulos especializados por nicho.","offers":{"@type":"Offer","price":"120.00","priceCurrency":"BRL"},"publisher":{"@type":"Organization","name":"CH Automações","url":"https://chautomacoes.com.br","address":{"@type":"PostalAddress","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}}
+  // Lead form → WhatsApp
+  function enviarWhatsApp() {
+    const nome = document.getElementById('f-nome').value.trim();
+    const wpp  = document.getElementById('f-wpp').value.trim();
+    const seg  = document.getElementById('f-seg').value;
+    if (!nome) { document.getElementById('f-nome').focus(); return; }
+    if (!wpp)  { document.getElementById('f-wpp').focus();  return; }
+    if (!seg)  { document.getElementById('f-seg').focus();  return; }
+    const msg = encodeURIComponent(
+      'Olá! Me chamo ' + nome + ', tenho um(a) ' + seg +
+      ' e quero conhecer o CH Intelligence. Meu WhatsApp é ' + wpp + '.'
+    );
+    window.open('https://wa.me/5561980366626?text=' + msg, '_blank');
+  }
+
+  // Máscara WhatsApp
+  document.getElementById('f-wpp').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+    else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    else if (v.length > 0) v = '(' + v;
+    e.target.value = v;
+  });
+
+</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -474,6 +499,45 @@
       box-shadow: 0 4px 20px rgba(37,211,102,.4); transition: transform .2s;
     }
     .wpp:hover { transform: scale(1.1); }
+
+    /* FORM LEAD */
+    .form-section { background: var(--bg); }
+    .form-wrap {
+      max-width: 520px; margin: 0 auto;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 2.5rem;
+      box-shadow: 0 0 60px rgba(124,58,237,.15);
+    }
+    .form-header { text-align: center; margin-bottom: 2rem; }
+    .form-header h2 {
+      font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700;
+      color: var(--white); letter-spacing: -.02em; margin-bottom: .5rem;
+    }
+    .form-header p { font-size: .95rem; color: var(--muted); }
+    .form-group { display: flex; flex-direction: column; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+    .form-field label { font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+    .form-field input, .form-field select {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: .85rem 1rem;
+      font-family: inherit; font-size: .95rem; color: var(--white);
+      transition: border-color .2s; outline: none; width: 100%;
+    }
+    .form-field input::placeholder { color: var(--muted); }
+    .form-field input:focus, .form-field select:focus { border-color: var(--purple); }
+    .form-field select option { background: var(--card); color: var(--white); }
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--purple), var(--purple2));
+      color: #fff; font-family: inherit; font-weight: 700; font-size: 16px;
+      padding: 1rem; border-radius: 12px; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 0 32px rgba(124,58,237,.4);
+      transition: transform .15s, box-shadow .2s; margin-top: .5rem;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(124,58,237,.55); }
+    .form-note { text-align: center; margin-top: 1rem; font-size: .8rem; color: var(--muted); }
+    .form-note strong { color: var(--cyan); }
+
   </style>
 </head>
 <body>
@@ -522,7 +586,7 @@
       </div>
       <p class="hero-sub">CRM completo para organizar seus clientes e fechar mais negócios. Com opção de agente de IA Thays no WhatsApp para automatizar o atendimento.</p>
       <div class="hero-ctas">
-        <a href="https://app.chautomacoes.com.br" class="btn-p">Testar 15 dias grátis →</a>
+        <a href="#comecar" class="btn-p">Testar 15 dias grátis →</a>
         <a href="#como-funciona" class="btn-g">Ver como funciona</a>
       </div>
       <div class="hero-trust">
@@ -674,7 +738,7 @@
           <li>Importação de contatos via CSV</li>
           <li>Relatórios e metas mensais</li>
         </ul>
-        <a href="https://app.chautomacoes.com.br" class="prod-cta sec">Começar grátis</a>
+        <a href="#comecar" class="prod-cta sec">Começar grátis</a>
       </div>
       <div class="prod hl">
         <span class="prod-tag t-crm">CRM Solo Pro</span>
@@ -690,7 +754,7 @@
           <li>Módulo especializado por nicho</li>
           <li>Suporte prioritário</li>
         </ul>
-        <a href="https://app.chautomacoes.com.br" class="prod-cta">Começar grátis</a>
+        <a href="#comecar" class="prod-cta">Começar grátis</a>
       </div>
       <div class="prod">
         <span class="prod-tag t-ia">Thays I.A</span>
@@ -787,7 +851,7 @@
             <li>Importação via CSV</li>
             <li>Suporte via WhatsApp</li>
           </ul>
-          <a href="https://app.chautomacoes.com.br" class="pc-btn sec">Começar grátis</a>
+          <a href="#comecar" class="pc-btn sec">Começar grátis</a>
         </div>
         <div class="pc pop">
           <div class="pop-chip">Mais completo</div>
@@ -803,7 +867,7 @@
             <li>Fidelidade VIP com pontos</li>
             <li>Módulo especializado por nicho</li>
           </ul>
-          <a href="https://app.chautomacoes.com.br" class="pc-btn">Começar grátis</a>
+          <a href="#comecar" class="pc-btn">Começar grátis</a>
         </div>
       </div>
       <p class="price-trial">Todos os planos incluem <strong>15 dias de teste gratuito</strong> — sem cartão de crédito.</p>
@@ -991,10 +1055,50 @@
     <p class="s-lbl" style="justify-content:center;display:flex">Comece agora</p>
     <h2>Organize. Automatize.<br>Decida melhor.</h2>
     <p>15 dias grátis, sem cartão de crédito. Configure em minutos e experimente a diferença no seu dia a dia.</p>
-    <a href="https://app.chautomacoes.com.br" class="btn-p" style="display:inline-flex;font-size:16px">Começar 15 dias grátis →</a>
+    <a href="#comecar" class="btn-p" style="display:inline-flex;font-size:16px">Começar 15 dias grátis →</a>
     <p class="cta-sub">Ou fale direto no WhatsApp: <a href="https://wa.me/5561980366626">(61) 9803-6626</a></p>
   </div>
 </section>
+
+<!-- FORMULÁRIO LEAD -->
+<section class="form-section" id="comecar">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-header">
+        <p class="s-lbl" style="justify-content:center;display:flex;margin-bottom:.75rem">Começar agora</p>
+        <h2>15 dias grátis.<br>Sem cartão de crédito.</h2>
+        <p>Preencha abaixo e nossa equipe entra em contato pelo WhatsApp para configurar tudo para você.</p>
+      </div>
+      <div class="form-group">
+        <div class="form-field">
+          <label>Seu nome</label>
+          <input type="text" id="f-nome" placeholder="Como você se chama?" autocomplete="name" />
+        </div>
+        <div class="form-field">
+          <label>WhatsApp</label>
+          <input type="tel" id="f-wpp" placeholder="(61) 99999-9999" autocomplete="tel" />
+        </div>
+        <div class="form-field">
+          <label>Segmento do negócio</label>
+          <select id="f-seg">
+            <option value="" disabled selected>Selecione o seu segmento</option>
+            <option value="Barbearia ou Salão">Barbearia ou Salão</option>
+            <option value="Clínica ou Saúde">Clínica ou Saúde</option>
+            <option value="Advocacia">Advocacia</option>
+            <option value="Corretor de Seguros">Corretor de Seguros</option>
+            <option value="Academia ou Fitness">Academia ou Fitness</option>
+            <option value="outro segmento">Outro segmento</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="enviarWhatsApp()">
+          Quero testar grátis por 15 dias →
+        </button>
+        <p class="form-note">Ao continuar, a Thays I.A vai te atender no WhatsApp. <strong>É rápido e gratuito.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -1084,6 +1188,31 @@
       a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--white)' : '';
     });
   }, { passive: true });
+
+  // Lead form → WhatsApp
+  function enviarWhatsApp() {
+    const nome = document.getElementById('f-nome').value.trim();
+    const wpp  = document.getElementById('f-wpp').value.trim();
+    const seg  = document.getElementById('f-seg').value;
+    if (!nome) { document.getElementById('f-nome').focus(); return; }
+    if (!wpp)  { document.getElementById('f-wpp').focus();  return; }
+    if (!seg)  { document.getElementById('f-seg').focus();  return; }
+    const msg = encodeURIComponent(
+      'Olá! Me chamo ' + nome + ', tenho um(a) ' + seg +
+      ' e quero conhecer o CH Intelligence. Meu WhatsApp é ' + wpp + '.'
+    );
+    window.open('https://wa.me/5561980366626?text=' + msg, '_blank');
+  }
+
+  // Máscara WhatsApp
+  document.getElementById('f-wpp').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+    else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    else if (v.length > 0) v = '(' + v;
+    e.target.value = v;
+  });
+
 </script>
 </body>
 </html>
