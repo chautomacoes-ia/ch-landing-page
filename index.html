@@ -594,6 +594,75 @@
     }
     .dor-resolve strong { color: var(--cyan); }
 
+
+    /* ROI */
+    .roi-section { background: var(--bg); }
+    .roi-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem; margin-top: 3.5rem; align-items: start; }
+    .roi-vs-center { display: flex; align-items: flex-start; justify-content: center; padding-top: 2rem; }
+    @media(max-width:700px){ .roi-grid { grid-template-columns: 1fr; } }
+    .roi-compare {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+    .roi-col-header {
+      padding: 1rem 1.5rem; font-size: .75rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .roi-col-header.bad  { background: rgba(239,68,68,.08); color: #ef4444; border-bottom: 1px solid rgba(239,68,68,.15); }
+    .roi-col-header.good { background: rgba(124,58,237,.1);  color: var(--purple2); border-bottom: 1px solid rgba(124,58,237,.2); }
+    .roi-row {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .9rem 1.5rem; border-bottom: 1px solid var(--border);
+      font-size: .9rem; color: var(--text);
+    }
+    .roi-row:last-child { border-bottom: none; }
+    .roi-ic { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .roi-price-box {
+      background: var(--card); border: 1px solid rgba(124,58,237,.3);
+      border-radius: 20px; padding: 2rem; text-align: center;
+      box-shadow: 0 0 48px rgba(124,58,237,.1);
+    }
+    .roi-price-box .big { font-size: 3rem; font-weight: 700; color: var(--purple2); line-height: 1; letter-spacing: -.03em; }
+    .roi-price-box .label { font-size: .8rem; color: var(--muted); margin-top: .35rem; }
+    .roi-vs { text-align: center; }
+    .roi-vs .vs-tag {
+      display: inline-block; font-size: .75rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.2);
+      color: var(--cyan); padding: .4rem 1rem; border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .roi-guarantee {
+      background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.2);
+      border-radius: 14px; padding: 1.25rem 1.5rem; margin-top: 2rem;
+      display: flex; align-items: flex-start; gap: .85rem;
+    }
+    .roi-guarantee-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .roi-guarantee h4 { font-size: .9rem; font-weight: 600; color: #10b981; margin-bottom: .25rem; }
+    .roi-guarantee p  { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* SOBRE */
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3.5rem; align-items: center; }
+    @media(max-width:700px){ .sobre-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .sobre-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .sobre-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 700; color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .sobre-name { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: .25rem; }
+    .sobre-role { font-size: .85rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .sobre-text { font-size: .9rem; color: var(--text); line-height: 1.85; }
+    .sobre-stats { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sobre-stat { display: flex; align-items: flex-start; gap: 1rem; }
+    .sobre-stat-num { font-size: 2rem; font-weight: 700; color: var(--purple2); line-height: 1; letter-spacing: -.03em; min-width: 60px; }
+    .sobre-stat-label { font-size: .875rem; color: var(--muted); line-height: 1.5; padding-top: .2rem; }
+
   </style>
 </head>
 <body>
@@ -610,6 +679,7 @@
     <a href="#como-funciona">Como funciona</a>
     <a href="#nichos">Nichos</a>
     <a href="#precos">Preços</a>
+    <a href="#sobre">Sobre</a>
     <a href="#faq">FAQ</a>
     <a href="https://app.chautomacoes.com.br" class="nav-btn">Já sou cliente</a>
   </div>
@@ -832,7 +902,7 @@
     <p class="s-sub">Escolha o que faz sentido para o seu negócio agora. Comece com o CRM e adicione o agente de IA quando quiser — são produtos separados.</p>
     <div class="cf-split">
       <div>
-        <div class="cf-col-ttl crm">📋 CRM — Gestão de clientes</div>
+        <div class="cf-col-ttl crm">📋 CRM: Gestão de clientes</div>
         <div class="cf-steps">
           <div class="cf-step">
             <div class="cf-num n-crm">01</div>
@@ -858,7 +928,7 @@
         </div>
       </div>
       <div>
-        <div class="cf-col-ttl ia">🤖 Agente Thays I.A — Atendimento automático</div>
+        <div class="cf-col-ttl ia">🤖 Agente Thays I.A: Atendimento automático</div>
         <div class="cf-steps">
           <div class="cf-step">
             <div class="cf-num n-ia">01</div>
@@ -892,7 +962,7 @@
   <div class="container">
     <p class="s-lbl">Produtos</p>
     <h2 class="s-title">Três produtos.<br>Um ecossistema completo.</h2>
-    <p class="s-sub">Do CRM básico até a automação total com IA — você escolhe o que precisa agora e evolui no seu ritmo.</p>
+    <p class="s-sub">Do CRM básico até a automação total com IA, você escolhe o que precisa agora e evolui no seu ritmo.</p>
     <div class="prod-grid">
       <div class="prod">
         <span class="prod-tag t-crm">CRM Solo</span>
@@ -914,7 +984,7 @@
         <h3>CH Intelligence CRM + Thays integrada</h3>
         <div class="num">R$197<em>/mês</em></div>
         <p class="impl">Implantação: R$300</p>
-        <p class="desc">CRM completo com a Thays I.A atuando dentro do sistema — agenda profissional, fidelidade VIP e módulo especializado por nicho.</p>
+        <p class="desc">CRM completo com a Thays I.A atuando dentro do sistema: agenda profissional, fidelidade VIP e módulo especializado por nicho.</p>
         <ul class="prod-list">
           <li>Tudo do CRM Solo</li>
           <li>Thays I.A integrada ao CRM</li>
@@ -991,12 +1061,56 @@
   </div>
 </section>
 
+<!-- ROI -->
+<section class="roi-section">
+  <div class="container">
+    <p class="s-lbl">Por que vale o investimento</p>
+    <h2 class="s-title">A Thays custa menos<br>que um atendente — e nunca falta.</h2>
+    <p class="s-sub">Compare o custo real de contratar uma pessoa para atendimento com o que a Thays I.A entrega.</p>
+
+    <div class="roi-grid">
+      <!-- Coluna atendente -->
+      <div class="roi-compare">
+        <div class="roi-col-header bad">❌ Atendente CLT</div>
+        <div class="roi-row"><span class="roi-ic">💸</span><span><strong>R$ 3.200–4.500/mês</strong> em custo total (salário + FGTS + 13º + férias + INSS)</span></div>
+        <div class="roi-row"><span class="roi-ic">🕐</span><span>Atende das 8h às 18h — fora disso, cliente fica sem resposta</span></div>
+        <div class="roi-row"><span class="roi-ic">📋</span><span>Depende de treinamento, humor e disciplina para seguir o script</span></div>
+        <div class="roi-row"><span class="roi-ic">😴</span><span>Tira férias, atestados e licenças — deixa o negócio sem cobertura</span></div>
+        <div class="roi-row"><span class="roi-ic">📊</span><span>Não registra automaticamente os leads e conversas no CRM</span></div>
+      </div>
+
+      <!-- versus -->
+      <div class="roi-vs-center"><span class="vs-tag">versus</span></div>
+
+      <!-- Coluna Thays -->
+      <div class="roi-compare">
+          <div class="roi-col-header good">✅ Thays I.A Pro</div>
+          <div class="roi-row"><span class="roi-ic">💜</span><span><strong>R$ 600/mês</strong> — tudo incluso, sem encargos, sem surpresas</span></div>
+          <div class="roi-row"><span class="roi-ic">🌙</span><span>Atende 24h por dia, 7 dias por semana — inclusive feriados</span></div>
+          <div class="roi-row"><span class="roi-ic">🤖</span><span>Segue o script sempre do mesmo jeito, personalizado para o seu nicho</span></div>
+          <div class="roi-row"><span class="roi-ic">⚡</span><span>Nunca tira férias, não pede aumento, não falta</span></div>
+          <div class="roi-row"><span class="roi-ic">📲</span><span>Registra cada conversa e agendamento automaticamente no CRM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-guarantee">
+      <div class="roi-guarantee-icon">🛡️</div>
+      <div>
+        <h4>Garantia de implantação</h4>
+        <p>Se não deixarmos seu sistema funcionando em até 7 dias úteis após a implantação, devolvemos 100% do valor da taxa de implantação. Sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- PREÇOS -->
 <section class="pricing" id="precos">
   <div class="container">
     <p class="s-lbl">Preços</p>
     <h2 class="s-title">Escolha o seu nível.</h2>
-    <p class="s-sub">Todos os planos incluem 15 dias de teste gratuito — sem cartão de crédito.</p>
+    <p class="s-sub">Todos os planos incluem 15 dias de teste gratuito.</p>
     <div class="tabs">
       <button class="tab on" onclick="switchTab('crm',this)">CRM</button>
       <button class="tab"    onclick="switchTab('ia',this)">Agente Thays I.A</button>
@@ -1039,7 +1153,7 @@
           <a href="#comecar" class="pc-btn">Agendar demonstração</a>
         </div>
       </div>
-      <p class="price-trial">Todos os planos incluem <strong>15 dias de teste gratuito</strong> — sem burocracia para começar.</p>
+      <p class="price-trial">Todos os planos incluem <strong>15 dias de teste gratuito</strong> Sem burocracia para começar.</p>
     </div>
 
     <!-- IA -->
@@ -1049,7 +1163,7 @@
         <div class="pc">
           <div class="pc-name">Start</div>
           <p class="pc-impl">Implantação: <strong>R$ 800</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">600</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">400</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">Agente de IA essencial para automatizar o atendimento no WhatsApp.</p>
           <ul class="pc-feats">
             <li>Thays I.A no WhatsApp</li>
@@ -1064,7 +1178,7 @@
           <div class="pop-chip">Recomendado</div>
           <div class="pc-name">Pro</div>
           <p class="pc-impl">Implantação: <strong>R$ 1.000</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">800</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">600</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">IA avançada com detector de lead quente e relatórios de atendimento.</p>
           <ul class="pc-feats">
             <li>Tudo do Start</li>
@@ -1079,7 +1193,7 @@
         <div class="pc">
           <div class="pc-name">Master</div>
           <p class="pc-impl">Implantação: <strong>R$ 5.000</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">3.800</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">2.800</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">IA completa com voz, imagens, PDF, follow-up e nurturing automático.</p>
           <ul class="pc-feats">
             <li>Tudo do Pro</li>
@@ -1102,7 +1216,7 @@
         <div class="pc">
           <div class="pc-name">Automatize</div>
           <p class="pc-impl">Start + CRM Solo · Implantação: <strong>R$ 800</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">710</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">470</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">CRM organizado + atendimento automático no WhatsApp. Para quem está começando a automatizar.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo</li>
@@ -1117,7 +1231,7 @@
           <div class="pop-chip">Mais popular</div>
           <div class="pc-name">Acelere</div>
           <p class="pc-impl">Pro + CRM Solo Pro · Implantação: <strong>R$ 1.000</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">950</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">720</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">CRM Pro com módulo de nicho + Agente Thays Pro. Para quem quer crescer de verdade.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo Pro</li>
@@ -1132,7 +1246,7 @@
         <div class="pc">
           <div class="pc-name">Domine</div>
           <p class="pc-impl">Master + CRM Solo Pro · Implantação: <strong>R$ 5.000</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">4.300</span><span class="pc-mo">/mês</span></div>
+          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">2.900</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">O ecossistema completo. CRM Pro + IA Master com voz, imagens, PDF e automação avançada.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo Pro</li>
@@ -1177,12 +1291,47 @@
         <blockquote>"Não uso mais planilha para controlar apólices. O sistema me avisa 30 dias antes do vencimento e renovo com 1 clique. Economizei horas por semana."</blockquote>
         <div class="depo-author">
           <div class="depo-av">CM</div>
-          <div><div class="depo-name">Corretor Maia</div><div class="depo-role">Corretor de Seguros · Módulo Seguros — Brasília, DF</div></div>
+          <div><div class="depo-name">Carlos Maia</div><div class="depo-role">Corretor de Seguros · Módulo Seguros — Brasília, DF</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- SOBRE -->
+<section id="sobre" style="background:var(--bg)">
+  <div class="container">
+    <p class="s-lbl">Quem está por trás</p>
+    <h2 class="s-title">Construído por quem<br>entende o seu problema.</h2>
+    <div class="sobre-grid">
+      <div class="sobre-card">
+        <div class="sobre-avatar">C</div>
+        <p class="sobre-name">Caio Lima</p>
+        <p class="sobre-role">Fundador · CH Automações · Brasília, DF</p>
+        <p class="sobre-text">Comecei a CH Automações porque via donos de pequenos negócios em Brasília perdendo cliente por não conseguir responder rápido — não por falta de qualidade, mas por falta de ferramenta certa.<br><br>Construí o CH Intelligence e a Thays I.A para resolver exatamente isso: organizar o negócio, automatizar o atendimento e dar aos pequenos empreendedores as mesmas ferramentas que as grandes empresas têm — sem o preço das grandes empresas.</p>
+      </div>
+      <div class="sobre-stats">
+        <div class="sobre-stat">
+          <div class="sobre-stat-num">5+</div>
+          <div class="sobre-stat-label">Nichos atendidos com módulos especializados: barbearia, clínica, advocacia, corretor e academia</div>
+        </div>
+        <div class="sobre-stat">
+          <div class="sobre-stat-num">24h</div>
+          <div class="sobre-stat-label">A Thays I.A atende os clientes dos nossos parceiros enquanto eles dormem</div>
+        </div>
+        <div class="sobre-stat">
+          <div class="sobre-stat-num">DF</div>
+          <div class="sobre-stat-label">Baseados em Brasília — suporte próximo, equipe local, entendemos o mercado do DF</div>
+        </div>
+        <div class="sobre-stat">
+          <div class="sobre-stat-num">7d</div>
+          <div class="sobre-stat-label">Garantia de implantação — ou devolvemos 100% da taxa. Sem exceção.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- FAQ -->
 <section id="faq" style="background:var(--surface)">
@@ -1213,6 +1362,27 @@
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Como funciona o contrato?<span class="faq-ic">+</span></button>
         <div class="faq-a"><div class="faq-ai">Os detalhes do contrato são apresentados durante a demonstração, pois variam conforme o plano escolhido. O que garantimos: 15 dias de teste gratuito para você conhecer o sistema antes de qualquer compromisso. Fale com nossa equipe para tirar todas as dúvidas.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">A Thays usa a API oficial do WhatsApp? Existe risco de banimento?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><div class="faq-ai">A Thays I.A opera através de soluções de integração estabelecidas e confiáveis. O risco de banimento existe quando se usam ferramentas não homologadas — por isso trabalhamos apenas com parceiros certificados. Antes de iniciar, nossa equipe orienta sobre a melhor configuração para o seu número e caso específico.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Meus dados e os dados dos meus clientes ficam seguros?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><div class="faq-ai">Sim. Todos os dados são armazenados em servidores com criptografia, e cada empresa tem acesso exclusivo às suas próprias informações — nenhum cliente vê os dados de outro. Não compartilhamos dados com terceiros. O sistema segue as diretrizes da LGPD (Lei Geral de Proteção de Dados).</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">O que acontece quando os 15 dias de teste acabam?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><div class="faq-ai">Nossa equipe entra em contato antes do período acabar para apresentar as opções de plano. Se decidir contratar, agendamos a implantação e configuramos tudo. Se não quiser continuar, nenhum valor é cobrado — sem pegadinha, sem cobrança automática.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Como funciona o cancelamento?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><div class="faq-ai">As condições de cancelamento são apresentadas no contrato antes de qualquer pagamento. Nossa equipe explica tudo na demonstração gratuita — sem letras miúdas. Nosso objetivo é que você fique porque o sistema entrega resultado, não porque está preso em contrato.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">A Thays funciona no meu número do WhatsApp atual?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><div class="faq-ai">Existem duas opções: usar um número novo dedicado para a Thays (recomendado para separar atendimento automático do pessoal) ou integrar com um número existente. Nossa equipe avalia o melhor caminho para o seu caso durante a demonstração gratuita.</div></div>
       </div>
     </div>
   </div>
@@ -1276,7 +1446,7 @@
       <div>
         <div class="nav-brand"><div class="nav-mark">CH</div><span class="nav-name">CH Automações</span></div>
         <p class="footer-desc">CRM inteligente com agente de IA para pequenas empresas brasileiras. Organiza, automatiza e faz seu negócio crescer.</p>
-        <p class="footer-loc">📍 Brasília, DF — Brasil</p>
+        <p class="footer-loc">📍 Brasília, DF · Brasil</p>
       </div>
       <div>
         <h5>Produto</h5>
