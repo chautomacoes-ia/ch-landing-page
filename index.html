@@ -13,41 +13,7 @@
   <meta property="og:title" content="CH Automações | CRM com IA para Pequenas Empresas" />
   <meta property="og:description" content="CRM com agente de IA Thays no WhatsApp. 15 dias grátis. Feito para barbearia, clínica, advocacia, corretor e fitness." />
   <meta property="og:locale" content="pt_BR" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CH Intelligence","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"CRM inteligente com agente de IA para WhatsApp. Módulos especializados por nicho.","offers":{"@type":"Offer","price":"120.00","priceCurrency":"BRL"},"publisher":{"@type":"Organization","name":"CH Automações","url":"https://chautomacoes.com.br","address":{"@type":"PostalAddress","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}}
-  // Lead form → WhatsApp
-  function enviarWhatsApp() {
-    const nome = document.getElementById('f-nome').value.trim();
-    const wpp  = document.getElementById('f-wpp').value.trim();
-    const seg  = document.getElementById('f-seg').value;
-    if (!nome) { document.getElementById('f-nome').focus(); return; }
-    if (!wpp)  { document.getElementById('f-wpp').focus();  return; }
-    if (!seg)  { document.getElementById('f-seg').focus();  return; }
-    const msg = encodeURIComponent(
-      'Olá! Me chamo ' + nome + ', tenho um(a) ' + seg +
-      ' e quero conhecer o CH Intelligence. Meu WhatsApp é ' + wpp + '.'
-    );
-    window.open('https://wa.me/5561998036626?text=' + msg, '_blank');
-  }
-
-  // Máscara WhatsApp
-  document.getElementById('f-wpp').addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g,'').slice(0,11);
-    if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-    else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-    else if (v.length > 0) v = '(' + v;
-    e.target.value = v;
-  });
-
-
-  // Dor tabs
-  function switchDor(id, btn) {
-    document.querySelectorAll('.dor-tab').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-    document.querySelectorAll('.dor-pane').forEach(p => p.classList.remove('on'));
-    document.getElementById('dor-' + id).classList.add('on');
-  }
-
-</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CH Intelligence","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"CRM inteligente com agente de IA para WhatsApp. Módulos especializados por nicho.","offers":{"@type":"Offer","price":"120.00","priceCurrency":"BRL"},"publisher":{"@type":"Organization","name":"CH Automações","url":"https://chautomacoes.com.br","address":{"@type":"PostalAddress","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -63,7 +29,6 @@
     body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
-
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -91,7 +56,6 @@
     }
     .nav-btn:hover { background: var(--purple); border-color: var(--purple); }
     @media (max-width: 680px) { .nav-links { display: none; } }
-
     /* HERO */
     .hero-wrap {
       min-height: 100vh; display: flex; align-items: center;
@@ -117,7 +81,6 @@
     }
     .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: blink 2s infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-
     .hero-slogan {
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 700; color: var(--white);
@@ -128,7 +91,6 @@
       background: linear-gradient(90deg, var(--purple2), var(--cyan));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
     .hero-nicho { margin-bottom: 1.5rem; }
     .hero-nicho-label { font-size: .82rem; color: var(--muted); margin-bottom: .5rem; }
     .hero-nicho-track {
@@ -142,7 +104,6 @@
       transition: opacity .45s, transform .45s;
     }
     .hero-word.on { opacity: 1; transform: translateY(0); }
-
     .hero-sub {
       font-size: .975rem; color: var(--muted);
       line-height: 1.8; margin-bottom: 2rem; max-width: 420px;
@@ -165,7 +126,6 @@
     .btn-g:hover { color: var(--white); border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.04); }
     .hero-trust { margin-top: 1.75rem; font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
     .stars { color: #fbbf24; }
-
     /* HERO VISUAL */
     .hero-visual {
       background: var(--card); border: 1px solid var(--border);
@@ -181,7 +141,6 @@
       max-width: 360px; margin-left: auto;
     }
     @media(max-width:860px){ .wapp { margin: 0 auto; max-width: 340px; } }
-
     .wapp-bar {
       background: #202c33; padding: .7rem 1rem;
       display: flex; align-items: center; gap: .75rem;
@@ -199,7 +158,6 @@
     .wapp-status { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 4px; }
     .wapp-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
     .wapp-secure { font-size: 9.5px; color: #8696a0; text-align: center; padding: .5rem; }
-
     .wapp-msgs {
       flex: 1; padding: .75rem; display: flex; flex-direction: column;
       gap: .5rem; background: #0b141a; min-height: 280px;
@@ -214,121 +172,70 @@
       border-radius: 8px; font-size: 12px; line-height: 1.55;
       position: relative;
     }
-    .wmsg-time {
-      font-size: 9px; color: #8696a0; text-align: right;
-      margin-top: .25rem;
-    }
-    .wmsg.in {
-      background: #202c33; color: #e9edef;
-      border-radius: 0 8px 8px 8px; align-self: flex-start;
-    }
-    .wmsg.out {
-      background: #005c4b; color: #e9edef;
-      border-radius: 8px 0 8px 8px; align-self: flex-end;
-    }
+    .wmsg-time { font-size: 9px; color: #8696a0; text-align: right; margin-top: .25rem; }
+    .wmsg.in { background: #202c33; color: #e9edef; border-radius: 0 8px 8px 8px; align-self: flex-start; }
+    .wmsg.out { background: #005c4b; color: #e9edef; border-radius: 8px 0 8px 8px; align-self: flex-end; }
     .wmsg.out .wmsg-time { color: #8cc4bd; }
     .wmsg-check { color: #53bdeb; font-size: 10px; }
-
     .wapp-crm-tag {
       background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.3);
       border-radius: 8px; padding: .5rem .75rem; margin: .25rem 0;
       font-size: 10px; color: var(--purple2);
       display: flex; align-items: center; gap: 6px;
     }
-
     .wapp-typing {
       display: flex; align-items: center; gap: 3px;
       background: #202c33; border-radius: 0 8px 8px 8px;
       padding: .55rem .75rem; width: fit-content;
     }
-    .wapp-typing span {
-      width: 5px; height: 5px; border-radius: 50%; background: #8696a0;
-      animation: wtyp 1s infinite;
-    }
+    .wapp-typing span { width: 5px; height: 5px; border-radius: 50%; background: #8696a0; animation: wtyp 1s infinite; }
     .wapp-typing span:nth-child(2) { animation-delay: .2s; }
     .wapp-typing span:nth-child(3) { animation-delay: .4s; }
     @keyframes wtyp { 0%,60%,100%{transform:translateY(0);opacity:.4} 30%{transform:translateY(-4px);opacity:1} }
-
     .wapp-input {
       background: #202c33; padding: .6rem .75rem;
       display: flex; align-items: center; gap: .5rem;
       border-top: 1px solid rgba(255,255,255,.06);
     }
-    .wapp-input-field {
-      flex: 1; background: #2a3942; border-radius: 999px;
-      padding: .45rem .85rem; font-size: 11px; color: #8696a0;
-    }
-    .wapp-send {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: #00a884; display: flex; align-items: center; justify-content: center;
-      font-size: .8rem; flex-shrink: 0;
-    } 30%{transform:translateY(-4px)} }
-
+    .wapp-input-field { flex: 1; background: #2a3942; border-radius: 999px; padding: .45rem .85rem; font-size: 11px; color: #8696a0; }
+    .wapp-send { width: 32px; height: 32px; border-radius: 50%; background: #00a884; display: flex; align-items: center; justify-content: center; font-size: .8rem; flex-shrink: 0; }
     /* STATS */
-    .stats {
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 2.5rem 1.5rem; background: var(--surface);
-    }
-    .stats-grid {
-      max-width: 900px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
-    }
+    .stats { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; background: var(--surface); }
+    .stats-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
     .stat { text-align: center; }
     .stat-val { font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1; letter-spacing: -.03em; }
     .stat-val em { font-style: normal; color: var(--cyan); font-size: 1.2rem; }
     .stat-lbl { font-size: .78rem; color: var(--muted); margin-top: .35rem; letter-spacing: .04em; }
-
     /* SECTIONS */
     section { padding: 7rem 1.5rem; }
     .s-lbl { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--cyan); margin-bottom: .85rem; }
     .s-title { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 1rem; }
     .s-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.8; }
-
     /* COMO FUNCIONA */
     .cf-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start; }
     @media (max-width: 800px) { .cf-split { grid-template-columns: 1fr; gap: 2.5rem; } }
-    .cf-col-ttl {
-      font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      margin-bottom: 1.5rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border);
-    }
+    .cf-col-ttl { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border); }
     .cf-col-ttl.crm { color: var(--purple2); }
     .cf-col-ttl.ia  { color: var(--cyan); }
     .cf-steps { display: flex; flex-direction: column; gap: 1.25rem; }
-    .cf-step {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 1.5rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-      transition: border-color .2s;
-    }
+    .cf-step { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color .2s; }
     .cf-step:hover { border-color: rgba(124,58,237,.3); }
-    .cf-num {
-      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700;
-    }
+    .cf-num { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
     .n-crm { background: rgba(124,58,237,.2); color: var(--purple2); }
     .n-ia  { background: rgba(0,212,255,.1);  color: var(--cyan); }
     .cf-step h4 { font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .3rem; }
     .cf-step p  { font-size: .85rem; color: var(--muted); line-height: 1.65; }
-
     /* PRODUTOS */
     .produtos { background: var(--surface); }
     .prod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 4rem; }
     @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr; } }
-    .prod {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2rem;
-      display: flex; flex-direction: column; gap: 1rem;
-    }
+    .prod { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
     .prod.hl { border-color: rgba(0,212,255,.25); box-shadow: 0 0 48px rgba(0,212,255,.06); }
-    .prod-tag {
-      display: inline-flex; align-items: center;
-      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: .3rem .7rem; border-radius: 999px; width: fit-content;
-    }
+    .prod-tag { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; width: fit-content; }
     .t-crm { background: rgba(124,58,237,.15); color: var(--purple2); border: 1px solid rgba(124,58,237,.3); }
     .t-ia  { background: rgba(0,212,255,.1);   color: var(--cyan);    border: 1px solid var(--border-c); }
+    .t-site { background: rgba(16,185,129,.1); color: #10b981; border: 1px solid rgba(16,185,129,.3); }
     .prod h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); line-height: 1.25; }
     .prod .num { font-size: 2.4rem; font-weight: 700; color: var(--white); line-height: 1; letter-spacing: -.03em; }
     .prod .num em { font-style: normal; font-size: 1rem; color: var(--muted); font-weight: 400; }
@@ -337,69 +244,36 @@
     .prod-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
     .prod-list li { font-size: .875rem; color: var(--text); display: flex; gap: 7px; align-items: flex-start; }
     .prod-list li::before { content: '✓'; color: var(--cyan); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .prod-cta {
-      background: var(--purple); color: #fff; font-weight: 600; font-size: 14px;
-      padding: .75rem; border-radius: 10px; text-align: center;
-      transition: background .2s; display: block; margin-top: auto;
-    }
+    .prod-cta { background: var(--purple); color: #fff; font-weight: 600; font-size: 14px; padding: .75rem; border-radius: 10px; text-align: center; transition: background .2s; display: block; margin-top: auto; }
     .prod-cta:hover { background: var(--purple2); }
     .prod-cta.sec { background: transparent; border: 1px solid var(--border); color: var(--muted); }
     .prod-cta.sec:hover { border-color: var(--purple); color: var(--white); }
     .prod-cta.ia-c { background: linear-gradient(135deg, #0891b2, var(--cyan)); box-shadow: 0 0 24px rgba(0,212,255,.18); }
-
+    .prod-cta.site-c { background: linear-gradient(135deg, #047857, #10b981); box-shadow: 0 0 24px rgba(16,185,129,.18); }
     /* NICHOS */
     .nichos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 4rem; }
     @media (max-width: 700px) { .nichos-grid { grid-template-columns: repeat(2,1fr); } }
-    .nicho {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.75rem 1.5rem;
-      transition: border-color .25s, transform .25s;
-    }
+    .nicho { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem 1.5rem; transition: border-color .25s, transform .25s; }
     .nicho:hover { border-color: rgba(124,58,237,.4); transform: translateY(-4px); }
     .nicho-emoji { font-size: 2rem; margin-bottom: .85rem; }
     .nicho h4 { font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .35rem; }
     .nicho p  { font-size: .82rem; color: var(--muted); line-height: 1.65; }
-    .nicho-badge {
-      display: inline-block; margin-top: .65rem;
-      font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
-      padding: .2rem .6rem; border-radius: 999px;
-      background: rgba(124,58,237,.15); color: var(--purple2); border: 1px solid rgba(124,58,237,.3);
-    }
-
+    .nicho-badge { display: inline-block; margin-top: .65rem; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 999px; background: rgba(124,58,237,.15); color: var(--purple2); border: 1px solid rgba(124,58,237,.3); }
     /* PREÇOS */
     .pricing { background: var(--surface); }
-    .tabs {
-      display: flex; gap: .4rem; margin-top: 2.5rem;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: .35rem; width: fit-content;
-    }
-    .tab {
-      font-family: inherit; font-size: 13px; font-weight: 600;
-      padding: .5rem 1.2rem; border-radius: 8px; border: none;
-      cursor: pointer; background: transparent; color: var(--muted); transition: all .2s;
-    }
+    .tabs { display: flex; gap: .4rem; margin-top: 2.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: .35rem; width: fit-content; flex-wrap: wrap; }
+    .tab { font-family: inherit; font-size: 13px; font-weight: 600; padding: .5rem 1.2rem; border-radius: 8px; border: none; cursor: pointer; background: transparent; color: var(--muted); transition: all .2s; }
     .tab.on { background: var(--purple); color: #fff; }
     .tab-pane { display: none; margin-top: 2rem; }
     .tab-pane.on { display: block; }
-    .price-note {
-      background: rgba(0,212,255,.05); border: 1px solid var(--border-c);
-      border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem;
-      font-size: .875rem; color: var(--text); line-height: 1.7;
-    }
+    .price-note { background: rgba(0,212,255,.05); border: 1px solid var(--border-c); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; font-size: .875rem; color: var(--text); line-height: 1.7; }
     .price-note strong { color: var(--cyan); }
     .pg { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; }
-    .pc {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2rem;
-      display: flex; flex-direction: column; gap: 1rem; position: relative;
-    }
+    .pc { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative; }
     .pc.pop { border-color: var(--purple); box-shadow: 0 0 48px rgba(124,58,237,.15); }
-    .pop-chip {
-      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-      background: var(--purple); color: #fff;
-      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: .25rem .9rem; border-radius: 999px; white-space: nowrap;
-    }
+    .pc.site-pop { border-color: #10b981; box-shadow: 0 0 48px rgba(16,185,129,.12); }
+    .pop-chip { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--purple); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .9rem; border-radius: 999px; white-space: nowrap; }
+    .site-chip { background: #10b981; }
     .pc-name { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
     .pc-impl { font-size: .82rem; color: var(--muted); }
     .pc-impl strong { color: var(--text); }
@@ -411,68 +285,41 @@
     .pc-feats { list-style: none; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
     .pc-feats li { font-size: .85rem; color: var(--text); display: flex; gap: 7px; align-items: flex-start; }
     .pc-feats li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
-    .pc-btn {
-      background: var(--purple); color: #fff; font-weight: 600; font-size: 14px;
-      padding: .75rem; border-radius: 10px; text-align: center;
-      transition: background .2s; display: block;
-    }
+    .pc-btn { background: var(--purple); color: #fff; font-weight: 600; font-size: 14px; padding: .75rem; border-radius: 10px; text-align: center; transition: background .2s; display: block; }
     .pc-btn:hover { background: var(--purple2); }
     .pc-btn.sec { background: transparent; border: 1px solid var(--border); color: var(--muted); }
     .pc-btn.sec:hover { border-color: var(--purple); color: var(--white); }
+    .pc-btn.site-btn { background: linear-gradient(135deg, #047857, #10b981); }
+    .pc-btn.site-btn:hover { background: #10b981; }
     .price-trial { text-align: center; margin-top: 1.5rem; font-size: .85rem; color: var(--muted); }
     .price-trial strong { color: var(--cyan); }
-
     /* DEPOIMENTOS */
     .depos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 4rem; }
     @media (max-width: 800px) { .depos-grid { grid-template-columns: 1fr; } }
-    .depo {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2rem;
-      display: flex; flex-direction: column; gap: 1.25rem;
-    }
+    .depo { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
     .depo-stars { color: #fbbf24; font-size: 14px; letter-spacing: 2px; }
     .depo blockquote { font-size: .95rem; color: var(--text); line-height: 1.75; font-style: italic; flex: 1; }
     .depo-author { display: flex; align-items: center; gap: .75rem; }
-    .depo-av {
-      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 15px; color: #fff;
-    }
+    .depo-av { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--purple), var(--cyan)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #fff; }
     .depo-name { font-size: .9rem; font-weight: 600; color: var(--white); }
     .depo-role { font-size: .78rem; color: var(--muted); }
-
     /* FAQ */
     .faq-list { display: flex; flex-direction: column; gap: .6rem; margin-top: 3.5rem; max-width: 680px; }
     .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .faq-q {
-      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
-      padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      font-family: inherit; font-size: .95rem; font-weight: 500; color: var(--white);
-    }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: inherit; font-size: .95rem; font-weight: 500; color: var(--white); }
     .faq-ic { font-size: 1.1rem; color: var(--purple2); transition: transform .3s; flex-shrink: 0; }
     .faq-a  { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .faq-ai { padding: 0 1.5rem 1.2rem; font-size: .875rem; color: var(--muted); line-height: 1.75; }
     .faq-item.open .faq-ic { transform: rotate(45deg); }
     .faq-item.open .faq-a  { max-height: 280px; }
-
     /* CTA FINAL */
     .cta-final { background: var(--surface); text-align: center; position: relative; overflow: hidden; }
-    .cta-final::before {
-      content: ''; position: absolute;
-      width: 800px; height: 400px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(124,58,237,.2) 0%, transparent 65%);
-      top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
-    }
+    .cta-final::before { content: ''; position: absolute; width: 800px; height: 400px; border-radius: 50%; background: radial-gradient(ellipse, rgba(124,58,237,.2) 0%, transparent 65%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
     .cta-inner { position: relative; z-index: 1; }
-    .cta-final h2 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700;
-      color: var(--white); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1rem;
-    }
+    .cta-final h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: var(--white); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 1rem; }
     .cta-final p { font-size: 1.05rem; color: var(--muted); max-width: 440px; margin: 0 auto 2.5rem; }
     .cta-sub { margin-top: 1.25rem; font-size: .875rem; color: var(--muted); }
     .cta-sub a { color: var(--cyan); }
-
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 3.5rem 1.5rem 2rem; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
@@ -483,178 +330,67 @@
     footer ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
     footer ul li a { font-size: .875rem; color: var(--muted); transition: color .2s; }
     footer ul li a:hover { color: var(--white); }
-    .footer-bottom {
-      border-top: 1px solid var(--border); padding-top: 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-bottom p { font-size: .8rem; color: var(--muted); }
-
     /* FLOAT */
-    .wpp {
-      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
-      background: #25d366; color: #fff; width: 52px; height: 52px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
-      box-shadow: 0 4px 20px rgba(37,211,102,.4); transition: transform .2s;
-    }
+    .wpp { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999; background: #25d366; color: #fff; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; box-shadow: 0 4px 20px rgba(37,211,102,.4); transition: transform .2s; }
     .wpp:hover { transform: scale(1.1); }
-
     /* FORM LEAD */
     .form-section { background: var(--bg); }
-    .form-wrap {
-      max-width: 520px; margin: 0 auto;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 24px; padding: 2.5rem;
-      box-shadow: 0 0 60px rgba(124,58,237,.15);
-    }
+    .form-wrap { max-width: 520px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 0 60px rgba(124,58,237,.15); }
     .form-header { text-align: center; margin-bottom: 2rem; }
-    .form-header h2 {
-      font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700;
-      color: var(--white); letter-spacing: -.02em; margin-bottom: .5rem;
-    }
+    .form-header h2 { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 700; color: var(--white); letter-spacing: -.02em; margin-bottom: .5rem; }
     .form-header p { font-size: .95rem; color: var(--muted); }
     .form-group { display: flex; flex-direction: column; gap: 1rem; }
     .form-field { display: flex; flex-direction: column; gap: .4rem; }
     .form-field label { font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
-    .form-field input, .form-field select {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: .85rem 1rem;
-      font-family: inherit; font-size: .95rem; color: var(--white);
-      transition: border-color .2s; outline: none; width: 100%;
-    }
+    .form-field input, .form-field select { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: .85rem 1rem; font-family: inherit; font-size: .95rem; color: var(--white); transition: border-color .2s; outline: none; width: 100%; }
     .form-field input::placeholder { color: var(--muted); }
     .form-field input:focus, .form-field select:focus { border-color: var(--purple); }
     .form-field select option { background: var(--card); color: var(--white); }
-    .form-submit {
-      width: 100%; background: linear-gradient(135deg, var(--purple), var(--purple2));
-      color: #fff; font-family: inherit; font-weight: 700; font-size: 16px;
-      padding: 1rem; border-radius: 12px; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      box-shadow: 0 0 32px rgba(124,58,237,.4);
-      transition: transform .15s, box-shadow .2s; margin-top: .5rem;
-    }
+    .form-submit { width: 100%; background: linear-gradient(135deg, var(--purple), var(--purple2)); color: #fff; font-family: inherit; font-weight: 700; font-size: 16px; padding: 1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 32px rgba(124,58,237,.4); transition: transform .15s, box-shadow .2s; margin-top: .5rem; }
     .form-submit:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(124,58,237,.55); }
     .form-note { text-align: center; margin-top: 1rem; font-size: .8rem; color: var(--muted); }
     .form-note strong { color: var(--cyan); }
-
-
-    /* ─── SEÇÃO DOR ─── */
+    /* SEÇÃO DOR */
     .dor-section { background: var(--surface); }
     .dor-intro { text-align: center; margin-bottom: 3.5rem; }
     .dor-intro .s-sub { max-width: 480px; margin: 0 auto; }
-
-    .dor-tabs {
-      display: flex; gap: .4rem; justify-content: center;
-      flex-wrap: wrap; margin-bottom: 2.5rem;
-    }
-    .dor-tab {
-      font-family: inherit; font-size: 13px; font-weight: 600;
-      padding: .5rem 1.1rem; border-radius: 8px; border: none;
-      cursor: pointer; background: var(--card);
-      border: 1px solid var(--border); color: var(--muted);
-      transition: all .2s;
-    }
-    .dor-tab.on {
-      background: rgba(124,58,237,.15);
-      border-color: rgba(124,58,237,.4);
-      color: var(--white);
-    }
-
+    .dor-tabs { display: flex; gap: .4rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .dor-tab { font-family: inherit; font-size: 13px; font-weight: 600; padding: .5rem 1.1rem; border-radius: 8px; border: none; cursor: pointer; background: var(--card); border: 1px solid var(--border); color: var(--muted); transition: all .2s; }
+    .dor-tab.on { background: rgba(124,58,237,.15); border-color: rgba(124,58,237,.4); color: var(--white); }
     .dor-pane { display: none; }
     .dor-pane.on { display: block; }
-
-    .dor-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2.5rem;
-      max-width: 780px; margin: 0 auto;
-    }
-    .dor-card-title {
-      font-size: 1.4rem; font-weight: 700; color: var(--white);
-      line-height: 1.3; margin-bottom: .5rem; letter-spacing: -.02em;
-    }
-    .dor-card-subtitle {
-      font-size: .9rem; color: var(--muted); margin-bottom: 2rem;
-    }
-    .dor-list {
-      list-style: none; display: flex; flex-direction: column; gap: .85rem;
-      margin-bottom: 2rem;
-    }
-    .dor-list li {
-      display: flex; align-items: flex-start; gap: .85rem;
-      font-size: .975rem; color: var(--text); line-height: 1.6;
-    }
-    .dor-check {
-      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-      background: var(--purple2);
-      margin-top: 8px;
-    }
-    .dor-resolve {
-      background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.2);
-      border-radius: 12px; padding: 1rem 1.25rem;
-      font-size: .9rem; color: var(--text); line-height: 1.7;
-    }
+    .dor-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; max-width: 780px; margin: 0 auto; }
+    .dor-card-title { font-size: 1.4rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: .5rem; letter-spacing: -.02em; }
+    .dor-card-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 2rem; }
+    .dor-list { list-style: none; display: flex; flex-direction: column; gap: .85rem; margin-bottom: 2rem; }
+    .dor-list li { display: flex; align-items: flex-start; gap: .85rem; font-size: .975rem; color: var(--text); line-height: 1.6; }
+    .dor-check { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: var(--purple2); margin-top: 8px; }
+    .dor-resolve { background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.2); border-radius: 12px; padding: 1rem 1.25rem; font-size: .9rem; color: var(--text); line-height: 1.7; }
     .dor-resolve strong { color: var(--cyan); }
-
-
     /* ROI */
     .roi-section { background: var(--bg); }
     .roi-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem; margin-top: 3.5rem; align-items: start; }
     .roi-vs-center { display: flex; align-items: flex-start; justify-content: center; padding-top: 2rem; }
     @media(max-width:700px){ .roi-grid { grid-template-columns: 1fr; } }
-    .roi-compare {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; overflow: hidden;
-    }
-    .roi-col-header {
-      padding: 1rem 1.5rem; font-size: .75rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-    }
+    .roi-compare { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+    .roi-col-header { padding: 1rem 1.5rem; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
     .roi-col-header.bad  { background: rgba(239,68,68,.08); color: #ef4444; border-bottom: 1px solid rgba(239,68,68,.15); }
     .roi-col-header.good { background: rgba(124,58,237,.1);  color: var(--purple2); border-bottom: 1px solid rgba(124,58,237,.2); }
-    .roi-row {
-      display: flex; align-items: flex-start; gap: .75rem;
-      padding: .9rem 1.5rem; border-bottom: 1px solid var(--border);
-      font-size: .9rem; color: var(--text);
-    }
+    .roi-row { display: flex; align-items: flex-start; gap: .75rem; padding: .9rem 1.5rem; border-bottom: 1px solid var(--border); font-size: .9rem; color: var(--text); }
     .roi-row:last-child { border-bottom: none; }
     .roi-ic { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-    .roi-price-box {
-      background: var(--card); border: 1px solid rgba(124,58,237,.3);
-      border-radius: 20px; padding: 2rem; text-align: center;
-      box-shadow: 0 0 48px rgba(124,58,237,.1);
-    }
-    .roi-price-box .big { font-size: 3rem; font-weight: 700; color: var(--purple2); line-height: 1; letter-spacing: -.03em; }
-    .roi-price-box .label { font-size: .8rem; color: var(--muted); margin-top: .35rem; }
-    .roi-vs { text-align: center; }
-    .roi-vs .vs-tag {
-      display: inline-block; font-size: .75rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.2);
-      color: var(--cyan); padding: .4rem 1rem; border-radius: 999px;
-      margin-bottom: 1.5rem;
-    }
-    .roi-guarantee {
-      background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.2);
-      border-radius: 14px; padding: 1.25rem 1.5rem; margin-top: 2rem;
-      display: flex; align-items: flex-start; gap: .85rem;
-    }
+    .roi-vs .vs-tag { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: rgba(0,212,255,.1); border: 1px solid rgba(0,212,255,.2); color: var(--cyan); padding: .4rem 1rem; border-radius: 999px; margin-bottom: 1.5rem; }
+    .roi-guarantee { background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.2); border-radius: 14px; padding: 1.25rem 1.5rem; margin-top: 2rem; display: flex; align-items: flex-start; gap: .85rem; }
     .roi-guarantee-icon { font-size: 1.4rem; flex-shrink: 0; }
     .roi-guarantee h4 { font-size: .9rem; font-weight: 600; color: #10b981; margin-bottom: .25rem; }
     .roi-guarantee p  { font-size: .85rem; color: var(--muted); line-height: 1.6; }
-
     /* SOBRE */
     .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3.5rem; align-items: center; }
     @media(max-width:700px){ .sobre-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .sobre-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2.5rem;
-    }
-    .sobre-avatar {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; font-weight: 700; color: #fff;
-      margin-bottom: 1.25rem;
-    }
+    .sobre-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+    .sobre-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #fff; margin-bottom: 1.25rem; }
     .sobre-name { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: .25rem; }
     .sobre-role { font-size: .85rem; color: var(--muted); margin-bottom: 1.25rem; }
     .sobre-text { font-size: .9rem; color: var(--text); line-height: 1.85; }
@@ -663,10 +399,50 @@
     .sobre-stat-num { font-size: 2rem; font-weight: 700; color: var(--purple2); line-height: 1; letter-spacing: -.03em; min-width: 60px; }
     .sobre-stat-label { font-size: .875rem; color: var(--muted); line-height: 1.5; padding-top: .2rem; }
 
+    /* ─── SITES SECTION ─── */
+    .sites-section { background: var(--bg); }
+    .sites-banner {
+      background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(0,212,255,.05));
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 16px; padding: 1.25rem 1.75rem;
+      margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .sites-banner-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .sites-banner-text { flex: 1; }
+    .sites-banner-text strong { color: #10b981; display: block; font-size: .95rem; margin-bottom: .2rem; }
+    .sites-banner-text span { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .sites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media(max-width: 700px) { .sites-grid { grid-template-columns: 1fr; } }
+    .site-card {
+      background: var(--card); border-radius: 20px; padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      border: 1px solid rgba(16,185,129,.2);
+      transition: border-color .2s, transform .2s;
+    }
+    .site-card:hover { border-color: rgba(16,185,129,.4); transform: translateY(-3px); }
+    .site-card.featured { border-color: #10b981; box-shadow: 0 0 40px rgba(16,185,129,.12); position: relative; }
+    .site-featured-chip { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: #10b981; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .25rem .9rem; border-radius: 999px; white-space: nowrap; }
+    .site-card-tag { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; background: rgba(16,185,129,.1); color: #10b981; border: 1px solid rgba(16,185,129,.3); width: fit-content; }
+    .site-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .site-card .site-price-wrap { border-top: 1px solid var(--border); padding-top: .85rem; }
+    .site-card .site-impl { font-size: .82rem; color: var(--muted); margin-bottom: .35rem; }
+    .site-card .site-impl strong { color: var(--text); }
+    .site-card .site-price { display: flex; align-items: baseline; gap: 3px; }
+    .site-card .site-r { font-size: .9rem; color: var(--muted); margin-top: 3px; }
+    .site-card .site-val { font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1; letter-spacing: -.03em; }
+    .site-card .site-mo { font-size: .82rem; color: var(--muted); align-self: flex-end; }
+    .site-card p.site-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+    .site-feats { list-style: none; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+    .site-feats li { font-size: .85rem; color: var(--text); display: flex; gap: 7px; align-items: flex-start; }
+    .site-feats li::before { content: '✓'; color: #10b981; font-weight: 700; flex-shrink: 0; }
+    .site-cta { background: linear-gradient(135deg, #047857, #10b981); color: #fff; font-weight: 600; font-size: 14px; padding: .75rem; border-radius: 10px; text-align: center; transition: opacity .2s; display: block; margin-top: auto; }
+    .site-cta:hover { opacity: .9; }
+    .site-cta.sec { background: transparent; border: 1px solid rgba(16,185,129,.3); color: #10b981; }
+    .site-cta.sec:hover { background: rgba(16,185,129,.08); }
   </style>
 </head>
 <body>
-
 
 <!-- NAV -->
 <nav>
@@ -679,6 +455,7 @@
     <a href="#como-funciona">Como funciona</a>
     <a href="#nichos">Nichos</a>
     <a href="#precos">Preços</a>
+    <a href="#sites">Sites</a>
     <a href="#sobre">Sobre</a>
     <a href="#faq">FAQ</a>
     <a href="https://app.chautomacoes.com.br" class="nav-btn">Já sou cliente</a>
@@ -688,8 +465,6 @@
 <!-- HERO -->
 <div class="hero-wrap">
   <div class="hero">
-
-    <!-- Texto -->
     <div class="hero-content">
       <p class="hero-eyebrow"><span class="hero-dot"></span> Sistema especializado para pequenas empresas</p>
       <h1 class="hero-slogan">
@@ -717,8 +492,7 @@
         Negócios reais em Brasília já usam · Sem burocracia para começar
       </div>
     </div>
-
-    <!-- Visual: Thays WhatsApp -->
+    <!-- WhatsApp Mock -->
     <div class="wapp">
       <div class="wapp-bar">
         <div class="wapp-av">🤖</div>
@@ -730,33 +504,13 @@
       <div class="wapp-secure">🔒 Mensagens respondidas automaticamente pela Thays I.A</div>
       <div class="wapp-msgs">
         <div class="wapp-date">hoje</div>
-        <div class="wmsg in">
-          Oi! Vocês têm horário disponível amanhã? 🙂
-          <div class="wmsg-time">14:22</div>
-        </div>
-        <div class="wmsg out">
-          Olá! 😊 Sim, temos sim! Qual serviço você gostaria de agendar?
-          <div class="wmsg-time">14:22 <span class="wmsg-check">✓✓</span></div>
-        </div>
-        <div class="wmsg in">
-          Corte masculino
-          <div class="wmsg-time">14:23</div>
-        </div>
-        <div class="wmsg out">
-          Perfeito! Temos disponibilidade às 10h, 14h e 17h. Qual prefere? ✂️
-          <div class="wmsg-time">14:23 <span class="wmsg-check">✓✓</span></div>
-        </div>
-        <div class="wmsg in">
-          14h ótimo!
-          <div class="wmsg-time">14:24</div>
-        </div>
-        <div class="wmsg out">
-          Agendado! ✅ Quinta-feira às 14h — corte masculino. Confirmo 24h antes. Até lá! 👊
-          <div class="wmsg-time">14:24 <span class="wmsg-check">✓✓</span></div>
-        </div>
-        <div class="wapp-crm-tag">
-          ⚡ Lead registrado no CRM e agenda atualizada automaticamente
-        </div>
+        <div class="wmsg in">Oi! Vocês têm horário disponível amanhã? 🙂<div class="wmsg-time">14:22</div></div>
+        <div class="wmsg out">Olá! 😊 Sim, temos sim! Qual serviço você gostaria de agendar?<div class="wmsg-time">14:22 <span class="wmsg-check">✓✓</span></div></div>
+        <div class="wmsg in">Corte masculino<div class="wmsg-time">14:23</div></div>
+        <div class="wmsg out">Perfeito! Temos disponibilidade às 10h, 14h e 17h. Qual prefere? ✂️<div class="wmsg-time">14:23 <span class="wmsg-check">✓✓</span></div></div>
+        <div class="wmsg in">14h ótimo!<div class="wmsg-time">14:24</div></div>
+        <div class="wmsg out">Agendado! ✅ Quinta-feira às 14h — corte masculino. Confirmo 24h antes. Até lá! 👊<div class="wmsg-time">14:24 <span class="wmsg-check">✓✓</span></div></div>
+        <div class="wapp-crm-tag">⚡ Lead registrado no CRM e agenda atualizada automaticamente</div>
         <div class="wapp-typing"><span></span><span></span><span></span></div>
       </div>
       <div class="wapp-input">
@@ -764,7 +518,6 @@
         <div class="wapp-send">➤</div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -786,7 +539,6 @@
       <h2 class="s-title">Reconhece alguma<br>dessas situações?</h2>
       <p class="s-sub">Escolha o seu segmento. Se você se identificar com 3 ou mais perguntas, o CH Intelligence foi feito para você.</p>
     </div>
-
     <div class="dor-tabs">
       <button class="dor-tab on"  onclick="switchDor('barbearia',this)">✂️ Barbearia</button>
       <button class="dor-tab"     onclick="switchDor('clinica',this)">🏥 Clínica</button>
@@ -794,8 +546,6 @@
       <button class="dor-tab"     onclick="switchDor('corretor',this)">🛡️ Corretor</button>
       <button class="dor-tab"     onclick="switchDor('academia',this)">💪 Academia</button>
     </div>
-
-    <!-- BARBEARIA -->
     <div class="dor-pane on" id="dor-barbearia">
       <div class="dor-card">
         <p class="dor-card-title">Você para de cortar pra responder<br>o WhatsApp no meio do atendimento?</p>
@@ -807,13 +557,9 @@
           <li><span class="dor-check"></span>Você depende da sua memória para lembrar as preferências de cada cliente?</li>
           <li><span class="dor-check"></span>Seu cliente fiel não tem nenhum benefício por isso — nenhum desconto, nenhum ponto, nenhum reconhecimento?</li>
         </ul>
-        <div class="dor-resolve">
-          <strong>O CH Intelligence resolve tudo isso:</strong> a Thays agenda pelo WhatsApp enquanto você corta, o sistema avisa clientes inativos, controla suas despesas e receitas, e o programa de fidelidade VIP faz seu cliente preferir você ao invés do concorrente.
-        </div>
+        <div class="dor-resolve"><strong>O CH Intelligence resolve tudo isso:</strong> a Thays agenda pelo WhatsApp enquanto você corta, o sistema avisa clientes inativos, controla suas despesas e receitas, e o programa de fidelidade VIP faz seu cliente preferir você ao invés do concorrente.</div>
       </div>
     </div>
-
-    <!-- CLÍNICA -->
     <div class="dor-pane" id="dor-clinica">
       <div class="dor-card">
         <p class="dor-card-title">Você sabe quantos pacientes<br>não voltaram este mês?</p>
@@ -825,13 +571,9 @@
           <li><span class="dor-check"></span>Você consegue ver o histórico completo de um paciente em menos de 30 segundos?</li>
           <li><span class="dor-check"></span>No final do mês, você sabe exatamente quanto está em aberto para receber?</li>
         </ul>
-        <div class="dor-resolve">
-          <strong>O CH Intelligence resolve tudo isso:</strong> prontuário eletrônico completo por sessão, alertas automáticos de pacientes sem retorno, lembretes via WhatsApp antes da consulta e controle financeiro integrado — tudo em um único lugar.
-        </div>
+        <div class="dor-resolve"><strong>O CH Intelligence resolve tudo isso:</strong> prontuário eletrônico completo por sessão, alertas automáticos de pacientes sem retorno, lembretes via WhatsApp antes da consulta e controle financeiro integrado — tudo em um único lugar.</div>
       </div>
     </div>
-
-    <!-- ADVOCACIA -->
     <div class="dor-pane" id="dor-advocacia">
       <div class="dor-card">
         <p class="dor-card-title">Você já perdeu o sono preocupado<br>com um prazo que não lembra se registrou?</p>
@@ -843,13 +585,9 @@
           <li><span class="dor-check"></span>Você perde horas por semana em tarefas administrativas que poderiam estar automatizadas?</li>
           <li><span class="dor-check"></span>Já perdeu um cliente para a concorrência por demora no atendimento do primeiro contato?</li>
         </ul>
-        <div class="dor-resolve">
-          <strong>O CH Intelligence resolve tudo isso:</strong> gestão de processos e prazos com alertas automáticos antes do vencimento, histórico completo por cliente, controle de honorários e a Thays I.A que atende o primeiro contato pelo WhatsApp enquanto você advoga.
-        </div>
+        <div class="dor-resolve"><strong>O CH Intelligence resolve tudo isso:</strong> gestão de processos e prazos com alertas automáticos antes do vencimento, histórico completo por cliente, controle de honorários e a Thays I.A que atende o primeiro contato pelo WhatsApp enquanto você advoga.</div>
       </div>
     </div>
-
-    <!-- CORRETOR -->
     <div class="dor-pane" id="dor-corretor">
       <div class="dor-card">
         <p class="dor-card-title">Algum cliente já renovou com outro corretor<br>porque você não lembrou de ligar antes?</p>
@@ -861,13 +599,9 @@
           <li><span class="dor-check"></span>Você tem controle claro de todas as comissões que tem a receber este mês?</li>
           <li><span class="dor-check"></span>O processo de renovação hoje exige vários passos manuais que poderiam ser feitos com 1 clique?</li>
         </ul>
-        <div class="dor-resolve">
-          <strong>O CH Intelligence resolve tudo isso:</strong> alertas automáticos de vencimento em 30, 60 e 90 dias, renovação com 1 clique, carta de renovação em PDF automática, controle de sinistros e a Thays I.A mantendo contato com o cliente durante todo o ano.
-        </div>
+        <div class="dor-resolve"><strong>O CH Intelligence resolve tudo isso:</strong> alertas automáticos de vencimento em 30, 60 e 90 dias, renovação com 1 clique, carta de renovação em PDF automática, controle de sinistros e a Thays I.A mantendo contato com o cliente durante todo o ano.</div>
       </div>
     </div>
-
-    <!-- ACADEMIA -->
     <div class="dor-pane" id="dor-academia">
       <div class="dor-card">
         <p class="dor-card-title">Você sabe quais alunos estão prestes<br>a desistir antes que eles desistam?</p>
@@ -879,20 +613,14 @@
           <li><span class="dor-check"></span>Suas turmas são gerenciadas no papel ou no WhatsApp — sem lista de presença digital?</li>
           <li><span class="dor-check"></span>No final do mês, você sabe exatamente quais turmas estão cheias, quais estão vazias e quanto entrou de receita?</li>
         </ul>
-        <div class="dor-resolve">
-          <strong>O CH Intelligence resolve tudo isso:</strong> ficha completa do aluno com avaliações físicas e histórico de evolução, alertas de alunos sem presença há mais de 7 dias, lista de presença digital por turma e controle financeiro integrado.
-        </div>
+        <div class="dor-resolve"><strong>O CH Intelligence resolve tudo isso:</strong> ficha completa do aluno com avaliações físicas e histórico de evolução, alertas de alunos sem presença há mais de 7 dias, lista de presença digital por turma e controle financeiro integrado.</div>
       </div>
     </div>
-
     <div style="text-align:center;margin-top:2.5rem">
-      <a href="#comecar" class="btn-p" style="display:inline-flex;font-size:15px">
-        Quero agendar uma demonstração →
-      </a>
+      <a href="#comecar" class="btn-p" style="display:inline-flex;font-size:15px">Quero agendar uma demonstração →</a>
     </div>
   </div>
 </section>
-
 
 <!-- COMO FUNCIONA -->
 <section id="como-funciona">
@@ -904,53 +632,17 @@
       <div>
         <div class="cf-col-ttl crm">📋 CRM: Gestão de clientes</div>
         <div class="cf-steps">
-          <div class="cf-step">
-            <div class="cf-num n-crm">01</div>
-            <div>
-              <h4>Cadastre e organize seus clientes</h4>
-              <p>Importe sua base existente ou adicione novos contatos. O pipeline visual mostra onde cada lead está na jornada de compra.</p>
-            </div>
-          </div>
-          <div class="cf-step">
-            <div class="cf-num n-crm">02</div>
-            <div>
-              <h4>Acompanhe e nunca perca um cliente</h4>
-              <p>Agenda de compromissos, alertas de follow-up, histórico completo de cada cliente e controle financeiro no mesmo lugar.</p>
-            </div>
-          </div>
-          <div class="cf-step">
-            <div class="cf-num n-crm">03</div>
-            <div>
-              <h4>Tome decisões com dados reais</h4>
-              <p>Relatórios de conversão, receitas, despesas e metas — tudo atualizado em tempo real no seu dashboard.</p>
-            </div>
-          </div>
+          <div class="cf-step"><div class="cf-num n-crm">01</div><div><h4>Cadastre e organize seus clientes</h4><p>Importe sua base existente ou adicione novos contatos. O pipeline visual mostra onde cada lead está na jornada de compra.</p></div></div>
+          <div class="cf-step"><div class="cf-num n-crm">02</div><div><h4>Acompanhe e nunca perca um cliente</h4><p>Agenda de compromissos, alertas de follow-up, histórico completo de cada cliente e controle financeiro no mesmo lugar.</p></div></div>
+          <div class="cf-step"><div class="cf-num n-crm">03</div><div><h4>Tome decisões com dados reais</h4><p>Relatórios de conversão, receitas, despesas e metas — tudo atualizado em tempo real no seu dashboard.</p></div></div>
         </div>
       </div>
       <div>
         <div class="cf-col-ttl ia">🤖 Agente Thays I.A: Atendimento automático</div>
         <div class="cf-steps">
-          <div class="cf-step">
-            <div class="cf-num n-ia">01</div>
-            <div>
-              <h4>Thays atende seus clientes no WhatsApp</h4>
-              <p>Quando seu cliente manda mensagem, a Thays responde na hora — 24h por dia, 7 dias por semana, sem você precisar estar online.</p>
-            </div>
-          </div>
-          <div class="cf-step">
-            <div class="cf-num n-ia">02</div>
-            <div>
-              <h4>Agenda e qualifica automaticamente</h4>
-              <p>A Thays agenda serviços, tira dúvidas frequentes e identifica leads prontos para comprar — avisando você em tempo real.</p>
-            </div>
-          </div>
-          <div class="cf-step">
-            <div class="cf-num n-ia">03</div>
-            <div>
-              <h4>Tudo registrado no CRM</h4>
-              <p>Cada conversa, agendamento e contato que a Thays realiza é registrado automaticamente no CH Intelligence CRM.</p>
-            </div>
-          </div>
+          <div class="cf-step"><div class="cf-num n-ia">01</div><div><h4>Thays atende seus clientes no WhatsApp</h4><p>Quando seu cliente manda mensagem, a Thays responde na hora — 24h por dia, 7 dias por semana, sem você precisar estar online.</p></div></div>
+          <div class="cf-step"><div class="cf-num n-ia">02</div><div><h4>Agenda e qualifica automaticamente</h4><p>A Thays agenda serviços, tira dúvidas frequentes e identifica leads prontos para comprar — avisando você em tempo real.</p></div></div>
+          <div class="cf-step"><div class="cf-num n-ia">03</div><div><h4>Tudo registrado no CRM</h4><p>Cada conversa, agendamento e contato que a Thays realiza é registrado automaticamente no CH Intelligence CRM.</p></div></div>
         </div>
       </div>
     </div>
@@ -1021,42 +713,12 @@
     <h2 class="s-title">Feito para o seu mercado,<br>não para todo mundo.</h2>
     <p class="s-sub">Módulos exclusivos por segmento com funcionalidades que fazem sentido para o dia a dia do seu negócio.</p>
     <div class="nichos-grid">
-      <div class="nicho">
-        <div class="nicho-emoji">✂️</div>
-        <h4>Barbearia e Salão</h4>
-        <p>Agenda profissional, programa de fidelidade VIP, controle de insumos e despesas, IA para agendamentos automáticos.</p>
-        <span class="nicho-badge">Agenda Pro + Fidelidade</span>
-      </div>
-      <div class="nicho">
-        <div class="nicho-emoji">🏥</div>
-        <h4>Clínica e Saúde</h4>
-        <p>Prontuário eletrônico, evolução de sessões, alertas de pacientes sem retorno e anamnese digital completa.</p>
-        <span class="nicho-badge">Módulo Clínica</span>
-      </div>
-      <div class="nicho">
-        <div class="nicho-emoji">⚖️</div>
-        <h4>Advocacia</h4>
-        <p>Gestão de processos, controle de prazos com alertas automáticos, honorários e histórico completo por cliente.</p>
-        <span class="nicho-badge">Módulo Jurídico</span>
-      </div>
-      <div class="nicho">
-        <div class="nicho-emoji">🛡️</div>
-        <h4>Corretor de Seguros</h4>
-        <p>Carteira de apólices, alertas de vencimento em 30, 60 e 90 dias, renovação com 1 clique e controle de sinistros.</p>
-        <span class="nicho-badge">Módulo Seguros</span>
-      </div>
-      <div class="nicho">
-        <div class="nicho-emoji">💪</div>
-        <h4>Academia e Fitness</h4>
-        <p>Ficha do aluno, avaliação física com histórico de evolução, turmas recorrentes e lista de presença digital.</p>
-        <span class="nicho-badge">Módulo Fitness</span>
-      </div>
-      <div class="nicho">
-        <div class="nicho-emoji">🏢</div>
-        <h4>Outros negócios</h4>
-        <p>O CRM base funciona para qualquer negócio de serviços. Pipeline, agenda, financeiro e IA prontos para usar.</p>
-        <span class="nicho-badge">CRM Universal</span>
-      </div>
+      <div class="nicho"><div class="nicho-emoji">✂️</div><h4>Barbearia e Salão</h4><p>Agenda profissional, programa de fidelidade VIP, controle de insumos e despesas, IA para agendamentos automáticos.</p><span class="nicho-badge">Agenda Pro + Fidelidade</span></div>
+      <div class="nicho"><div class="nicho-emoji">🏥</div><h4>Clínica e Saúde</h4><p>Prontuário eletrônico, evolução de sessões, alertas de pacientes sem retorno e anamnese digital completa.</p><span class="nicho-badge">Módulo Clínica</span></div>
+      <div class="nicho"><div class="nicho-emoji">⚖️</div><h4>Advocacia</h4><p>Gestão de processos, controle de prazos com alertas automáticos, honorários e histórico completo por cliente.</p><span class="nicho-badge">Módulo Jurídico</span></div>
+      <div class="nicho"><div class="nicho-emoji">🛡️</div><h4>Corretor de Seguros</h4><p>Carteira de apólices, alertas de vencimento em 30, 60 e 90 dias, renovação com 1 clique e controle de sinistros.</p><span class="nicho-badge">Módulo Seguros</span></div>
+      <div class="nicho"><div class="nicho-emoji">💪</div><h4>Academia e Fitness</h4><p>Ficha do aluno, avaliação física com histórico de evolução, turmas recorrentes e lista de presença digital.</p><span class="nicho-badge">Módulo Fitness</span></div>
+      <div class="nicho"><div class="nicho-emoji">🏢</div><h4>Outros negócios</h4><p>O CRM base funciona para qualquer negócio de serviços. Pipeline, agenda, financeiro e IA prontos para usar.</p><span class="nicho-badge">CRM Universal</span></div>
     </div>
   </div>
 </section>
@@ -1067,9 +729,7 @@
     <p class="s-lbl">Por que vale o investimento</p>
     <h2 class="s-title">A Thays custa menos<br>que um atendente — e nunca falta.</h2>
     <p class="s-sub">Compare o custo real de contratar uma pessoa para atendimento com o que a Thays I.A entrega.</p>
-
     <div class="roi-grid">
-      <!-- Coluna atendente -->
       <div class="roi-compare">
         <div class="roi-col-header bad">❌ Atendente CLT</div>
         <div class="roi-row"><span class="roi-ic">💸</span><span><strong>R$ 3.200–4.500/mês</strong> em custo total (salário + FGTS + 13º + férias + INSS)</span></div>
@@ -1078,22 +738,16 @@
         <div class="roi-row"><span class="roi-ic">😴</span><span>Tira férias, atestados e licenças — deixa o negócio sem cobertura</span></div>
         <div class="roi-row"><span class="roi-ic">📊</span><span>Não registra automaticamente os leads e conversas no CRM</span></div>
       </div>
-
-      <!-- versus -->
-      <div class="roi-vs-center"><span class="vs-tag">versus</span></div>
-
-      <!-- Coluna Thays -->
+      <div class="roi-vs-center"><span class="roi-vs"><span class="vs-tag">versus</span></span></div>
       <div class="roi-compare">
-          <div class="roi-col-header good">✅ Thays I.A Pro</div>
-          <div class="roi-row"><span class="roi-ic">💜</span><span><strong>R$ 600/mês</strong> — tudo incluso, sem encargos, sem surpresas</span></div>
-          <div class="roi-row"><span class="roi-ic">🌙</span><span>Atende 24h por dia, 7 dias por semana — inclusive feriados</span></div>
-          <div class="roi-row"><span class="roi-ic">🤖</span><span>Segue o script sempre do mesmo jeito, personalizado para o seu nicho</span></div>
-          <div class="roi-row"><span class="roi-ic">⚡</span><span>Nunca tira férias, não pede aumento, não falta</span></div>
-          <div class="roi-row"><span class="roi-ic">📲</span><span>Registra cada conversa e agendamento automaticamente no CRM</span></div>
-        </div>
+        <div class="roi-col-header good">✅ Thays I.A Pro</div>
+        <div class="roi-row"><span class="roi-ic">💜</span><span><strong>R$ 600/mês</strong> — tudo incluso, sem encargos, sem surpresas</span></div>
+        <div class="roi-row"><span class="roi-ic">🌙</span><span>Atende 24h por dia, 7 dias por semana — inclusive feriados</span></div>
+        <div class="roi-row"><span class="roi-ic">🤖</span><span>Segue o script sempre do mesmo jeito, personalizado para o seu nicho</span></div>
+        <div class="roi-row"><span class="roi-ic">⚡</span><span>Nunca tira férias, não pede aumento, não falta</span></div>
+        <div class="roi-row"><span class="roi-ic">📲</span><span>Registra cada conversa e agendamento automaticamente no CRM</span></div>
       </div>
     </div>
-
     <div class="roi-guarantee">
       <div class="roi-guarantee-icon">🛡️</div>
       <div>
@@ -1103,7 +757,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- PREÇOS -->
 <section class="pricing" id="precos">
@@ -1116,10 +769,9 @@
       <button class="tab"    onclick="switchTab('ia',this)">Agente Thays I.A</button>
       <button class="tab"    onclick="switchTab('combo',this)">Combos</button>
     </div>
-
     <!-- CRM -->
     <div class="tab-pane on" id="tp-crm">
-      <div class="price-note"><strong>Como funciona:</strong> Você faz a demonstração gratuita → decide o plano → paga a implantação (configuração completa pela nossa equipe) → começa a usar. A mensalidade começa após a implantação. Demonstração gratuita disponível para todos os planos.</div>
+      <div class="price-note"><strong>Como funciona:</strong> Você faz a demonstração gratuita → decide o plano → paga a implantação (configuração completa pela nossa equipe) → começa a usar. A mensalidade começa após a implantação.</div>
       <div class="pg">
         <div class="pc">
           <div class="pc-name">CRM Solo</div>
@@ -1153,12 +805,11 @@
           <a href="#comecar" class="pc-btn">Agendar demonstração</a>
         </div>
       </div>
-      <p class="price-trial">Todos os planos incluem <strong>15 dias de teste gratuito</strong> Sem burocracia para começar.</p>
+      <p class="price-trial">Todos os planos incluem <strong>15 dias de teste gratuito.</strong> Sem burocracia para começar.</p>
     </div>
-
     <!-- IA -->
     <div class="tab-pane" id="tp-ia">
-      <div class="price-note"><strong>Como funciona:</strong> Você faz a demonstração gratuita → decide o plano → pagamos a implantação (configuramos a Thays I.A para o seu negócio) → começa a usar. A mensalidade começa após a implantação. Demonstração gratuita disponível para todos os planos.</div>
+      <div class="price-note"><strong>Como funciona:</strong> Você faz a demonstração gratuita → decide o plano → pagamos a implantação (configuramos a Thays I.A para o seu negócio) → começa a usar. A mensalidade começa após a implantação.</div>
       <div class="pg">
         <div class="pc">
           <div class="pc-name">Start</div>
@@ -1208,16 +859,15 @@
       </div>
       <p class="price-trial">Demonstração gratuita disponível para todos os planos.</p>
     </div>
-
     <!-- COMBOS -->
     <div class="tab-pane" id="tp-combo">
-      <div class="price-note"><strong>Combos = CRM + Agente Thays I.A com desconto.</strong> Demonstração gratuita → implantação → uso. A mensalidade começa após a implantação. <strong>15 dias de teste gratuito</strong> em todos os combos.</div>
+      <div class="price-note"><strong>Combos = CRM + Agente Thays I.A com desconto.</strong> Demonstração gratuita → implantação → uso. <strong>15 dias de teste gratuito</strong> em todos os combos.</div>
       <div class="pg">
         <div class="pc">
           <div class="pc-name">Automatize</div>
           <p class="pc-impl">Start + CRM Solo · Implantação: <strong>R$ 800</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">470</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">CRM organizado + atendimento automático no WhatsApp. Para quem está começando a automatizar.</p>
+          <p class="pc-desc">CRM organizado + atendimento automático no WhatsApp.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo</li>
             <li>Agente Thays I.A Start</li>
@@ -1232,7 +882,7 @@
           <div class="pc-name">Acelere</div>
           <p class="pc-impl">Pro + CRM Solo Pro · Implantação: <strong>R$ 1.000</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">720</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">CRM Pro com módulo de nicho + Agente Thays Pro. Para quem quer crescer de verdade.</p>
+          <p class="pc-desc">CRM Pro com módulo de nicho + Agente Thays Pro.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo Pro</li>
             <li>Agente Thays I.A Pro</li>
@@ -1247,7 +897,7 @@
           <div class="pc-name">Domine</div>
           <p class="pc-impl">Master + CRM Solo Pro · Implantação: <strong>R$ 5.000</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">2.900</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">O ecossistema completo. CRM Pro + IA Master com voz, imagens, PDF e automação avançada.</p>
+          <p class="pc-desc">O ecossistema completo. CRM Pro + IA Master com voz, imagens, PDF.</p>
           <ul class="pc-feats">
             <li>CH Intelligence CRM Solo Pro</li>
             <li>Agente Thays I.A Master</li>
@@ -1264,6 +914,83 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     PRESENÇA DIGITAL — Sites integrados
+════════════════════════════════════════════════════════════════ -->
+<section class="sites-section" id="sites">
+  <div class="container">
+    <p class="s-lbl">Presença Digital</p>
+    <h2 class="s-title">Site profissional integrado<br>ao seu CRM e à Thays.</h2>
+    <p class="s-sub">Não é só um site bonito. É uma vitrine que captura leads automaticamente e os lança direto no seu CRM — prontos para a Thays abordar.</p>
+
+    <div class="sites-banner">
+      <div class="sites-banner-icon">🔗</div>
+      <div class="sites-banner-text">
+        <strong>Integração nativa com o CH Intelligence</strong>
+        <span>O formulário do site envia o lead direto para o seu CRM. Nenhuma agência faz isso — é exclusivo da CH Automações.</span>
+      </div>
+    </div>
+
+    <div class="sites-grid">
+      <!-- Site Vitrine -->
+      <div class="site-card">
+        <span class="site-card-tag">🌐 Site Vitrine</span>
+        <h3>Presença Digital Profissional</h3>
+        <p class="site-desc">Site moderno e responsivo para apresentar seu negócio, aparecer no Google e transmitir credibilidade. Perfeito para quem ainda não tem presença online.</p>
+        <div class="site-price-wrap">
+          <p class="site-impl">Implantação: <strong>R$ 1.500</strong></p>
+          <div class="site-price">
+            <span class="site-r">R$</span>
+            <span class="site-val">60</span>
+            <span class="site-mo">/mês</span>
+          </div>
+          <p style="font-size:.78rem;color:var(--muted);margin-top:.25rem">Inclui domínio + hospedagem + manutenção</p>
+        </div>
+        <ul class="site-feats">
+          <li>Design responsivo e moderno</li>
+          <li>Páginas: Home, Sobre, Serviços e Contato</li>
+          <li>SEO básico — apareça no Google</li>
+          <li>Botão WhatsApp integrado</li>
+          <li>Domínio e hospedagem inclusos</li>
+          <li>Pequenas atualizações mensais</li>
+        </ul>
+        <a href="https://wa.me/5561998036626?text=Quero%20saber%20mais%20sobre%20o%20Site%20Vitrine" class="site-cta sec">Falar com consultor</a>
+      </div>
+
+      <!-- Site + CRM -->
+      <div class="site-card featured">
+        <div class="site-featured-chip">Mais vendido</div>
+        <span class="site-card-tag">🚀 Site + CRM</span>
+        <h3>Presença Digital + Gestão Integrada</h3>
+        <p class="site-desc">Site profissional integrado ao CH Intelligence CRM. Cada lead que preenche o formulário do site já aparece no seu CRM — pronto para acompanhar e converter.</p>
+        <div class="site-price-wrap">
+          <p class="site-impl">Implantação: <strong>R$ 2.500</strong></p>
+          <div class="site-price">
+            <span class="site-r">R$</span>
+            <span class="site-val">197</span>
+            <span class="site-mo">/mês</span>
+          </div>
+          <p style="font-size:.78rem;color:var(--muted);margin-top:.25rem">Site + CRM Solo Pro inclusos na mensalidade</p>
+        </div>
+        <ul class="site-feats">
+          <li>Tudo do Site Vitrine</li>
+          <li>Formulário integrado ao CRM</li>
+          <li>Lead capturado → CRM automático</li>
+          <li>CH Intelligence CRM Solo Pro incluso</li>
+          <li>Agenda Pro com link de agendamento</li>
+          <li>Fidelidade VIP e módulo de nicho</li>
+        </ul>
+        <a href="https://wa.me/5561998036626?text=Quero%20saber%20mais%20sobre%20o%20Site%20%2B%20CRM" class="site-cta">Falar com consultor</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <p style="font-size:.875rem;color:var(--muted)">Tem dúvidas sobre qual opção é ideal para o seu negócio?</p>
+      <a href="https://wa.me/5561998036626?text=Quero%20saber%20mais%20sobre%20os%20sites%20da%20CH%20Automa%C3%A7%C3%B5es" class="btn-p" style="display:inline-flex;margin-top:1rem;font-size:14px">Falar com um consultor →</a>
+    </div>
+  </div>
+</section>
+
 <!-- DEPOIMENTOS -->
 <section id="depoimentos">
   <div class="container">
@@ -1272,27 +999,18 @@
     <div class="depos-grid">
       <div class="depo">
         <div class="depo-stars">★★★★★</div>
-        <blockquote>"Antes eu perdia cliente por não responder rápido. Com o CH Intelligence vejo todos os meus leads no pipeline, sei quem precisa de atenção e nunca deixo ninguém sem retorno."</blockquote>
-        <div class="depo-author">
-          <div class="depo-av">LA</div>
-          <div><div class="depo-name">Leonardo Alencar</div><div class="depo-role">Barbearia · CRM Solo Pro — Gama, DF</div></div>
-        </div>
+        <blockquote>"Antes eu perdia cliente por não conseguir responder rápido. Com o CH Intelligence vejo todos os meus leads no pipeline, sei quem precisa de atenção e nunca deixo ninguém sem retorno."</blockquote>
+        <div class="depo-author"><div class="depo-av">LA</div><div><div class="depo-name">Leonardo Alencar</div><div class="depo-role">Barbearia · CRM Solo Pro — Gama, DF</div></div></div>
       </div>
       <div class="depo">
         <div class="depo-stars">★★★★★</div>
         <blockquote>"O módulo jurídico transformou a gestão do meu escritório. Tenho controle total de processos, prazos e honorários em um único lugar. Não perco mais prazo algum."</blockquote>
-        <div class="depo-author">
-          <div class="depo-av">RL</div>
-          <div><div class="depo-name">Rômulo Lopes</div><div class="depo-role">Advogado · Módulo Jurídico — Brasília, DF</div></div>
-        </div>
+        <div class="depo-author"><div class="depo-av">RL</div><div><div class="depo-name">Rômulo Lopes</div><div class="depo-role">Advogado · Módulo Jurídico — Brasília, DF</div></div></div>
       </div>
       <div class="depo">
         <div class="depo-stars">★★★★★</div>
         <blockquote>"Não uso mais planilha para controlar apólices. O sistema me avisa 30 dias antes do vencimento e renovo com 1 clique. Economizei horas por semana."</blockquote>
-        <div class="depo-author">
-          <div class="depo-av">CM</div>
-          <div><div class="depo-name">Carlos Maia</div><div class="depo-role">Corretor de Seguros · Módulo Seguros — Brasília, DF</div></div>
-        </div>
+        <div class="depo-author"><div class="depo-av">CM</div><div><div class="depo-name">Carlos Maia</div><div class="depo-role">Corretor de Seguros · Módulo Seguros — Brasília, DF</div></div></div>
       </div>
     </div>
   </div>
@@ -1311,27 +1029,14 @@
         <p class="sobre-text">Comecei a CH Automações porque via donos de pequenos negócios em Brasília perdendo cliente por não conseguir responder rápido — não por falta de qualidade, mas por falta de ferramenta certa.<br><br>Construí o CH Intelligence e a Thays I.A para resolver exatamente isso: organizar o negócio, automatizar o atendimento e dar aos pequenos empreendedores as mesmas ferramentas que as grandes empresas têm — sem o preço das grandes empresas.</p>
       </div>
       <div class="sobre-stats">
-        <div class="sobre-stat">
-          <div class="sobre-stat-num">5+</div>
-          <div class="sobre-stat-label">Nichos atendidos com módulos especializados: barbearia, clínica, advocacia, corretor e academia</div>
-        </div>
-        <div class="sobre-stat">
-          <div class="sobre-stat-num">24h</div>
-          <div class="sobre-stat-label">A Thays I.A atende os clientes dos nossos parceiros enquanto eles dormem</div>
-        </div>
-        <div class="sobre-stat">
-          <div class="sobre-stat-num">DF</div>
-          <div class="sobre-stat-label">Baseados em Brasília — suporte próximo, equipe local, entendemos o mercado do DF</div>
-        </div>
-        <div class="sobre-stat">
-          <div class="sobre-stat-num">7d</div>
-          <div class="sobre-stat-label">Garantia de implantação — ou devolvemos 100% da taxa. Sem exceção.</div>
-        </div>
+        <div class="sobre-stat"><div class="sobre-stat-num">5+</div><div class="sobre-stat-label">Nichos atendidos com módulos especializados: barbearia, clínica, advocacia, corretor e academia</div></div>
+        <div class="sobre-stat"><div class="sobre-stat-num">24h</div><div class="sobre-stat-label">A Thays I.A atende os clientes dos nossos parceiros enquanto eles dormem</div></div>
+        <div class="sobre-stat"><div class="sobre-stat-num">DF</div><div class="sobre-stat-label">Baseados em Brasília — suporte próximo, equipe local, entendemos o mercado do DF</div></div>
+        <div class="sobre-stat"><div class="sobre-stat-num">7d</div><div class="sobre-stat-label">Garantia de implantação — ou devolvemos 100% da taxa. Sem exceção.</div></div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- FAQ -->
 <section id="faq" style="background:var(--surface)">
@@ -1339,51 +1044,18 @@
     <p class="s-lbl">Dúvidas frequentes</p>
     <h2 class="s-title">Perguntas e respostas.</h2>
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Como funciona o período de teste gratuito?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Todos os planos incluem 15 dias de teste gratuito, sem burocracia para começar e sem compromisso. Você acessa o sistema completo durante esse período e decide se quer continuar.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">O CRM já vem com o agente de IA no WhatsApp?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Não. O CRM e o agente Thays I.A no WhatsApp são produtos distintos. O CRM organiza seus clientes, pipeline e financeiro dentro do sistema. O agente Thays I.A automatiza o atendimento pelo WhatsApp e é disponível nos planos de IA e nos combos.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">O que é a taxa de implantação?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">A implantação é cobrada no primeiro mês e cobre toda a configuração inicial do sistema — personalização do CRM, setup do agente de IA, integração com WhatsApp e treinamento. A mensalidade começa a partir do segundo mês.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Preciso de conhecimento técnico para usar?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Não. O sistema foi feito para donos de pequenas empresas sem nenhum conhecimento técnico. Nossa equipe cuida de toda a configuração na implantação e o suporte via WhatsApp está sempre disponível.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Posso migrar minha base de clientes de outro sistema?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Sim. O CH Intelligence aceita importação de contatos via planilha CSV. Basta exportar sua base atual e importar com alguns cliques. Nossa equipe auxilia em todo o processo.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Como funciona o contrato?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Os detalhes do contrato são apresentados durante a demonstração, pois variam conforme o plano escolhido. O que garantimos: 15 dias de teste gratuito para você conhecer o sistema antes de qualquer compromisso. Fale com nossa equipe para tirar todas as dúvidas.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">A Thays usa a API oficial do WhatsApp? Existe risco de banimento?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">A Thays I.A opera através de soluções de integração estabelecidas e confiáveis. O risco de banimento existe quando se usam ferramentas não homologadas — por isso trabalhamos apenas com parceiros certificados. Antes de iniciar, nossa equipe orienta sobre a melhor configuração para o seu número e caso específico.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Meus dados e os dados dos meus clientes ficam seguros?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Sim. Todos os dados são armazenados em servidores com criptografia, e cada empresa tem acesso exclusivo às suas próprias informações — nenhum cliente vê os dados de outro. Não compartilhamos dados com terceiros. O sistema segue as diretrizes da LGPD (Lei Geral de Proteção de Dados).</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">O que acontece quando os 15 dias de teste acabam?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Nossa equipe entra em contato antes do período acabar para apresentar as opções de plano. Se decidir contratar, agendamos a implantação e configuramos tudo. Se não quiser continuar, nenhum valor é cobrado — sem pegadinha, sem cobrança automática.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Como funciona o cancelamento?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">As condições de cancelamento são apresentadas no contrato antes de qualquer pagamento. Nossa equipe explica tudo na demonstração gratuita — sem letras miúdas. Nosso objetivo é que você fique porque o sistema entrega resultado, não porque está preso em contrato.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">A Thays funciona no meu número do WhatsApp atual?<span class="faq-ic">+</span></button>
-        <div class="faq-a"><div class="faq-ai">Existem duas opções: usar um número novo dedicado para a Thays (recomendado para separar atendimento automático do pessoal) ou integrar com um número existente. Nossa equipe avalia o melhor caminho para o seu caso durante a demonstração gratuita.</div></div>
-      </div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona o período de teste gratuito?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Todos os planos incluem 15 dias de teste gratuito, sem burocracia para começar e sem compromisso. Você acessa o sistema completo durante esse período e decide se quer continuar.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O CRM já vem com o agente de IA no WhatsApp?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Não. O CRM e o agente Thays I.A no WhatsApp são produtos distintos. O CRM organiza seus clientes, pipeline e financeiro dentro do sistema. O agente Thays I.A automatiza o atendimento pelo WhatsApp e é disponível nos planos de IA e nos combos.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O que é a taxa de implantação?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">A implantação é cobrada no primeiro mês e cobre toda a configuração inicial do sistema — personalização do CRM, setup do agente de IA, integração com WhatsApp e treinamento. A mensalidade começa a partir do segundo mês.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Preciso de conhecimento técnico para usar?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Não. O sistema foi feito para donos de pequenas empresas sem nenhum conhecimento técnico. Nossa equipe cuida de toda a configuração na implantação e o suporte via WhatsApp está sempre disponível.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Posso migrar minha base de clientes de outro sistema?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Sim. O CH Intelligence aceita importação de contatos via planilha CSV. Basta exportar sua base atual e importar com alguns cliques. Nossa equipe auxilia em todo o processo.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona o contrato?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Os detalhes do contrato são apresentados durante a demonstração, pois variam conforme o plano escolhido. O que garantimos: 15 dias de teste gratuito para você conhecer o sistema antes de qualquer compromisso.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">A Thays usa a API oficial do WhatsApp? Existe risco de banimento?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">A Thays I.A opera através de soluções de integração estabelecidas e confiáveis. O risco de banimento existe quando se usam ferramentas não homologadas — por isso trabalhamos apenas com parceiros certificados. Nossa equipe orienta sobre a melhor configuração durante a demonstração gratuita.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Meus dados e os dados dos meus clientes ficam seguros?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Sim. Todos os dados são armazenados em servidores com criptografia, e cada empresa tem acesso exclusivo às suas próprias informações. Seguimos as diretrizes da LGPD.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O que acontece quando os 15 dias de teste acabam?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Nossa equipe entra em contato antes do período acabar para apresentar as opções de plano. Se decidir contratar, agendamos a implantação e configuramos tudo. Se não quiser continuar, nenhum valor é cobrado.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona o cancelamento?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">As condições de cancelamento são apresentadas no contrato antes de qualquer pagamento. Nossa equipe explica tudo na demonstração gratuita — sem letras miúdas.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">A Thays funciona no meu número do WhatsApp atual?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Existem duas opções: usar um número novo dedicado para a Thays (recomendado) ou integrar com um número existente. Nossa equipe avalia o melhor caminho durante a demonstração gratuita.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O site integrado ao CRM funciona para qualquer nicho?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Sim. Desenvolvemos o site com a identidade visual do seu negócio, independente do nicho. A integração com o CRM funciona para qualquer segmento — barbearia, clínica, advocacia, corretor ou academia.</div></div></div>
     </div>
   </div>
 </section>
@@ -1409,14 +1081,8 @@
         <p>Preencha abaixo. Nossa equipe entra em contato pelo WhatsApp para agendar sua demonstração gratuita.</p>
       </div>
       <div class="form-group">
-        <div class="form-field">
-          <label>Seu nome</label>
-          <input type="text" id="f-nome" placeholder="Como você se chama?" autocomplete="name" />
-        </div>
-        <div class="form-field">
-          <label>WhatsApp</label>
-          <input type="tel" id="f-wpp" placeholder="(61) 99999-9999" autocomplete="tel" />
-        </div>
+        <div class="form-field"><label>Seu nome</label><input type="text" id="f-nome" placeholder="Como você se chama?" autocomplete="name" /></div>
+        <div class="form-field"><label>WhatsApp</label><input type="tel" id="f-wpp" placeholder="(61) 99999-9999" autocomplete="tel" /></div>
         <div class="form-field">
           <label>Segmento do negócio</label>
           <select id="f-seg">
@@ -1429,15 +1095,12 @@
             <option value="outro segmento">Outro segmento</option>
           </select>
         </div>
-        <button class="form-submit" onclick="enviarWhatsApp()">
-          Quero agendar minha demonstração →
-        </button>
+        <button class="form-submit" onclick="enviarWhatsApp()">Quero agendar minha demonstração →</button>
         <p class="form-note">Nossa equipe retorna em até 1h no horário comercial. <strong>A demonstração é gratuita.</strong></p>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- FOOTER -->
 <footer>
@@ -1451,10 +1114,10 @@
       <div>
         <h5>Produto</h5>
         <ul>
-          <li><a href="#dores">Você se identifica?</a>
-    <a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#produtos">Produtos</a></li>
           <li><a href="#precos">Preços</a></li>
+          <li><a href="#sites">Sites</a></li>
           <li><a href="https://app.chautomacoes.com.br">Acessar sistema</a></li>
         </ul>
       </div>
@@ -1557,7 +1220,6 @@
     e.target.value = v;
   });
 
-
   // Dor tabs
   function switchDor(id, btn) {
     document.querySelectorAll('.dor-tab').forEach(b => b.classList.remove('on'));
@@ -1565,7 +1227,6 @@
     document.querySelectorAll('.dor-pane').forEach(p => p.classList.remove('on'));
     document.getElementById('dor-' + id).classList.add('on');
   }
-
 </script>
 </body>
 </html>
