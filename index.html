@@ -1213,19 +1213,79 @@
     });
   }, { passive: true });
 
-  // Lead form → WhatsApp
-  function enviarWhatsApp() {
+  // ─── Captura de lead: grava no CRM e abre o WhatsApp ───────────
+  const API_URL = 'https://api.chautomacoes.com.br';
+
+  // Lê parâmetros de campanha da URL (utm_source, utm_campaign)
+  function getUTM() {
+    try {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        utm_source:   p.get('utm_source')   || null,
+        utm_campaign: p.get('utm_campaign') || null,
+      };
+    } catch (e) { return { utm_source: null, utm_campaign: null }; }
+  }
+
+  async function enviarWhatsApp() {
     const nome = document.getElementById('f-nome').value.trim();
     const wpp  = document.getElementById('f-wpp').value.trim();
     const seg  = document.getElementById('f-seg').value;
+    const btn  = document.querySelector('.form-submit');
+
     if (!nome) { document.getElementById('f-nome').focus(); return; }
     if (!wpp)  { document.getElementById('f-wpp').focus();  return; }
     if (!seg)  { document.getElementById('f-seg').focus();  return; }
+
+    // Valida se o WhatsApp tem DDD + número
+    const digitos = wpp.replace(/\D/g, '');
+    if (digitos.length < 10) {
+      alert('Informe um WhatsApp válido com DDD.');
+      document.getElementById('f-wpp').focus();
+      return;
+    }
+
     const msg = encodeURIComponent(
       'Olá! Me chamo ' + nome + ', tenho um(a) ' + seg +
       ' e quero conhecer o CH Intelligence. Meu WhatsApp é ' + wpp + '.'
     );
-    window.open('https://wa.me/5561998036626?text=' + msg, '_blank');
+    const whatsappUrl = 'https://wa.me/5561998036626?text=' + msg;
+
+    // Abre a aba ANTES do await — evita bloqueio de pop-up no navegador
+    const aba = window.open('', '_blank');
+
+    // Feedback visual no botão
+    const textoOriginal = btn ? btn.innerHTML : '';
+    if (btn) { btn.disabled = true; btn.innerHTML = 'Enviando...'; }
+
+    try {
+      const utm = getUTM();
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+
+      await fetch(API_URL + '/capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: nome,
+          whatsapp: wpp,
+          segmento: seg,
+          origin: 'landing_page',
+          utm_source: utm.utm_source,
+          utm_campaign: utm.utm_campaign,
+        }),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeout);
+    } catch (err) {
+      // Se a API falhar, o lead não se perde: o WhatsApp abre do mesmo jeito
+      console.warn('Falha ao registrar no CRM:', err);
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerHTML = textoOriginal; }
+      if (aba) aba.location.href = whatsappUrl;
+      else window.open(whatsappUrl, '_blank');
+    }
   }
 
   // Máscara WhatsApp
