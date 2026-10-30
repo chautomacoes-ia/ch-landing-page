@@ -1305,5 +1305,84 @@
     document.getElementById('dor-' + id).classList.add('on');
   }
 </script>
+<script>
+  // ─── Métricas anônimas do site (sem cookies, sem nome nem telefone) ───
+  // Conta visitas, cliques, seções vistas, rolagem e tempo na página e manda para o painel da CH.
+  (function () {
+    try {
+      if (navigator.doNotTrack === '1' || /bot|crawl|spider|headless/i.test(navigator.userAgent)) return;
+      var ENDERECO = 'https://cheekyhuman-n8n.cloudfy.live/webhook/site-ch';
+      var novoId = function () { return Math.random().toString(36).slice(2, 10) + Date.now().toString(36); };
+      var guarda = function (onde, chave) {
+        try { var v = onde.getItem(chave); if (!v) { v = novoId(); onde.setItem(chave, v); } return v; } catch (e) { return novoId(); }
+      };
+      var q = new URLSearchParams(location.search);
+      var ctx = {
+        v: guarda(localStorage, 'ch_v'), s: guarda(sessionStorage, 'ch_s'), r: document.referrer || '', w: window.innerWidth,
+        u: { source: q.get('utm_source') || '', medium: q.get('utm_medium') || '', campaign: q.get('utm_campaign') || '' }
+      };
+      var fila = [], espera = null;
+      function envia() {
+        if (!fila.length) return;
+        var corpo = new URLSearchParams({ d: JSON.stringify({ c: ctx, e: fila.splice(0, 50) }) });
+        var foi = false;
+        try { foi = navigator.sendBeacon && navigator.sendBeacon(ENDERECO, corpo); } catch (e) {}
+        if (!foi) { try { fetch(ENDERECO, { method: 'POST', body: corpo, keepalive: true, mode: 'no-cors' }); } catch (e) {} }
+      }
+      function evento(tipo, alvo, secao, valor) {
+        fila.push({ t: tipo, p: location.pathname, a: alvo ? String(alvo).slice(0, 120) : null, s: secao || null, v: valor == null ? null : Math.round(valor) });
+        clearTimeout(espera); espera = setTimeout(envia, 1500);
+      }
+      evento('visita');
+
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest ? e.target.closest('a,button') : null;
+        if (!el) return;
+        var texto = (el.getAttribute('aria-label') || el.innerText || '').trim().replace(/\s+/g, ' ');
+        var bloco = el.closest('section[id],header,nav,footer');
+        var secao = bloco ? (bloco.id || bloco.tagName.toLowerCase()) : null;
+        var href = el.getAttribute('href') || '';
+        if (el.classList.contains('form-submit')) {
+          var nome = (document.getElementById('f-nome') || {}).value || '';
+          var wpp = ((document.getElementById('f-wpp') || {}).value || '').replace(/\D/g, '');
+          var seg = (document.getElementById('f-seg') || {}).value || '';
+          if (nome.trim() && wpp.length >= 10 && seg) { evento('formulario', seg, 'comecar'); envia(); }
+          return;
+        }
+        if (/wa\.me|whatsapp/i.test(href)) { evento('clique_whatsapp', texto || 'WhatsApp', secao); envia(); }
+        else if (/app\.chautomacoes/i.test(href)) { evento('clique_sistema', texto, secao); envia(); }
+        else if (href === '#comecar') evento('clique_cta', texto, secao);
+        else if (el.classList.contains('dor-tab') || el.classList.contains('tab')) evento('aba', texto, secao);
+        else if (href.charAt(0) === '#') evento('clique_menu', texto, secao);
+        else if (href) { evento('clique_link', texto || href, secao); envia(); }
+      }, true);
+
+      var vistas = {};
+      if ('IntersectionObserver' in window) {
+        var olho = new IntersectionObserver(function (itens) {
+          itens.forEach(function (x) {
+            if (x.isIntersecting && !vistas[x.target.id]) { vistas[x.target.id] = 1; evento('secao', null, x.target.id); }
+          });
+        }, { threshold: 0.2 });
+        document.querySelectorAll('section[id]').forEach(function (s) { olho.observe(s); });
+      }
+
+      var marcas = [25, 50, 75, 100], feitas = {};
+      window.addEventListener('scroll', function () {
+        var d = document.documentElement;
+        var pct = (d.scrollTop + window.innerHeight) / d.scrollHeight * 100;
+        marcas.forEach(function (m) { if (pct >= m - 1 && !feitas[m]) { feitas[m] = 1; evento('rolagem', null, null, m); } });
+      }, { passive: true });
+
+      var inicio = Date.now(), contouTempo = false;
+      function saindo() {
+        if (!contouTempo) { contouTempo = true; evento('tempo', null, null, (Date.now() - inicio) / 1000); }
+        envia();
+      }
+      document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') saindo(); });
+      window.addEventListener('pagehide', saindo);
+    } catch (e) {}
+  })();
+</script>
 </body>
 </html>
