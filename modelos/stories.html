@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --fg:#ffffff; --mut:#b7abd9; --card:#120a26; --linha:#2a1b4d; --verde:#34d399; --verm:#ff7a93; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: var(--fg); overflow: hidden; }
+  .story { position: relative; width: 1080px; height: 1920px; padding: 250px 90px 320px; display: flex; flex-direction: column; gap: 40px;
+    background: radial-gradient(1000px 800px at 90% 0%, rgba(124,58,237,.42), transparent 60%), radial-gradient(800px 700px at 0% 100%, rgba(0,212,255,.16), transparent 60%), var(--bg); }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(157,78,221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(157,78,221,.07) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 30%, transparent 75%); }
+  .top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 20px; font-family: 'Poppins'; font-weight: 700; font-size: 34px; }
+  .logo { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-weight: 800; font-size: 30px; color: var(--ciano); }
+  .serie { font-family: 'Poppins'; font-weight: 600; font-size: 28px; letter-spacing: 3px; text-transform: uppercase; color: var(--ciano); padding: 12px 24px; border: 2px solid rgba(0,212,255,.45); border-radius: 999px; }
+  .meio { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 88px; line-height: 1.05; letter-spacing: -1.5px; }
+  h1 em, h2 em { font-style: normal; color: var(--ciano); }
+  h2 { font-family: 'Poppins'; font-weight: 700; font-size: 70px; line-height: 1.12; letter-spacing: -1px; }
+  .sub { font-size: 40px; line-height: 1.42; color: var(--mut); }
+  .sub b { color: var(--fg); font-weight: 600; }
+  .card { background: rgba(18,10,38,.92); border: 2px solid var(--linha); border-radius: 36px; padding: 38px 44px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .card .rot { font-family: 'Poppins'; font-weight: 700; font-size: 30px; letter-spacing: 2px; text-transform: uppercase; }
+  .card p { font-size: 40px; line-height: 1.4; }
+  .ruim .rot { color: var(--verm); } .bom .rot { color: var(--verde); }
+  .bom { border-color: rgba(52,211,153,.45); }
+  .passo { display: flex; gap: 22px; align-items: center; font-size: 40px; line-height: 1.3; }
+  .passo i { font-style: normal; flex: none; width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; background: rgba(0,212,255,.16); color: var(--ciano); font-weight: 800; font-size: 32px; }
+  .seta { font-size: 40px; color: var(--mut); padding-left: 18px; line-height: 1; }
+  .opcoes { display: flex; flex-direction: column; gap: 24px; }
+  .opcoes div { font-size: 44px; font-weight: 600; padding: 34px 40px; border-radius: 28px; background: rgba(255,255,255,.06); border: 2px solid var(--linha); }
+  .opcoes div span { color: var(--ciano); font-family: 'Poppins'; font-weight: 800; margin-right: 22px; }
+  .cta { align-self: flex-start; background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 34px 52px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 42px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .nota { font-size: 30px; color: #8b80ad; }
+  .linha { display: flex; justify-content: space-between; align-items: center; font-size: 42px; padding: 18px 0; border-bottom: 2px dashed var(--linha); }
+  .linha:last-child { border-bottom: 0; }
+  .linha b { font-family: 'Poppins'; font-weight: 700; }
+  .total b { color: var(--ciano); font-size: 64px; }
+  .bolha { max-width: 86%; padding: 26px 32px 18px; border-radius: 30px; font-size: 40px; line-height: 1.38; }
+  .bolha small { display: block; text-align: right; font-size: 26px; opacity: .6; margin-top: 6px; }
+  .cli { align-self: flex-end; background: #005c4b; border-top-right-radius: 8px; }
+  .th { align-self: flex-start; background: #202c33; border-top-left-radius: 8px; }
+  .chat { display: flex; flex-direction: column; gap: 18px; background: #0b141a; border-radius: 36px; padding: 40px 34px; border: 2px solid #1f2c34; }
+  .chat .cab { display: flex; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 2px solid #1f2c34; font-size: 36px; font-weight: 600; }
+  .chat .cab .av { width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(140deg, #8fb3ff, #4a6bd8); font-weight: 800; }
+  .chat .cab small { display: block; font-size: 26px; color: #8696a0; font-weight: 400; }
+  .crm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .col { background: rgba(255,255,255,.04); border: 2px solid var(--linha); border-radius: 26px; padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; min-height: 380px; }
+  .col h3 { font-family: 'Poppins'; font-size: 30px; color: var(--mut); font-weight: 600; }
+  .lead { background: #1a1032; border-radius: 18px; padding: 18px; font-size: 32px; line-height: 1.3; border-left: 6px solid var(--roxo2); }
+  .lead.q { border-left-color: #ff9f43; } .lead.f { border-left-color: var(--verde); }
+  .lead small { display: block; color: var(--mut); font-size: 27px; margin-top: 6px; }
+  .grande { font-family: 'Poppins'; font-weight: 800; font-size: 150px; line-height: .95; color: var(--ciano); letter-spacing: -3px; }
+</style></head>
+<body>
+<div id="raiz"></div>
+<script>
+const id = new URLSearchParams(location.search).get('id') || 'seg1';
+const topo = (serie) => `<div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="serie">${serie}</div></div>`;
+const S = {
+  // SEGUNDA 09/11
+  seg1: `${topo('Bastidores')}<div class="meio">
+    <h1>Como eu <em>implanto a Thays.</em></h1>
+    <p class="sub">Antes de ligar a Thays em qualquer negócio, eu estudo como ele atende. E isso leva mais tempo do que a tecnologia.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">O que eu estudo antes de ligar a IA</div>
+      <div class="passo"><i>1</i>Como o negócio cumprimenta o cliente</div>
+      <div class="passo"><i>2</i>As perguntas que mais chegam no WhatsApp</div>
+      <div class="passo"><i>3</i>Os serviços, os valores e as regras da agenda</div></div>
+    <p class="sub">A Thays precisa soar como o seu negócio, <b>não como um atendimento genérico.</b></p>
+    <div class="cta">Mande “THAYS” no direct</div></div>`,
+  seg2: `${topo('Sua vez')}<div class="meio">
+    <h2>Qual pergunta você mais <em>responde no WhatsApp?</em></h2>
+    <div class="opcoes"><div><span>A</span>“Quanto custa?”</div><div><span>B</span>“Tem horário?”</div><div><span>C</span>“Onde fica?”</div><div><span>D</span>“Aceita Pix ou cartão?”</div></div>
+    <p class="sub">Responda no direct com a letra. <b>Eu leio todas.</b></p></div>`,
+  // TERÇA 10/11
+  ter1: `${topo('Dica rápida')}<div class="meio">
+    <h2>A primeira resposta decide se o cliente <em>continua a conversa.</em></h2>
+    <p class="sub">Uma boa mensagem de boas-vindas faz três coisas: diz quem está atendendo, o que dá para resolver ali e qual é o próximo passo.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">Exemplo</div><p>“Oi! Aqui é a Thays, assistente virtual da Aurora Estética 💜 Qual procedimento você procura? Assim eu já mostro os horários livres.”</p></div>
+    <p class="sub">Tire um print e adapte. <b>Quer uma opinião? Mande a sua mensagem no direct.</b></p></div>`,
+  ter2: `${topo('Mito ou verdade')}<div class="meio">
+    <h1>“Cliente odeia falar <em>com robô.</em>”</h1>
+    <div class="card"><div class="rot" style="color:#fbbf24">Meia verdade</div><p>Cliente odeia robô que não entende, que manda menu de opções e que não resolve nada.</p><p>Quando a resposta vem rápida, certa e termina em horário marcado, <b>o cliente não tem do que reclamar.</b></p></div>
+    <p class="sub">É essa a diferença entre um robô de menu e uma atendente de IA.</p>
+    <p class="sub"><b>Já desistiu de alguma conversa com robô? Conte no direct.</b></p></div>`,
+  // QUARTA 11/11
+  qua1: `${topo('Antes e depois')}<div class="meio">
+    <h2>Pergunta de preço <em>às 22h.</em></h2>
+    <div class="card ruim"><div class="rot">Sem atendimento automático</div>
+      <div class="passo"><i>💬</i>Cliente pergunta às 22h</div>
+      <div class="passo"><i>😴</i>Resposta só às 9h do dia seguinte</div>
+      <div class="passo"><i>👋</i>“Obrigada, já marquei em outro lugar”</div></div>
+    <div class="card bom"><div class="rot">Com a Thays</div>
+      <div class="passo"><i>💬</i>Cliente pergunta às 22h</div>
+      <div class="passo"><i>⚡</i>Resposta em segundos, com valor e horários</div>
+      <div class="passo"><i>✅</i>Horário marcado antes de dormir</div></div>
+    <div class="cta">Mande “TESTE” no direct</div>
+    <p class="nota">Situação ilustrativa.</p></div>`,
+  qua2: `${topo('Por dentro do sistema')}<div class="meio">
+    <h2>Toda conversa vira um card <em>no CRM.</em></h2>
+    <div class="crm">
+      <div class="col"><h3>Novo contato</h3><div class="lead">Juliana<small>pediu valores · 21h40</small></div><div class="lead">Marcos<small>quer horário sábado</small></div></div>
+      <div class="col"><h3>Negociando</h3><div class="lead q">Patrícia<small>quente · aguardando retorno</small></div><div class="lead">Renato<small>pediu orçamento</small></div></div>
+      <div class="col"><h3>Agendado</h3><div class="lead f">Camila<small>sáb 14h · confirmado</small></div><div class="lead f">Diego<small>qui 15h30</small></div></div></div>
+    <p class="sub">Você abre o painel e sabe na hora <b>quem está quente e qual é o próximo passo.</b></p>
+    <p class="sub">Quer ver o painel por dentro? <b>Mande “CRM” no direct.</b></p>
+    <p class="nota">Tela ilustrativa. Nomes de exemplo.</p></div>`,
+  // QUINTA 12/11
+  qui1: `${topo('Faz a conta')}<div class="meio">
+    <h2>Quanto custa o cliente que <em>cansou de esperar?</em></h2>
+    <div class="card">
+      <div class="linha"><span>Clientes que desistem por semana</span><b>3</b></div>
+      <div class="linha"><span>Ticket médio</span><b>R$ 150</b></div>
+      <div class="linha"><span>Semanas no mês</span><b>4</b></div>
+      <div class="linha total"><span>Perdido no mês</span><b>R$ 1.800</b></div></div>
+    <p class="sub">Troque pelos números do seu negócio e <b>me mande o resultado no direct.</b></p>
+    <p class="nota">Valores de exemplo.</p></div>`,
+  qui2: `${topo('Sua vez')}<div class="meio">
+    <h2>Hoje, onde ficam os <em>contatos dos seus clientes?</em></h2>
+    <div class="opcoes"><div><span>1</span>Só no WhatsApp</div><div><span>2</span>Numa planilha ou num caderno</div><div><span>3</span>Num sistema</div></div>
+    <p class="sub">Responda com o número no direct. <b>Eu leio todas.</b></p></div>`,
+  // SEXTA 13/11
+  sex1: `${topo('Atendimento na prática')}<div class="meio">
+    <div class="chat"><div class="cab"><div class="av">B</div><div>Barbearia do Rafa<small>online</small></div></div>
+      <div class="bolha cli">Fala! Tem horário amanhã pra corte e barba? Quanto fica?<small>19:52</small></div>
+      <div class="bolha th">Tem sim! Corte + barba fica R$&nbsp;70. Amanhã com o Rafa temos 10h ou 15h30. Qual prefere?<small>19:52</small></div>
+      <div class="bolha cli">15h30<small>19:53</small></div>
+      <div class="bolha th">Fechado, Lucas! Sábado às 15h30 com o Rafa ✂️ Já está na agenda.<small>19:53</small></div></div>
+    <p class="nota">Conversa ilustrativa. Nomes e valores de exemplo.<br><b style="color:#fff">Quer isso no seu WhatsApp? Mande “QUERO” no direct.</b></p></div>`,
+  sex2: `${topo('Indique e Ganhe')}<div class="meio">
+    <h2>Conhece alguém que <em>perde cliente</em> no WhatsApp?</h2>
+    <p class="sub">Indique a CH. Se a pessoa fechar, você ganha:</p>
+    <div class="card"><div class="linha"><span>Só o sistema (CRM)</span><b>R$ 50</b></div><div class="linha"><span>Thays ou combo</span><b>10%</b></div></div>
+    <p class="nota">10% do valor da implantação. Nos dois casos, PIX em até 3 dias úteis após o indicado pagar a implantação.</p>
+    <div class="cta">Mande “INDICAÇÃO” no direct</div></div>`,
+  // SÁBADO 14/11
+  sab1: `${topo('Sites')}<div class="meio">
+    <h1>Seu cliente pesquisou o seu nome. <em>O que ele encontrou?</em></h1>
+    <p class="sub">Sem site, ele encontra pouca coisa. Com um site simples, ele vê o seu trabalho e cai direto no seu WhatsApp.</p>
+    <div class="card"><div class="passo"><i>1</i>Serviços e valores fáceis de achar</div><div class="passo"><i>2</i>Fotos reais do seu trabalho</div><div class="passo"><i>3</i>Botão direto para o WhatsApp</div></div>
+    <div class="cta">Mande “SITE” no direct</div></div>`,
+  // DOMINGO 15/11
+  dom1: `${topo('Dica de domingo')}<div class="meio">
+    <h1>Cliente satisfeito <em>avaliou você no Google?</em></h1>
+    <p class="sub">Quem procura um serviço perto de casa olha as avaliações antes de chamar. E muito cliente satisfeito só avalia quando alguém pede.</p>
+    <div class="card"><div class="passo"><i>1</i>Peça no mesmo dia do atendimento</div><div class="passo"><i>2</i>Mande o link direto, sem fazer o cliente procurar</div><div class="passo"><i>3</i>Responda toda avaliação, até a ruim</div></div>
+    <div class="cta">Mande “AVALIAÇÃO” no direct</div>
+    <p class="nota">Eu mando um modelo de mensagem pronto para você.</p></div>`,
+};
+document.getElementById('raiz').innerHTML = `<section class="story"><div class="grid"></div>${S[id]}</section>`;
+</script>
+</body></html>
