@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --fg:#ffffff; --mut:#b7abd9; --card:#120a26; --linha:#2a1b4d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1350px; background: var(--bg); font-family: 'Inter', sans-serif; color: var(--fg); overflow: hidden; }
+  .slide { position: relative; width: 1080px; height: 1350px; padding: 96px 92px; display: flex; flex-direction: column;
+    background: radial-gradient(900px 600px at 85% -10%, rgba(124,58,237,.38), transparent 60%), radial-gradient(700px 500px at -10% 110%, rgba(0,212,255,.14), transparent 60%), var(--bg); }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(157,78,221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(157,78,221,.07) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); }
+  .top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 18px; font-family: 'Poppins'; font-weight: 700; font-size: 30px; letter-spacing: .5px; }
+  .logo { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-family: 'Poppins'; font-weight: 800; font-size: 26px; color: var(--ciano); }
+  .kicker { font-family: 'Poppins'; font-weight: 600; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: var(--ciano); }
+  .meio { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 92px; line-height: 1.04; letter-spacing: -1.5px; }
+  h1 em { font-style: normal; color: var(--ciano); }
+  h2 { font-family: 'Poppins'; font-weight: 700; font-size: 64px; line-height: 1.1; letter-spacing: -1px; }
+  .sub { font-size: 34px; line-height: 1.4; color: var(--mut); max-width: 860px; }
+  .num { font-family: 'Poppins'; font-weight: 800; font-size: 150px; line-height: .8; color: transparent; -webkit-text-stroke: 3px var(--roxo2); opacity: .9; }
+  .rodape { position: relative; display: flex; justify-content: space-between; align-items: center; font-size: 26px; color: var(--mut); }
+  .dots { display: flex; gap: 10px; } .dots i { width: 12px; height: 12px; border-radius: 6px; background: var(--linha); } .dots i.on { width: 36px; background: var(--ciano); }
+  /* cartoes de evidencia */
+  .card { background: var(--card); border: 2px solid var(--linha); border-radius: 32px; padding: 34px 38px; display: flex; flex-direction: column; gap: 18px; max-width: 820px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .bolha { align-self: flex-start; background: #1e1438; border-radius: 26px 26px 26px 8px; padding: 24px 30px; font-size: 36px; line-height: 1.35; }
+  .meta { font-size: 26px; color: var(--mut); display: flex; gap: 14px; align-items: center; }
+  .alerta { color: #ff7a93; font-weight: 600; }
+  .ok { color: #34d399; font-weight: 600; }
+  .linha { display: flex; justify-content: space-between; align-items: center; font-size: 34px; padding: 14px 0; border-bottom: 1px dashed var(--linha); }
+  .linha:last-child { border-bottom: 0; }
+  .risco { color: var(--mut); text-decoration: line-through; text-decoration-color: #ff7a93; }
+  .pill { font-size: 24px; font-weight: 600; padding: 8px 18px; border-radius: 999px; background: rgba(255,122,147,.14); color: #ff7a93; }
+  .pill.c { background: rgba(0,212,255,.14); color: var(--ciano); }
+  .notif { display: flex; gap: 20px; align-items: center; background: #1a1032; border-radius: 24px; padding: 22px 26px; font-size: 30px; }
+  .notif b { font-weight: 700; }
+  .ico { width: 54px; height: 54px; border-radius: 14px; background: #25d366; display: grid; place-items: center; font-weight: 800; color: #062; font-size: 28px; flex: none; }
+  .grande { font-family: 'Poppins'; font-weight: 800; font-size: 120px; color: var(--ciano); line-height: 1; }
+  .cta { display: inline-flex; align-items: center; gap: 18px; align-self: flex-start; background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 30px 46px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 40px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .lista { display: flex; flex-direction: column; gap: 26px; font-size: 40px; line-height: 1.3; }
+  .lista div { display: flex; gap: 22px; align-items: flex-start; }
+  .lista span.v { flex: none; width: 48px; height: 48px; border-radius: 14px; background: rgba(0,212,255,.16); color: var(--ciano); display: grid; place-items: center; font-weight: 800; font-size: 30px; margin-top: 2px; }
+</style></head>
+<body>
+<div id="raiz"></div>
+<script>
+const total = 6;
+const s = Number(new URLSearchParams(location.search).get('s') || 1);
+const dots = Array.from({ length: total }, (_, i) => `<i class="${i + 1 === s ? 'on' : ''}"></i>`).join('');
+const topo = (k) => `<div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="kicker">${k}</div></div>`;
+const pe = (txt) => `<div class="rodape"><span>${txt}</span><div class="dots">${dots}</div></div>`;
+const S = {
+  1: `${topo('Advocacia')}<div class="meio"><h1>O prazo está na planilha. <em>Quem vai abrir?</em></h1><p class="sub">No escritório pequeno, o prazo quase nunca se perde por descuido. Ele se perde porque tudo depende da memória de alguém.</p></div>${pe('Arraste para o lado →')}`,
+  2: `${topo('1 · O prazo')}<div class="meio"><h2>A planilha guarda a data. Ela não avisa ninguém.</h2><div class="card"><div class="linha"><span>Contestação · cliente Moura</span><span class="pill">vence amanhã</span></div><div class="linha"><span>Recurso · cliente Teles</span><span>em 4 dias</span></div><div class="linha"><span>Manifestação · cliente Prado</span><span>em 9 dias</span></div></div><p class="sub">Você só descobre que está apertado quando alguém lembra de olhar.</p></div>${pe('Nomes e datas de exemplo')}`,
+  3: `${topo('2 · O honorário')}<div class="meio"><h2>O honorário que ninguém cobrou.</h2><div class="card"><div class="linha"><span>Moura · parcela 3 de 6</span><span>R$ 1.200</span></div><div class="linha"><span>Teles · parcela 2 de 4</span><span>R$ 1.200</span></div><div class="linha"><span>Situação</span><span class="pill">vencidas, sem cobrança</span></div><div class="meta">Em aberto sem ninguém perceber</div><div class="grande">R$ 2.400</div></div><p class="sub">Quando ninguém vê o que está em aberto, o dinheiro fica para depois.</p></div>${pe('Nomes e valores de exemplo')}`,
+  4: `${topo('3 · O cliente')}<div class="meio"><h2>“Doutor, alguma novidade?”</h2><div class="card"><div class="bolha">Bom dia! Tem alguma novidade no meu processo?</div><div class="meta"><span class="alerta">3ª mensagem da semana</span> · você em audiência</div></div><p class="sub">E, para responder, você abre pasta, e-mail e anotação solta até achar onde parou.</p></div>${pe('Mensagem ilustrativa · @chautomacoes')}`,
+  5: `${topo('Como a CH resolve')}<div class="meio"><h2>Módulo Jurídico do CH Intelligence</h2><div class="lista"><div><span class="v">✓</span>Prazos com alerta antes do vencimento</div><div><span class="v">✓</span>Honorários com vencimento e saldo em aberto</div><div><span class="v">✓</span>Histórico de cada cliente em um lugar só</div></div><p class="sub">E a Thays atende o primeiro contato no WhatsApp enquanto você está em audiência.</p></div>${pe('@chautomacoes')}`,
+  6: `${topo('Sua vez')}<div class="meio"><h2>Quantos prazos do seu escritório dependem da <em style="font-style:normal;color:var(--ciano)">memória de alguém</em> hoje?</h2><p class="sub">A gente mostra o Módulo Jurídico funcionando, sem compromisso.</p><div class="cta">Agende uma demonstração</div></div>${pe('Link na bio · @chautomacoes')}`,
+};
+document.getElementById('raiz').innerHTML = `<section class="slide"><div class="grid"></div>${S[s]}</section>`;
+</script>
+</body></html>

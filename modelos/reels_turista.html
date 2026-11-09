@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; overflow: hidden; background: #05010f; font-family: 'Inter', 'Noto Color Emoji', sans-serif; }
+  .tela { position: absolute; inset: 0; display: flex; flex-direction: column; background: #0b141a; }
+  .status { height: 70px; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; color: #e9edef; font-size: 30px; font-weight: 600; background: #1f2c34; }
+  .topo { height: 150px; background: #1f2c34; display: flex; align-items: center; gap: 26px; padding: 0 36px; color: #e9edef; }
+  .voltar { font-size: 50px; color: #aebac1; }
+  .av { width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(140deg, #f5b8c8, #c9779a); display: grid; place-items: center; font-weight: 800; font-size: 36px; color: #fff; }
+  .nome b { display: block; font-size: 38px; font-weight: 600; }
+  .nome small { font-size: 27px; color: #8696a0; }
+  .chat { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 30px 34px 40px; overflow: hidden;
+    background-color: #0b141a; background-image: radial-gradient(rgba(255,255,255,.035) 2px, transparent 2px); background-size: 46px 46px; }
+  .dia { align-self: center; background: #182229; color: #8696a0; font-size: 26px; padding: 10px 22px; border-radius: 14px; margin-bottom: 10px; }
+  .msg { max-width: 78%; padding: 18px 24px 14px; border-radius: 22px; font-size: 36px; line-height: 1.38; color: #e9edef; position: relative; transform-origin: bottom; }
+  .eu { align-self: flex-end; background: #005c4b; border-top-right-radius: 6px; }
+  .ela { align-self: flex-start; background: #202c33; border-top-left-radius: 6px; }
+  .hora { display: block; text-align: right; font-size: 23px; color: rgba(233,237,239,.6); margin-top: 6px; }
+  .eu .hora::after { content: ' ✓✓'; color: #53bdeb; letter-spacing: -4px; }
+  .digitando { align-self: flex-start; background: #202c33; border-radius: 22px; border-top-left-radius: 6px; padding: 26px 30px; display: flex; gap: 10px; }
+  .digitando i { width: 16px; height: 16px; border-radius: 50%; background: #8696a0; }
+  .tr { display: block; font-size: 26px; color: rgba(233,237,239,.62); font-style: italic; margin-top: 8px; line-height: 1.3; }
+  .card-sis { position: absolute; left: 70px; right: 70px; top: 520px; background: #120a26; border: 2px solid #2a1b4d; border-radius: 32px; padding: 34px 40px; color: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+  .card-sis h3 { font-family: 'Poppins'; font-size: 30px; color: #00d4ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+  .card-sis .l { display: flex; justify-content: space-between; font-size: 36px; padding: 14px 0; border-bottom: 1px dashed #2a1b4d; }
+  .card-sis .l:last-of-type { border-bottom: 0; }
+  .card-sis small { display: block; margin-top: 14px; font-size: 24px; color: #8b80ad; }
+  .barra { height: 130px; background: #0b141a; display: flex; align-items: center; gap: 18px; padding: 0 26px 20px; }
+  .campo { flex: 1; height: 92px; border-radius: 46px; background: #202c33; color: #8696a0; font-size: 32px; display: flex; align-items: center; padding: 0 36px; }
+  .mic { width: 92px; height: 92px; border-radius: 50%; background: #00a884; }
+  /* camadas da CH */
+  .legenda { position: absolute; left: 60px; right: 60px; top: 300px; padding: 34px 40px; border-radius: 30px; background: rgba(5,1,15,.88); border: 2px solid rgba(0,212,255,.55);
+    color: #fff; font-family: 'Poppins'; font-weight: 700; font-size: 52px; line-height: 1.18; text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+  .legenda em { font-style: normal; color: #00d4ff; }
+  .selo { position: absolute; left: 0; right: 0; top: 240px; text-align: center; }
+  .selo span { display: inline-block; background: rgba(5,1,15,.82); color: #b7abd9; font-size: 26px; padding: 10px 24px; border-radius: 999px; }
+  .final { position: absolute; inset: 0; background: radial-gradient(900px 700px at 80% 10%, rgba(124,58,237,.5), transparent 60%), radial-gradient(700px 600px at 0% 100%, rgba(0,212,255,.18), transparent 60%), #05010f;
+    display: flex; flex-direction: column; justify-content: center; padding: 0 90px; gap: 46px; color: #fff; }
+  .final .logo { width: 110px; height: 110px; border-radius: 30px; display: grid; place-items: center; background: linear-gradient(140deg, #7c3aed, #2a0b5e); box-shadow: 0 0 0 3px rgba(0,212,255,.55); font-family: 'Poppins'; font-weight: 800; font-size: 44px; color: #00d4ff; }
+  .final h1 { font-family: 'Poppins'; font-weight: 800; font-size: 92px; line-height: 1.04; letter-spacing: -1.5px; }
+  .final h1 em { font-style: normal; color: #00d4ff; }
+  .final p { font-size: 42px; line-height: 1.4; color: #b7abd9; }
+  .final .cta { align-self: flex-start; background: linear-gradient(120deg, #7c3aed, #9d4edd); padding: 34px 54px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 44px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .final small { font-size: 28px; color: #8b80ad; }
+</style></head>
+<body>
+<div class="tela">
+  <div class="status"><span id="relogio">19:12</span><span>5G ▮▮▮ 78%</span></div>
+  <div class="topo"><span class="voltar">‹</span><div class="av" style="background:linear-gradient(140deg,#7c3aed,#2a0b5e)">S</div><div class="nome"><b>Salão Flor do Cerrado</b><small id="sub">online</small></div></div>
+  <div class="chat" id="chat"></div>
+  <div class="barra"><div class="campo">Mensagem</div><div class="mic"></div></div>
+</div>
+<div id="camada"></div>
+<script>
+// Roteiro: quem, texto, hora no relógio, momento (s) em que aparece. Mensagens da Thays têm "digitando" antes.
+const ROTEIRO = [
+  { q: 'eu', t: 'Hi! Do you have any slots for a manicure tomorrow?', tr: 'Oi! Tem horário para fazer as unhas amanhã?', h: '19:12', at: 1.2 },
+  { q: 'ela', t: 'Hi! Yes, we do! 😊 Tomorrow we have 10 am or 4:30 pm. Which one works better for you?', tr: 'Oi! Temos, sim! Amanhã temos 10h ou 16h30. Qual fica melhor?', h: '19:12', at: 5.4, dig: 1.8 },
+  { q: 'eu', t: '4:30 is perfect. How much is it?', tr: '16h30 é perfeito. Quanto custa?', h: '19:13', at: 8.4 },
+  { q: 'ela', t: 'A manicure is R$ 45. Can I book 4:30 pm for you? What name should I book it under?', tr: 'A manicure é R$ 45. Posso marcar às 16h30? Em nome de quem?', h: '19:13', at: 12.0, dig: 1.6 },
+  { q: 'eu', t: 'Yes, please! Emma', tr: 'Sim, por favor! Emma', h: '19:13', at: 14.6 },
+  { q: 'ela', t: 'All set, Emma! Tomorrow at 4:30 pm. See you then! 💅', tr: 'Prontinho, Emma! Amanhã às 16h30. Até lá!', h: '19:13', at: 17.4, dig: 1.4 },
+];
+const FIM_CHAT = 24.0, FIM = 29.0;
+window.DURACAO = FIM;
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+window.render = (t) => {
+  const chat = document.getElementById('chat');
+  let html = '<div class="dia">HOJE</div>', digitando = false, relogio = '19:12';
+  for (const m of ROTEIRO) {
+    if (m.q === 'ela' && t >= m.at - m.dig && t < m.at) digitando = true;
+    if (t >= m.at) {
+      const k = Math.min(1, (t - m.at) / 0.22), sc = 0.85 + 0.15 * k;
+      html += `<div class="msg ${m.q}" style="opacity:${k};transform:scale(${sc})">${esc(m.t)}<span class="tr">${esc(m.tr)}</span><span class="hora">${m.h}</span></div>`;
+      relogio = m.h;
+    }
+  }
+  if (digitando) {
+    const f = (i) => 0.35 + 0.65 * Math.abs(Math.sin(t * 6 - i * 0.8));
+    html += `<div class="digitando"><i style="opacity:${f(0)}"></i><i style="opacity:${f(1)}"></i><i style="opacity:${f(2)}"></i></div>`;
+  }
+  chat.innerHTML = html;
+  document.getElementById('sub').textContent = digitando ? 'digitando...' : 'online';
+  document.getElementById('relogio').textContent = relogio;
+  let camada = '';
+  if (t < 4.6) {
+    const a = Math.min(1, t / 0.4) * Math.min(1, (4.6 - t) / 0.4);
+    camada += `<div class="legenda" style="opacity:${a}">Cliente de fora chamou <em>em inglês</em></div>`;
+  } else if (t >= 19.2 && t < 23.6) {
+    const a = Math.min(1, (t - 19.2) / 0.4) * Math.min(1, (23.6 - t) / 0.4);
+    camada += `<div style="position:absolute;inset:0;background:#05010f;opacity:${a}"></div><div class="legenda" style="opacity:${a}">Na sua agenda, <em>em português</em></div><div class="card-sis" style="opacity:${a}"><h3>Agenda · amanhã</h3><div class="l"><span>16h30</span><span>Emma</span></div><div class="l"><span>Serviço</span><span>Manicure</span></div><div class="l"><span>Origem</span><span>WhatsApp · Thays</span></div><small>Tela ilustrativa</small></div>`;
+  }
+  if (t < FIM_CHAT) camada += `<div class="selo"><span>Exemplo de atendimento · @chautomacoes</span></div>`;
+  if (t >= FIM_CHAT) {
+    const a = Math.min(1, (t - FIM_CHAT) / 0.5);
+    camada += `<div class="final" style="opacity:${a}"><div class="logo">CH</div><h1>Seu cliente fala inglês? <em>A Thays também.</em></h1><p>Ela responde no idioma de quem chama e marca o horário na agenda do seu negócio.</p><div class="cta">Conheça a Thays · link na bio</div><small>Conversa ilustrativa. Nomes e valores de exemplo.</small></div>`;
+  }
+  document.getElementById('camada').innerHTML = camada;
+};
+render(0);
+</script>
+</body></html>
