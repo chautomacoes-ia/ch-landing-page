@@ -11,7 +11,7 @@ Uma linha por story. Séries fixas por dia: seg = bastidores + pergunta; ter = d
 | 11/11 | 10h | 2026-11/stories_2026-11-09/qua1.jpg | Antes e depois | Pergunta de preço às 22h | TESTE |
 | 11/11 | 18h | 2026-11/stories_2026-11-09/qua2.jpg | Por dentro do sistema | Toda conversa vira card no CRM | CRM |
 | 12/11 | 10h | 2026-11/stories_2026-11-09/qui1.jpg | Faz a conta | Quanto custa o cliente que cansou de esperar | resultado |
-| 12/11 | 18h | 2026-11/stories_2026-11-09/qui2.jpg | Sua vez | Onde ficam os contatos dos clientes (1/2/3) | número |
+| 12/11 | 18h | 2026-11/stories_2026-11-09/qui2e.jpg | Sua vez | Onde ficam os contatos dos clientes (enquete) | enquete manual (Caio) |
 | 13/11 | 10h | 2026-11/stories_2026-11-09/sex1.jpg | Atendimento na prática | Conversa ilustrativa barbearia, corte e barba | QUERO |
 | 13/11 | 18h | 2026-11/stories_2026-11-09/sex2.jpg | Indique e Ganhe | Regra R$ 50 sistema / 10% Thays ou combo | INDICAÇÃO |
 | 14/11 | 11h | 2026-11/stories_2026-11-09/sab1.jpg | Sites | Seu cliente pesquisou o seu nome: o que encontrou? | SITE |
