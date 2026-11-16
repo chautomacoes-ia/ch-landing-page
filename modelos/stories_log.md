@@ -28,3 +28,5 @@ Uma linha por story. Séries fixas por dia: seg = bastidores + pergunta; ter = d
 | 20/11 | 18h | 2026-11/stories_2026-11-16/sex2.jpg | Oferta | Como começar com a CH em 4 passos | DEMO |
 | 21/11 | 11h | 2026-11/stories_2026-11-16/sab1.jpg | CH Intelligence | Financeiro: entradas x saídas | FINANCEIRO |
 | 22/11 | 18h | 2026-11/stories_2026-11-16/dom1.jpg | Dica de domingo | Catálogo do WhatsApp Business | CATÁLOGO |
+| 16/11 | 20h | 2026-11/stories_2026-11-16/seg3.jpg | Extra (pedido do Caio) | Tempo de resposta: o que muda em cada demora (sequência da enquete) | (segue no próximo) |
+| 16/11 | 20h01 | 2026-11/stories_2026-11-16/seg4.jpg | Extra (pedido do Caio) | 51% priorizam rapidez, 85% voltam com atendimento ágil (CX Trends 2026) + Thays | RESPOSTA |
