@@ -16,3 +16,15 @@ Uma linha por story. Séries fixas por dia: seg = bastidores + pergunta; ter = d
 | 13/11 | 18h | 2026-11/stories_2026-11-09/sex2.jpg | Indique e Ganhe | Regra R$ 50 sistema / 10% Thays ou combo | INDICAÇÃO |
 | 14/11 | 11h | 2026-11/stories_2026-11-09/sab1.jpg | Sites | Seu cliente pesquisou o seu nome: o que encontrou? | SITE |
 | 15/11 | 18h | 2026-11/stories_2026-11-09/dom1.jpg | Dica de domingo | Pedir avaliação no Google | AVALIAÇÃO |
+| 16/11 | 10h | 2026-11/stories_2026-11-16/seg1.jpg | Bastidores | Parte do meu trabalho é tentar confundir a Thays (como testo) | DESAFIO |
+| 16/11 | 18h | 2026-11/stories_2026-11-16/seg2.jpg | Sua vez | Quanto tempo o cliente espera resposta no WhatsApp (enquete) | enquete manual (Caio) |
+| 17/11 | 10h | 2026-11/stories_2026-11-16/ter1.jpg | Dica rápida | Etiquetas do WhatsApp Business | ETIQUETAS |
+| 17/11 | 18h | 2026-11/stories_2026-11-16/ter2.jpg | Mito ou verdade | “Responder rápido demais parece desespero” (mito) | MITO |
+| 18/11 | 10h | 2026-11/stories_2026-11-16/qua1.jpg | Antes e depois | Agenda no caderno x link do Agenda Pro | LINK |
+| 18/11 | 18h | 2026-11/stories_2026-11-16/qua2.jpg | Por dentro do sistema | Fidelidade VIP com pontos | FIDELIDADE |
+| 19/11 | 10h | 2026-11/stories_2026-11-16/qui1.jpg | Faz a conta | Quanto valem 20 clientes que voltam todo mês (R$ 12.000/ano) | CONTA |
+| 19/11 | 18h | 2026-11/stories_2026-11-16/qui2.jpg | Sua vez | Quem responde às mensagens no fim de semana (enquete) | enquete manual (Caio) |
+| 20/11 | 10h | 2026-11/stories_2026-11-16/sex1.jpg | Atendimento na prática | Conversa ilustrativa consultório de psicologia, sessão online | CONSULTÓRIO |
+| 20/11 | 18h | 2026-11/stories_2026-11-16/sex2.jpg | Oferta | Como começar com a CH em 4 passos | DEMO |
+| 21/11 | 11h | 2026-11/stories_2026-11-16/sab1.jpg | CH Intelligence | Financeiro: entradas x saídas | FINANCEIRO |
+| 22/11 | 18h | 2026-11/stories_2026-11-16/dom1.jpg | Dica de domingo | Catálogo do WhatsApp Business | CATÁLOGO |
