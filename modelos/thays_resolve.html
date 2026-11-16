@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --fg:#fff; --mut:#b7abd9; --linha:#2a1b4d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1350px; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: var(--fg); overflow: hidden; }
+  .slide { position: relative; width: 1080px; height: 1350px; padding: 80px 92px 70px; display: flex; flex-direction: column; gap: 40px;
+    background: radial-gradient(800px 700px at 85% 10%, rgba(124,58,237,.42), transparent 62%), radial-gradient(600px 500px at 0% 100%, rgba(0,212,255,.14), transparent 60%), var(--bg); }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 18px; font-family: 'Poppins'; font-weight: 700; font-size: 30px; }
+  .logo { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-family: 'Poppins'; font-weight: 800; font-size: 26px; color: var(--ciano); }
+  .kicker { font-family: 'Poppins'; font-weight: 600; font-size: 26px; letter-spacing: 3px; color: var(--ciano); text-transform: uppercase; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 76px; line-height: 1.05; letter-spacing: -1.5px; }
+  h1 em { font-style: normal; color: var(--ciano); }
+  .card { background: rgba(18,10,38,.92); border: 2px solid var(--linha); border-radius: 32px; padding: 34px 40px; display: flex; flex-direction: column; gap: 20px; }
+  .card.c { border-color: rgba(0,212,255,.5); }
+  .rot { font-family: 'Poppins'; font-weight: 700; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: var(--mut); }
+  .card.c .rot { color: var(--ciano); }
+  .it { display: flex; gap: 20px; align-items: center; font-size: 36px; line-height: 1.3; }
+  .it i { font-style: normal; flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: rgba(0,212,255,.16); color: var(--ciano); font-weight: 800; font-size: 28px; }
+  .card.c .it i { background: rgba(124,58,237,.35); color: #fff; }
+  .pe { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+  .cta { background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 26px 42px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 34px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .arroba { font-size: 26px; color: var(--mut); }
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; min-height: 0; }
+  .chip { font-size: 31px; line-height: 1.3; padding: 18px 20px; border-radius: 20px; background: rgba(255,255,255,.05); border: 2px solid var(--linha); }
+  .notif { display: flex; gap: 18px; background: #1a1032; border-radius: 22px; padding: 22px; border-left: 6px solid var(--ciano); }
+  .notif .sino { font-size: 40px; }
+  .notif b { display: block; font-family: 'Poppins'; font-size: 30px; margin-bottom: 8px; }
+  .notif span { font-size: 28px; line-height: 1.35; color: var(--mut); }
+  .aviso { font-size: 32px; line-height: 1.35; }
+  .ilu { font-size: 22px; color: #8b80ad; margin-top: auto; }
+  h1 { font-size: 72px; margin-top: 20px; }
+</style></head>
+<body>
+<section class="slide">
+  <div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="kicker">Thays · atendente de IA</div></div>
+  <h1>A Thays cuida da rotina. <em>Você entra na hora de fechar.</em></h1>
+  <div class="duas">
+    <div class="card"><div class="rot">Rotina, com a Thays</div>
+      <div class="chip">💬 Responde em segundos</div>
+      <div class="chip">❓ Tira dúvidas dos serviços</div>
+      <div class="chip">💲 Passa valores quando perguntam</div>
+      <div class="chip">🗓️ Mostra horários e agenda</div></div>
+    <div class="card c"><div class="rot">Aviso para você</div>
+      <div class="notif"><div class="sino">🔔</div><div><b>Cliente pronto para fechar</b><span>Mariana quer escova no sábado de manhã.</span></div></div>
+      <p class="aviso">Você recebe o aviso na hora e assume a conversa.</p>
+      <p class="ilu">Tela ilustrativa. Nome de exemplo.</p></div>
+  </div>
+  <div class="pe"><div class="cta">Fale com a CH · link na bio</div><span class="arroba">@chautomacoes</span></div>
+</section>
+</body></html>
