@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --fg:#ffffff; --mut:#b7abd9; --card:#120a26; --linha:#2a1b4d; --verde:#34d399; --verm:#ff7a93; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: var(--fg); overflow: hidden; }
+  .story { position: relative; width: 1080px; height: 1920px; padding: 250px 90px 320px; display: flex; flex-direction: column; gap: 40px;
+    background: radial-gradient(1000px 800px at 90% 0%, rgba(124,58,237,.42), transparent 60%), radial-gradient(800px 700px at 0% 100%, rgba(0,212,255,.16), transparent 60%), var(--bg); }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(157,78,221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(157,78,221,.07) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 30%, transparent 75%); }
+  .top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 20px; font-family: 'Poppins'; font-weight: 700; font-size: 34px; }
+  .logo { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-weight: 800; font-size: 30px; color: var(--ciano); }
+  .serie { font-family: 'Poppins'; font-weight: 600; font-size: 28px; letter-spacing: 3px; text-transform: uppercase; color: var(--ciano); padding: 12px 24px; border: 2px solid rgba(0,212,255,.45); border-radius: 999px; }
+  .meio { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 88px; line-height: 1.05; letter-spacing: -1.5px; }
+  h1 em, h2 em { font-style: normal; color: var(--ciano); }
+  h2 { font-family: 'Poppins'; font-weight: 700; font-size: 70px; line-height: 1.12; letter-spacing: -1px; }
+  .sub { font-size: 40px; line-height: 1.42; color: var(--mut); }
+  .sub b { color: var(--fg); font-weight: 600; }
+  .card { background: rgba(18,10,38,.92); border: 2px solid var(--linha); border-radius: 36px; padding: 38px 44px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .card .rot { font-family: 'Poppins'; font-weight: 700; font-size: 30px; letter-spacing: 2px; text-transform: uppercase; }
+  .card p { font-size: 40px; line-height: 1.4; }
+  .ruim .rot { color: var(--verm); } .bom .rot { color: var(--verde); }
+  .bom { border-color: rgba(52,211,153,.45); }
+  .passo { display: flex; gap: 22px; align-items: center; font-size: 40px; line-height: 1.3; }
+  .passo i { font-style: normal; flex: none; width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; background: rgba(0,212,255,.16); color: var(--ciano); font-weight: 800; font-size: 32px; }
+  .seta { font-size: 40px; color: var(--mut); padding-left: 18px; line-height: 1; }
+  .opcoes { display: flex; flex-direction: column; gap: 24px; }
+  .opcoes div { font-size: 44px; font-weight: 600; padding: 34px 40px; border-radius: 28px; background: rgba(255,255,255,.06); border: 2px solid var(--linha); }
+  .opcoes div span { color: var(--ciano); font-family: 'Poppins'; font-weight: 800; margin-right: 22px; }
+  .cta { align-self: flex-start; background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 34px 52px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 42px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .nota { font-size: 30px; color: #8b80ad; }
+  .linha { display: flex; justify-content: space-between; align-items: center; font-size: 42px; padding: 18px 0; border-bottom: 2px dashed var(--linha); }
+  .linha:last-child { border-bottom: 0; }
+  .linha b { font-family: 'Poppins'; font-weight: 700; }
+  .total b { color: var(--ciano); font-size: 64px; }
+  .bolha { max-width: 86%; padding: 26px 32px 18px; border-radius: 30px; font-size: 40px; line-height: 1.38; }
+  .bolha small { display: block; text-align: right; font-size: 26px; opacity: .6; margin-top: 6px; }
+  .cli { align-self: flex-end; background: #005c4b; border-top-right-radius: 8px; }
+  .th { align-self: flex-start; background: #202c33; border-top-left-radius: 8px; }
+  .chat { display: flex; flex-direction: column; gap: 18px; background: #0b141a; border-radius: 36px; padding: 40px 34px; border: 2px solid #1f2c34; }
+  .chat .cab { display: flex; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 2px solid #1f2c34; font-size: 36px; font-weight: 600; }
+  .chat .cab .av { width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(140deg, #8fb3ff, #4a6bd8); font-weight: 800; }
+  .chat .cab small { display: block; font-size: 26px; color: #8696a0; font-weight: 400; }
+  .crm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .col { background: rgba(255,255,255,.04); border: 2px solid var(--linha); border-radius: 26px; padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; min-height: 380px; }
+  .col h3 { font-family: 'Poppins'; font-size: 30px; color: var(--mut); font-weight: 600; }
+  .lead { background: #1a1032; border-radius: 18px; padding: 18px; font-size: 32px; line-height: 1.3; border-left: 6px solid var(--roxo2); }
+  .lead.q { border-left-color: #ff9f43; } .lead.f { border-left-color: var(--verde); }
+  .lead small { display: block; color: var(--mut); font-size: 27px; margin-top: 6px; }
+  .grande { font-family: 'Poppins'; font-weight: 800; font-size: 150px; line-height: .95; color: var(--ciano); letter-spacing: -3px; }
+</style></head>
+<body>
+<div id="raiz"></div>
+<script>
+const id = new URLSearchParams(location.search).get('id') || 'seg1';
+const topo = (serie) => `<div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="serie">${serie}</div></div>`;
+const S = {
+  // SEGUNDA 16/11
+  seg1: `${topo('Bastidores')}<div class="meio">
+    <h1>Parte do meu trabalho é <em>tentar confundir a Thays.</em></h1>
+    <p class="sub">Cliente de verdade não escreve como manual. Por isso, antes de confiar numa resposta, eu testo do jeito mais bagunçado possível.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">O que eu mando nos testes</div>
+      <div class="passo"><i>1</i>Mensagem com erro de digitação</div>
+      <div class="passo"><i>2</i>Duas perguntas na mesma frase</div>
+      <div class="passo"><i>3</i>Cliente que muda de ideia no meio</div></div>
+    <p class="sub">Quer tentar também? <b>Mande “DESAFIO” no direct.</b></p></div>`,
+  seg2: `${topo('Sua vez')}<div class="meio">
+    <h2>Quanto tempo o seu cliente <em>espera por uma resposta</em> no WhatsApp?</h2>
+    <p class="sub">Vote na enquete aqui embaixo.</p>
+    <div style="height:560px"></div></div>`,
+  // TERÇA 17/11
+  ter1: `${topo('Dica rápida')}<div class="meio">
+    <h2>Use as <em>etiquetas</em> do WhatsApp Business.</h2>
+    <p class="sub">Elas mostram em que ponto cada conversa parou, sem você precisar rolar a tela.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">Comece com estas três</div>
+      <div class="passo"><i>1</i>Pediu orçamento</div>
+      <div class="passo"><i>2</i>Agendado</div>
+      <div class="passo"><i>3</i>Precisa de retorno</div></div>
+    <p class="sub">Quer o passo a passo? <b>Mande “ETIQUETAS” no direct.</b></p></div>`,
+  ter2: `${topo('Mito ou verdade')}<div class="meio">
+    <h1>“Responder rápido demais <em>parece desespero.</em>”</h1>
+    <div class="card"><div class="rot" style="color:var(--verm)">Mito</div><p>Quem pergunta no WhatsApp está decidindo naquela hora.</p><p>Resposta rápida passa a imagem de um negócio organizado, <b>não de alguém sem cliente.</b></p></div>
+    <p class="sub">Ouviu outro mito sobre atendimento? <b>Mande “MITO” no direct que eu respondo.</b></p></div>`,
+  // QUARTA 18/11
+  qua1: `${topo('Antes e depois')}<div class="meio">
+    <h2>“Tem horário <em>no sábado?</em>”</h2>
+    <div class="card ruim"><div class="rot">Agenda no caderno</div>
+      <div class="passo"><i>📖</i>Você confere a agenda entre um cliente e outro</div>
+      <div class="passo"><i>⚠️</i>Marca às 10h, que já tinha dono</div></div>
+    <div class="card bom"><div class="rot">Com link de agendamento</div>
+      <div class="passo"><i>🔗</i>O cliente vê só os horários livres</div>
+      <div class="passo"><i>✅</i>Escolhe e já fica na agenda</div></div>
+    <div class="cta">Mande “LINK” no direct</div>
+    <p class="nota">Situação ilustrativa.</p></div>`,
+  qua2: `${topo('Por dentro do sistema')}<div class="meio">
+    <h2>O cartão fidelidade <em>que não se perde.</em></h2>
+    <div class="card"><div class="rot" style="color:var(--ciano)">Fidelidade VIP · Ana Paula</div>
+      <div class="linha"><span>Pontos acumulados</span><b>8 de 10</b></div>
+      <div class="linha"><span>Próximo prêmio</span><b>Hidratação</b></div>
+      <div class="linha"><span>Última visita</span><b>02/11</b></div></div>
+    <p class="sub">Sem cartão de papel na carteira: os pontos ficam no sistema <b>e você sabe quem está perto do prêmio.</b></p>
+    <p class="sub"><b>Mande “FIDELIDADE” no direct.</b></p>
+    <p class="nota">Tela ilustrativa. Nomes de exemplo.</p></div>`,
+  // QUINTA 19/11
+  qui1: `${topo('Faz a conta')}<div class="meio">
+    <h2>Quanto vale um cliente que <em>volta todo mês?</em></h2>
+    <div class="card">
+      <div class="linha"><span>Valor de cada visita</span><b>R$ 50</b></div>
+      <div class="linha"><span>Visitas no ano</span><b>12</b></div>
+      <div class="linha"><span>Clientes fiéis</span><b>20</b></div>
+      <div class="linha total"><span>Por ano</span><b>R$ 12.000</b></div></div>
+    <p class="sub">Cuidar de quem já volta vale tanto quanto buscar cliente novo. <b>Faça a sua conta e mande “CONTA” no direct.</b></p>
+    <p class="nota">Valores de exemplo.</p></div>`,
+  qui2: `${topo('Sua vez')}<div class="meio">
+    <h2>No fim de semana, quem <em>responde o WhatsApp</em> do seu negócio?</h2>
+    <p class="sub">Vote na enquete aqui embaixo.</p>
+    <div style="height:560px"></div></div>`,
+  // SEXTA 20/11
+  sex1: `${topo('Atendimento na prática')}<div class="meio">
+    <div class="chat"><div class="cab"><div class="av">L</div><div>Consultório Dra. Lívia<small>online</small></div></div>
+      <div class="bolha cli">Oi, vocês atendem online? Qual o valor da sessão?<small>21:05</small></div>
+      <div class="bolha th">Oi! Atendemos sim, online e presencial. A sessão é R$&nbsp;150 (50 min). Tenho terça às 19h ou quinta às 8h. Qual prefere?<small>21:05</small></div>
+      <div class="bolha cli">Terça 19h, online<small>21:06</small></div>
+      <div class="bolha th">Marcado, Bruno! Terça às 19h, sessão online com a Dra. Lívia 💙<small>21:06</small></div></div>
+    <p class="nota">Conversa ilustrativa. Nomes e valores de exemplo.<br><b style="color:#fff">Tem consultório? Mande “CONSULTÓRIO” no direct.</b></p></div>`,
+  sex2: `${topo('Para começar')}<div class="meio">
+    <h2>Como começar com a CH <em>em 4 passos.</em></h2>
+    <div class="card">
+      <div class="passo"><i>1</i>Demonstração gratuita</div>
+      <div class="passo"><i>2</i>Você escolhe o plano</div>
+      <div class="passo"><i>3</i>Implantação: a gente configura a Thays para o seu negócio</div>
+      <div class="passo"><i>4</i>Mensalidade só a partir do mês seguinte</div></div>
+    <div class="cta">Mande “DEMO” no direct</div></div>`,
+  // SÁBADO 21/11
+  sab1: `${topo('CH Intelligence')}<div class="meio">
+    <h1>Quanto entrou e quanto saiu <em>este mês?</em></h1>
+    <div class="card">
+      <div class="linha"><span>Entradas</span><b>R$ 8.400</b></div>
+      <div class="linha"><span>Saídas</span><b>R$ 3.150</b></div>
+      <div class="linha total"><span>Saldo</span><b>R$ 5.250</b></div></div>
+    <p class="sub">No CH Intelligence, receitas e despesas ficam no mesmo lugar da agenda e dos clientes. <b>Sem planilha à parte.</b></p>
+    <div class="cta">Mande “FINANCEIRO” no direct</div>
+    <p class="nota">Tela ilustrativa. Valores de exemplo.</p></div>`,
+  // DOMINGO 22/11
+  dom1: `${topo('Dica de domingo')}<div class="meio">
+    <h1>Seu cliente vê os serviços <em>sem precisar perguntar?</em></h1>
+    <p class="sub">O catálogo do WhatsApp Business mostra o que você faz direto no seu perfil. Monte o seu em poucos minutos:</p>
+    <div class="card"><div class="passo"><i>1</i>Um item por serviço</div><div class="passo"><i>2</i>Uma foto real do resultado</div><div class="passo"><i>3</i>Descrição curta e duração</div></div>
+    <div class="cta">Mande “CATÁLOGO” no direct</div></div>`,
+};
+document.getElementById('raiz').innerHTML = `<section class="story"><div class="grid"></div>${S[id]}</section>`;
+</script>
+</body></html>
