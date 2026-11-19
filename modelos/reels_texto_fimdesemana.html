@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --mut:#b7abd9; --linha:#2a1b4d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: #fff; }
+  .fundo { position: absolute; inset: 0; background: radial-gradient(1000px 800px at 85% 5%, rgba(124,58,237,.45), transparent 60%), radial-gradient(800px 700px at 0% 100%, rgba(0,212,255,.16), transparent 60%), var(--bg); }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(157,78,221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(157,78,221,.07) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 75%); }
+  .top { position: absolute; top: 170px; left: 90px; right: 90px; display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 20px; font-family: 'Poppins'; font-weight: 700; font-size: 34px; }
+  .logo { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-family: 'Poppins'; font-weight: 800; font-size: 30px; color: var(--ciano); }
+  .arroba { font-size: 30px; color: var(--mut); }
+  .cena { position: absolute; left: 90px; right: 90px; top: 320px; bottom: 360px; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 120px; line-height: 1.02; letter-spacing: -2px; }
+  h2 { font-family: 'Poppins'; font-weight: 800; font-size: 92px; line-height: 1.05; letter-spacing: -1.5px; }
+  em { font-style: normal; color: var(--ciano); }
+  .sub { font-size: 50px; line-height: 1.35; color: var(--mut); }
+  .chip { display: inline-block; background: #1a1032; border: 2px solid var(--linha); border-left: 8px solid #25d366; border-radius: 26px; padding: 26px 34px; font-size: 46px; }
+  .item { display: flex; gap: 26px; align-items: center; font-size: 54px; line-height: 1.25; }
+  .item i { font-style: normal; flex: none; width: 74px; height: 74px; border-radius: 20px; display: grid; place-items: center; background: rgba(0,212,255,.16); color: var(--ciano); font-weight: 800; font-size: 40px; }
+  .cta { display: inline-block; background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 34px 54px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 46px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .nota { font-size: 30px; color: #8b80ad; }
+  .barra { position: absolute; left: 90px; right: 90px; bottom: 300px; height: 8px; border-radius: 4px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .barra b { display: block; height: 100%; background: linear-gradient(90deg, var(--roxo2), var(--ciano)); }
+</style></head>
+<body>
+<div class="fundo"></div><div class="grid"></div>
+<div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="arroba">@chautomacoes</div></div>
+<div class="cena" id="cena"></div>
+<div class="barra"><b id="prog"></b></div>
+<script>
+const FIM = 19.0;
+window.DURACAO = FIM;
+// cenas: [inicio, fim, elementos [atraso, html]]
+const CENAS = [
+  [0, 3.8, [[0.1, '<h1>Sábado.</h1>'], [0.7, '<p class="sub">Você merece <b style="color:#fff">desligar o celular.</b></p>']]],
+  [3.8, 8.2, [[0.1, '<h2>Mas o seu cliente <em>não desliga.</em></h2>'], [0.9, '<div class="chip">“Quanto custa?”</div>'], [1.6, '<div class="chip">“Tem horário hoje?”</div>'], [2.3, '<div class="chip">“Vocês abrem domingo?”</div>'], [2.6, '<p class="nota">Mensagens ilustrativas.</p>']]],
+  [8.2, 12.8, [[0.1, '<h2>A Thays <em>responde por você.</em></h2>'], [0.8, '<div class="item"><i>✓</i>Tira dúvidas frequentes</div>'], [1.4, '<div class="item"><i>✓</i>Passa valores quando perguntam</div>'], [2.0, '<div class="item"><i>✓</i>Mostra os horários e agenda</div>']]],
+  [12.8, 15.8, [[0.1, '<h2>Na segunda, cada conversa já está <em>no CRM, com o histórico.</em></h2>']]],
+  [15.8, FIM, [[0.1, '<h1>Descanse.</h1>'], [0.5, '<p class="sub">O atendimento <b style="color:#fff">continua no seu WhatsApp.</b></p>'], [1.0, '<div class="cta">Fale com a CH · link na bio</div>']]],
+];
+const ease = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
+window.render = (t) => {
+  let html = '';
+  for (const [a, b, els] of CENAS) {
+    if (t < a || t >= b) continue;
+    const saida = b === FIM ? 1 : Math.min(1, (b - t) / 0.35);
+    for (const [d, h] of els) {
+      const k = ease((t - a - d) / 0.45);
+      if (k <= 0) { html += `<div style="opacity:0">${h}</div>`; continue; }
+      html += `<div style="opacity:${k * saida};transform:translateY(${(1 - k) * 40}px)">${h}</div>`;
+    }
+  }
+  document.getElementById('cena').innerHTML = html;
+  document.getElementById('prog').style.width = (100 * t / FIM) + '%';
+};
+render(0);
+</script>
+</body></html>
