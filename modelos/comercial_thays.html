@@ -4,13 +4,13 @@
   :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --mut:#b7abd9; --linha:#2a1b4d; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: #fff; }
-  #foto { position: absolute; inset: 0; background: url('thays_base_v2.jpg') center/cover no-repeat; transform-origin: 50% 45%; }
-  .veu { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,1,15,.55) 0%, rgba(5,1,15,0) 18%, rgba(5,1,15,0) 45%, rgba(5,1,15,.82) 64%, rgba(5,1,15,.95) 100%); }
-  .top { position: absolute; top: 260px; left: 70px; right: 70px; display: flex; justify-content: space-between; align-items: center; }
+  .foto { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; transform-origin: 50% 40%; opacity: 0; }
+  .veu { position: absolute; inset: 0; z-index: 10; background: linear-gradient(180deg, rgba(5,1,15,.55) 0%, rgba(5,1,15,0) 18%, rgba(5,1,15,0) 45%, rgba(5,1,15,.82) 64%, rgba(5,1,15,.95) 100%); }
+  .top { z-index: 11; position: absolute; top: 260px; left: 70px; right: 70px; display: flex; justify-content: space-between; align-items: center; }
   .marca { background: rgba(5,1,15,.7); padding: 8px 22px 8px 8px; border-radius: 999px; display: flex; align-items: center; gap: 18px; font-family: 'Poppins'; font-weight: 700; font-size: 32px; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
   .logo { width: 68px; height: 68px; border-radius: 18px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-family: 'Poppins'; font-weight: 800; font-size: 28px; color: var(--ciano); }
   .selo { font-size: 24px; color: #e6e0ff; background: rgba(5,1,15,.7); padding: 10px 20px; border-radius: 999px; }
-  .zona { position: absolute; left: 70px; right: 70px; top: 1120px; bottom: 330px; display: flex; flex-direction: column; justify-content: flex-start; gap: 26px; }
+  .zona { z-index: 11; position: absolute; left: 70px; right: 70px; top: 1120px; bottom: 330px; display: flex; flex-direction: column; justify-content: flex-start; gap: 26px; }
   .leg { font-family: 'Poppins'; font-weight: 700; font-size: 58px; line-height: 1.16; letter-spacing: -.5px; text-shadow: 0 3px 18px rgba(0,0,0,.7); }
   .leg em { font-style: normal; color: var(--ciano); }
   .chips { display: flex; flex-wrap: wrap; gap: 16px; }
@@ -28,10 +28,10 @@
   .final small { font-size: 28px; color: #8b80ad; }
 </style></head>
 <body>
-<div id="foto"></div><div class="veu"></div>
+<div class="foto" id="f0" style="background-image:url(thays_g1.jpg)"></div><div class="foto" id="f1" style="background-image:url(thays_g5.jpg)"></div><div class="foto" id="f2" style="background-image:url(thays_g3.jpg)"></div><div class="foto" id="f3" style="background-image:url(thays_g4.jpg)"></div><div class="foto" id="f4" style="background-image:url(thays_g2.jpg)"></div><div class="foto" id="f5" style="background-image:url(thays_g1.jpg)"></div><div class="veu"></div>
 <div class="top" id="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="selo">Personagem virtual criada com IA</div></div>
 <div class="zona" id="zona"></div>
-<div id="camada"></div>
+<div id="camada" style="position:absolute;inset:0;z-index:12"></div>
 <script>
 const FIM = 30.0, FIM_FOTO = 26.5;
 window.DURACAO = FIM;
@@ -46,8 +46,17 @@ const CENAS = [
 const ease = (x) => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
 window.render = (t) => {
   // zoom lento: aproxima do rosto até 12,5 s, depois abre um pouco
-  const z = t < 12.5 ? 1 + 0.08 * (t / 12.5) : 1.08 - 0.05 * Math.min(1, (t - 12.5) / 6);
-  document.getElementById('foto').style.transform = `scale(${z})`;
+  // uma pose por cena, com troca suave e zoom lento
+  const CORTES = [0, 4.0, 8.0, 12.5, 16.5, 22.0, FIM_FOTO];
+  for (let i = 0; i < 6; i++) {
+    const a = CORTES[i], b = CORTES[i + 1];
+    let op = 0;
+    if (t >= a - 0.3 && t < b) op = i === 0 ? 1 : Math.min(1, (t - (a - 0.3)) / 0.3);
+    if (t >= b && t < b + 0.3 && i < 5) op = 1;
+    const k = Math.max(0, Math.min(1, (t - a) / (b - a)));
+    const el = document.getElementById('f' + i);
+    el.style.opacity = op; el.style.zIndex = i; el.style.transform = `scale(${1.02 + 0.06 * k})`;
+  }
   let html = '';
   for (const [a, b, els] of CENAS) {
     if (t < a || t >= b) continue;
