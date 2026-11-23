@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+  :root { --bg:#05010f; --roxo:#7c3aed; --roxo2:#9d4edd; --ciano:#00d4ff; --fg:#ffffff; --mut:#b7abd9; --card:#120a26; --linha:#2a1b4d; --verde:#34d399; --verm:#ff7a93; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1080px; height: 1920px; background: var(--bg); font-family: 'Inter', 'Noto Color Emoji', sans-serif; color: var(--fg); overflow: hidden; }
+  .story { position: relative; width: 1080px; height: 1920px; padding: 250px 90px 320px; display: flex; flex-direction: column; gap: 40px;
+    background: radial-gradient(1000px 800px at 90% 0%, rgba(124,58,237,.42), transparent 60%), radial-gradient(800px 700px at 0% 100%, rgba(0,212,255,.16), transparent 60%), var(--bg); }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(157,78,221,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(157,78,221,.07) 1px, transparent 1px); background-size: 60px 60px; -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 30%, transparent 75%); }
+  .top { position: relative; display: flex; justify-content: space-between; align-items: center; }
+  .marca { display: flex; align-items: center; gap: 20px; font-family: 'Poppins'; font-weight: 700; font-size: 34px; }
+  .logo { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(140deg, var(--roxo), #2a0b5e); box-shadow: 0 0 0 2px rgba(0,212,255,.55); font-weight: 800; font-size: 30px; color: var(--ciano); }
+  .serie { font-family: 'Poppins'; font-weight: 600; font-size: 28px; letter-spacing: 3px; text-transform: uppercase; color: var(--ciano); padding: 12px 24px; border: 2px solid rgba(0,212,255,.45); border-radius: 999px; }
+  .meio { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+  h1 { font-family: 'Poppins'; font-weight: 800; font-size: 88px; line-height: 1.05; letter-spacing: -1.5px; }
+  h1 em, h2 em { font-style: normal; color: var(--ciano); }
+  h2 { font-family: 'Poppins'; font-weight: 700; font-size: 70px; line-height: 1.12; letter-spacing: -1px; }
+  .sub { font-size: 40px; line-height: 1.42; color: var(--mut); }
+  .sub b { color: var(--fg); font-weight: 600; }
+  .card { background: rgba(18,10,38,.92); border: 2px solid var(--linha); border-radius: 36px; padding: 38px 44px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .card .rot { font-family: 'Poppins'; font-weight: 700; font-size: 30px; letter-spacing: 2px; text-transform: uppercase; }
+  .card p { font-size: 40px; line-height: 1.4; }
+  .ruim .rot { color: var(--verm); } .bom .rot { color: var(--verde); }
+  .bom { border-color: rgba(52,211,153,.45); }
+  .passo { display: flex; gap: 22px; align-items: center; font-size: 40px; line-height: 1.3; }
+  .passo i { font-style: normal; flex: none; width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; background: rgba(0,212,255,.16); color: var(--ciano); font-weight: 800; font-size: 32px; }
+  .seta { font-size: 40px; color: var(--mut); padding-left: 18px; line-height: 1; }
+  .opcoes { display: flex; flex-direction: column; gap: 24px; }
+  .opcoes div { font-size: 44px; font-weight: 600; padding: 34px 40px; border-radius: 28px; background: rgba(255,255,255,.06); border: 2px solid var(--linha); }
+  .opcoes div span { color: var(--ciano); font-family: 'Poppins'; font-weight: 800; margin-right: 22px; }
+  .cta { align-self: flex-start; background: linear-gradient(120deg, var(--roxo), var(--roxo2)); padding: 34px 52px; border-radius: 999px; font-family: 'Poppins'; font-weight: 700; font-size: 42px; box-shadow: 0 20px 60px rgba(124,58,237,.55); }
+  .nota { font-size: 30px; color: #8b80ad; }
+  .linha { display: flex; justify-content: space-between; align-items: center; font-size: 42px; padding: 18px 0; border-bottom: 2px dashed var(--linha); }
+  .linha:last-child { border-bottom: 0; }
+  .linha b { font-family: 'Poppins'; font-weight: 700; }
+  .total b { color: var(--ciano); font-size: 64px; }
+  .bolha { max-width: 86%; padding: 26px 32px 18px; border-radius: 30px; font-size: 40px; line-height: 1.38; }
+  .bolha small { display: block; text-align: right; font-size: 26px; opacity: .6; margin-top: 6px; }
+  .cli { align-self: flex-end; background: #005c4b; border-top-right-radius: 8px; }
+  .th { align-self: flex-start; background: #202c33; border-top-left-radius: 8px; }
+  .chat { display: flex; flex-direction: column; gap: 18px; background: #0b141a; border-radius: 36px; padding: 40px 34px; border: 2px solid #1f2c34; }
+  .chat .cab { display: flex; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 2px solid #1f2c34; font-size: 36px; font-weight: 600; }
+  .chat .cab .av { width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(140deg, #8fb3ff, #4a6bd8); font-weight: 800; }
+  .chat .cab small { display: block; font-size: 26px; color: #8696a0; font-weight: 400; }
+  .crm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .col { background: rgba(255,255,255,.04); border: 2px solid var(--linha); border-radius: 26px; padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; min-height: 380px; }
+  .col h3 { font-family: 'Poppins'; font-size: 30px; color: var(--mut); font-weight: 600; }
+  .lead { background: #1a1032; border-radius: 18px; padding: 18px; font-size: 32px; line-height: 1.3; border-left: 6px solid var(--roxo2); }
+  .lead.q { border-left-color: #ff9f43; } .lead.f { border-left-color: var(--verde); }
+  .lead small { display: block; color: var(--mut); font-size: 27px; margin-top: 6px; }
+  .grande { font-family: 'Poppins'; font-weight: 800; font-size: 150px; line-height: .95; color: var(--ciano); letter-spacing: -3px; }
+</style></head>
+<body>
+<div id="raiz"></div>
+<script>
+const id = new URLSearchParams(location.search).get('id') || 'seg1';
+const topo = (serie) => `<div class="top"><div class="marca"><div class="logo">CH</div>CH Automações</div><div class="serie">${serie}</div></div>`;
+const S = {
+  // SEGUNDA 23/11
+  seg1: `${topo('Bastidores')}<div class="meio">
+    <h1>A regra que eu mais reforço na Thays: <em>não inventar.</em></h1>
+    <p class="sub">Quando o cliente pergunta algo que o negócio não informou, ela não chuta uma resposta.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">O que ela faz no lugar</div>
+      <div class="passo"><i>1</i>Diz que vai confirmar com a equipe</div>
+      <div class="passo"><i>2</i>Não promete o que não sabe</div>
+      <div class="passo"><i>3</i>Segue a conversa com o que já sabe</div></div>
+    <p class="sub">Resposta errada custa mais caro que uma resposta que demora. <b>Mande “REGRA” no direct.</b></p></div>`,
+  seg2: `${topo('Sua vez')}<div class="meio">
+    <h2>Seu negócio vai fazer alguma promoção <em>nesta Black Friday?</em></h2>
+    <p class="sub">Vote na enquete aqui embaixo.</p>
+    <div style="height:560px"></div></div>`,
+  // TERÇA 24/11
+  ter1: `${topo('Dica rápida')}<div class="meio">
+    <h2>Endereço, horário e Pix em dois toques: <em>use as respostas rápidas.</em></h2>
+    <p class="sub">No WhatsApp Business, você salva um texto pronto e chama com uma barra.</p>
+    <div class="card"><div class="rot" style="color:var(--ciano)">Exemplos de atalho</div>
+      <div class="passo"><i>/</i>/endereco · endereço e como chegar</div>
+      <div class="passo"><i>/</i>/horarios · dias e horários de atendimento</div>
+      <div class="passo"><i>/</i>/pagamento · formas de pagamento</div></div>
+    <p class="sub">Fica em Ferramentas comerciais. <b>Mande “ATALHO” no direct.</b></p></div>`,
+  ter2: `${topo('Mito ou verdade')}<div class="meio">
+    <h1>“Mandar áudio é o jeito <em>mais prático</em> de atender.”</h1>
+    <div class="card"><div class="rot" style="color:#fbbf24">Depende</div><p>É prático para quem grava. Mas o cliente pode estar no trabalho, no ônibus ou sem fone.</p><p>Texto curto se lê em qualquer lugar. <b>Deixe o áudio para quando ele pedir.</b></p></div>
+    <p class="sub">Quer um modelo de mensagem curta para trocar o áudio? <b>Mande “ÁUDIO” no direct.</b></p></div>`,
+  // QUARTA 25/11
+  qua1: `${topo('Antes e depois')}<div class="meio">
+    <h2>“Aceita Pix? <em>Parcela no cartão?</em>”</h2>
+    <div class="card ruim"><div class="rot">Antes</div>
+      <div class="passo"><i>✕</i>Você interrompe o que está fazendo para explicar as formas de pagamento</div>
+      <div class="passo"><i>✕</i>Quem perguntou fica esperando</div></div>
+    <div class="card bom"><div class="rot">Com a Thays</div>
+      <div class="passo"><i>✓</i>Ela responde na hora com as informações que você cadastrou</div>
+      <div class="passo"><i>✓</i>E segue a conversa até o horário marcado</div></div>
+    <div class="cta">Mande “PAGAMENTO” no direct</div>
+    <p class="nota">Situação ilustrativa.</p></div>`,
+  qua2: `${topo('Por dentro do sistema')}<div class="meio">
+    <h2>O seu dia de amanhã <em>inteiro numa tela.</em></h2>
+    <div class="card"><div class="rot" style="color:var(--ciano)">Agenda · quinta-feira</div>
+      <div class="linha"><span>09:00 · Carla</span><b>Corte</b></div>
+      <div class="linha"><span>10:30 · Júlio</span><b>Barba</b></div>
+      <div class="linha"><span>14:00 · Renata</span><b>Escova</b></div>
+      <div class="linha"><span>15:30</span><b style="color:var(--verde)">livre</b></div></div>
+    <p class="sub">Na agenda do CH Intelligence você vê quem vem, o serviço e <b>onde ainda há horário livre.</b></p>
+    <p class="sub"><b>Mande “AGENDA” no direct.</b></p>
+    <p class="nota">Tela ilustrativa. Nomes de exemplo.</p></div>`,
+  // QUINTA 26/11
+  qui1: `${topo('Faz a conta')}<div class="meio">
+    <h2>Quanto tempo você passa respondendo <em>às mesmas perguntas?</em></h2>
+    <div class="card">
+      <div class="linha"><span>Perguntas repetidas por dia</span><b>30</b></div>
+      <div class="linha"><span>Tempo de cada resposta</span><b>2 min</b></div>
+      <div class="linha"><span>Por dia</span><b>1 hora</b></div>
+      <div class="linha"><span>Dias de trabalho no mês</span><b>26</b></div>
+      <div class="linha total"><span>Por mês</span><b>26 horas</b></div></div>
+    <p class="sub">É mais de um dia inteiro só digitando. <b>Mande “TEMPO” no direct.</b></p>
+    <p class="nota">Valores de exemplo.</p></div>`,
+  qui2: `${topo('Sua vez')}<div class="meio">
+    <h2>Se sobrasse <em>1 hora por dia</em>, você usaria para quê?</h2>
+    <p class="sub">Vote na enquete aqui embaixo.</p>
+    <div style="height:560px"></div></div>`,
+  // SEXTA 27/11
+  sex1: `${topo('Atendimento na prática')}<div class="meio" style="padding-bottom:70px">
+    <div class="chat"><div class="cab"><div class="av">S</div><div>Studio Cerrado Fit<small>online</small></div></div>
+      <div class="bolha cli">Oi! Vocês têm aula experimental?<small>18:52</small></div>
+      <div class="bolha th">Oi! Temos sim, e é gratuita. Hoje tem turma às 19h30 ou amanhã às 7h. Qual fica melhor?<small>18:52</small></div>
+      <div class="bolha cli">Amanhã 7h. E quanto é a mensalidade?<small>18:53</small></div>
+      <div class="bolha th">O plano mensal é R$&nbsp;120. Sua aula experimental ficou marcada para amanhã às 7h 💪<small>18:53</small></div></div>
+    <p class="nota" style="font-size:34px">Conversa ilustrativa. Nomes e valores de exemplo.<br><b style="color:#fff">Tem academia ou estúdio? Mande “ACADEMIA” no direct.</b></p></div>`,
+  sex2: `${topo('Indique e Ganhe')}<div class="meio">
+    <h2>Conhece um dono de negócio <em>que não dá conta do WhatsApp?</em></h2>
+    <p class="sub">Indique a CH. A gente apresenta sem compromisso e, se ele contratar, você ganha no PIX:</p>
+    <div class="card">
+      <div class="linha"><span>Só o sistema<br><small style="font-size:30px;color:var(--mut)">CRM Solo ou Solo Pro</small></span><b style="white-space:nowrap">R$&nbsp;50</b></div>
+      <div class="linha"><span>Thays ou combo</span><b style="white-space:nowrap">10% da implantação</b></div></div>
+    <p class="sub">Pago em até 3 dias úteis depois que o indicado paga a implantação.</p>
+    <div class="cta">Mande “INDICO” no direct</div></div>`,
+  // SÁBADO 28/11
+  sab1: `${topo('Sites')}<div class="meio">
+    <h2>Três coisas que o cliente procura no seu site <em>antes de chamar:</em></h2>
+    <div class="card">
+      <div class="passo"><i>1</i>Fotos reais do seu espaço</div>
+      <div class="passo"><i>2</i>Serviços e horários de atendimento</div>
+      <div class="passo"><i>3</i>Botão de WhatsApp fácil de achar</div></div>
+    <p class="sub">A CH faz sites com a cara do seu negócio, <b>que levam o cliente direto ao seu WhatsApp.</b></p>
+    <div class="cta">Mande “PÁGINA” no direct</div></div>`,
+  // DOMINGO 29/11
+  dom1: `${topo('Dica de domingo')}<div class="meio">
+    <h1>Use o status do WhatsApp <em>como vitrine.</em></h1>
+    <p class="sub">Quem tem o seu número salvo, e está salvo nos seus contatos, pode ver o seu status. Na segunda de manhã, publique:</p>
+    <div class="card"><div class="passo"><i>1</i>Os horários livres da semana</div><div class="passo"><i>2</i>Uma foto de um trabalho recente</div><div class="passo"><i>3</i>Um convite: “responda aqui para marcar”</div></div>
+    <div class="cta">Mande “STATUS” no direct</div></div>`,
+};
+document.getElementById('raiz').innerHTML = `<section class="story"><div class="grid"></div>${S[id]}</section>`;
+</script>
+</body></html>

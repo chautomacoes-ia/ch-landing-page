@@ -30,3 +30,15 @@ Uma linha por story. Séries fixas por dia: seg = bastidores + pergunta; ter = d
 | 22/11 | 18h | 2026-11/stories_2026-11-16/dom1.jpg | Dica de domingo | Catálogo do WhatsApp Business | CATÁLOGO |
 | 16/11 | 20h | 2026-11/stories_2026-11-16/seg3.jpg | Extra (pedido do Caio) | Tempo de resposta: o que muda em cada demora (sequência da enquete) | (segue no próximo) |
 | 16/11 | 20h01 | 2026-11/stories_2026-11-16/seg4.jpg | Extra (pedido do Caio) | 51% priorizam rapidez, 85% voltam com atendimento ágil (CX Trends 2026) + Thays | RESPOSTA |
+| 23/11 | 10h | 2026-11/stories_2026-11-23/seg1.jpg | Bastidores | A regra que mais reforço na Thays: não inventar | REGRA |
+| 23/11 | 18h | 2026-11/stories_2026-11-23/seg2.jpg | Sua vez | Vai fazer promoção na Black Friday? (enquete) | enquete manual (Caio) |
+| 24/11 | 10h | 2026-11/stories_2026-11-23/ter1.jpg | Dica rápida | Respostas rápidas do WhatsApp Business (atalhos com /) | ATALHO |
+| 24/11 | 18h | 2026-11/stories_2026-11-23/ter2.jpg | Mito ou verdade | “Mandar áudio é o jeito mais prático de atender” (depende) | ÁUDIO |
+| 25/11 | 10h | 2026-11/stories_2026-11-23/qua1.jpg | Antes e depois | “Aceita Pix? Parcela no cartão?” | PAGAMENTO |
+| 25/11 | 18h | 2026-11/stories_2026-11-23/qua2.jpg | Por dentro do sistema | Agenda do dia numa tela | AGENDA |
+| 26/11 | 10h | 2026-11/stories_2026-11-23/qui1.jpg | Faz a conta | 30 perguntas repetidas x 2 min = 26 h/mês | TEMPO |
+| 26/11 | 18h | 2026-11/stories_2026-11-23/qui2.jpg | Sua vez | Se sobrasse 1 hora por dia, usaria para quê? (enquete) | enquete manual (Caio) |
+| 27/11 | 10h | 2026-11/stories_2026-11-23/sex1.jpg | Atendimento na prática | Conversa ilustrativa academia, aula experimental | ACADEMIA |
+| 27/11 | 18h | 2026-11/stories_2026-11-23/sex2.jpg | Indique e Ganhe | Conhece um dono que não dá conta do WhatsApp? | INDICO |
+| 28/11 | 11h | 2026-11/stories_2026-11-23/sab1.jpg | Sites | Três coisas que o cliente procura no seu site | PÁGINA |
+| 29/11 | 18h | 2026-11/stories_2026-11-23/dom1.jpg | Dica de domingo | Status do WhatsApp como vitrine | STATUS |
