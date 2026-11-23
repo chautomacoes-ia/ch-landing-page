@@ -31,7 +31,7 @@ Uma linha por story. Séries fixas por dia: seg = bastidores + pergunta; ter = d
 | 16/11 | 20h | 2026-11/stories_2026-11-16/seg3.jpg | Extra (pedido do Caio) | Tempo de resposta: o que muda em cada demora (sequência da enquete) | (segue no próximo) |
 | 16/11 | 20h01 | 2026-11/stories_2026-11-16/seg4.jpg | Extra (pedido do Caio) | 51% priorizam rapidez, 85% voltam com atendimento ágil (CX Trends 2026) + Thays | RESPOSTA |
 | 23/11 | 10h | 2026-11/stories_2026-11-23/seg1.jpg | Bastidores | A regra que mais reforço na Thays: não inventar | REGRA |
-| 23/11 | 18h | 2026-11/stories_2026-11-23/seg2.jpg | Sua vez | Vai fazer promoção na Black Friday? (enquete) | enquete manual (Caio) |
+| 23/11 | 18h | 2026-11/stories_2026-11-23/seg2.jpg | Sua vez | Black Friday: seu negócio está preparado para o volume de mensagens? (enquete) | enquete manual (Caio) |
 | 24/11 | 10h | 2026-11/stories_2026-11-23/ter1.jpg | Dica rápida | Respostas rápidas do WhatsApp Business (atalhos com /) | ATALHO |
 | 24/11 | 18h | 2026-11/stories_2026-11-23/ter2.jpg | Mito ou verdade | “Mandar áudio é o jeito mais prático de atender” (depende) | ÁUDIO |
 | 25/11 | 10h | 2026-11/stories_2026-11-23/qua1.jpg | Antes e depois | “Aceita Pix? Parcela no cartão?” | PAGAMENTO |
