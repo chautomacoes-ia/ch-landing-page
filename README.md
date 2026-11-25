@@ -7,3 +7,10 @@ Artes do Instagram da CH, usadas pelo agendamento no Metricool. Este ramo não f
 - Mídia publicada fica em `AAAA-MM/` e é servida por raw.githubusercontent.com/chautomacoes-ia/ch-landing-page/midia-instagram/AAAA-MM/arquivo
 - `stories.html` + `render_stories.js`: stories 1080x1920, um por `?id=`. Para cada semana, copie para `stories_AAAA-MM-DD.html` (segunda da semana), troque o objeto `S` e rode `node render_stories.js <ids>` (ajuste o arquivo e a pasta de saída no script). O render acusa `ESTOURO` se algum texto sair da área segura (entre 250px e 1600px de altura).
 - `stories_log.md`: histórico de todos os stories publicados (data, série, tema, palavra-chave do direct). Consulte antes de criar para não repetir tema, gancho ou palavra-chave das últimas 6 semanas.
+
+## Padrão visual premium (desde 25/11/2026, pedido do Caio)
+Todo post com imagem ou vídeo segue o padrão "foto realista + marca": a Thays (mesmo rosto e cabelo das fotos oficiais; roupa, expressão e cenário podem variar) ou uma cena realista do nicho, gerada no Runway (generate_image com nano-banana-pro e uma foto oficial como referência), com degradê escuro do lado do texto, logo CH, título curto com destaque ciano, um cartão (mensagem ilustrativa ou dado) e um único botão de chamada.
+- `anuncio_thays_foto.html`: post 1080x1350 nesse padrão (troque a imagem de fundo, o rótulo, o título e a mensagem).
+- `reels_thays_foto.html`: reels 1080x1920 com fotos da Thays em zoom lento, cena de conversa ilustrativa e chamada final (node render_video.js reels_thays_foto.html saida.mp4).
+- `thays_salao_roxo.jpg`: Thays com blusa roxa em salão (gerada em 25/11/2026, aprovada pelo Caio).
+- Avisos obrigatórios: "Personagem virtual criada com IA" e, se houver conversa, "Conversa ilustrativa".
