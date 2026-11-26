@@ -228,8 +228,8 @@
     .cf-step p  { font-size: .85rem; color: var(--muted); line-height: 1.65; }
     /* PRODUTOS */
     .produtos { background: var(--surface); }
-    .prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-top: 4rem; }
-    @media (max-width: 1100px) { .prod-grid { grid-template-columns: repeat(2,1fr); } } @media (max-width: 600px) { .prod-grid { grid-template-columns: 1fr; } }
+    .prod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 4rem; }
+    @media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr; } } @media (max-width: 600px) { .prod-grid { grid-template-columns: 1fr; } }
     .prod { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
     .prod.hl { border-color: rgba(0,212,255,.25); box-shadow: 0 0 48px rgba(0,212,255,.06); }
     .prod-tag { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; width: fit-content; }
@@ -536,7 +536,7 @@
     <div class="stat"><div class="stat-val">15<em>d</em></div><div class="stat-lbl">teste gratuito</div></div>
     <div class="stat"><div class="stat-val">5<em>+</em></div><div class="stat-lbl">nichos especializados</div></div>
     <div class="stat"><div class="stat-val">24<em>h</em></div><div class="stat-lbl">IA ativa no WhatsApp</div></div>
-    <div class="stat"><div class="stat-val">R$<em>197</em></div><div class="stat-lbl">CRM completo por mês</div></div>
+    <div class="stat"><div class="stat-val">R$<em>197</em></div><div class="stat-lbl">CRM com IA por mês</div></div>
   </div>
 </div>
 
@@ -663,36 +663,20 @@
   <div class="container">
     <p class="s-lbl">Produtos</p>
     <h2 class="s-title">Três produtos.<br>Um ecossistema completo.</h2>
-    <p class="s-sub">Do CRM básico até a automação total com IA, você escolhe o que precisa agora e evolui no seu ritmo.</p>
+    <p class="s-sub">Do CRM com IA até o atendimento automático no WhatsApp, você escolhe o que precisa agora e evolui no seu ritmo.</p>
     <div class="prod-grid">
-      <div class="prod">
-        <span class="prod-tag t-crm">CRM</span>
-        <h3>CH Intelligence CRM</h3>
+      <div class="prod hl">
+        <span class="prod-tag t-crm">CRM com IA</span>
+        <h3>CH Intelligence CRM + Thays Copilot</h3>
         <div class="num">R$197<em>/mês</em></div>
         <p class="impl">Implantação: R$300</p>
-        <p class="desc">Gestão completa de clientes, agenda, vendas e financeiro, com o módulo feito para o seu nicho. Tudo que um negócio precisa para se organizar e vender mais.</p>
+        <p class="desc">Clientes, agenda, vendas e financeiro num lugar só, com o módulo do seu nicho e uma assistente de IA dentro do sistema. Você pede em português e ela faz: "o que tenho hoje?", "marca reunião com a Ana sexta às 10h".</p>
         <ul class="prod-list">
           <li>Pipeline Kanban e gestão de contatos</li>
           <li>Agenda Pro com link de agendamento</li>
           <li>Módulo especializado por nicho</li>
-          <li>Fidelidade VIP com pontos</li>
-          <li>Despesas, receitas, relatórios e metas</li>
-        </ul>
-        <a href="#comecar" class="prod-cta sec">Agendar demonstração</a>
-      </div>
-      <div class="prod hl">
-        <span class="prod-tag t-crm">CRM com IA</span>
-        <h3>CH Intelligence CRM + Thays Copilot</h3>
-        <div class="num">R$247<em>/mês</em></div>
-        <p class="impl">Implantação: R$300</p>
-        <p class="desc">O CRM completo com a Thays Copilot dentro do sistema. Você pede em português e ela faz: "o que tenho hoje?", "move o João para proposta", "marca reunião com a Ana sexta às 10h".</p>
-        <ul class="prod-list">
-          <li>Tudo do CRM</li>
-          <li>Thays Copilot: pergunte ao seu CRM</li>
-          <li>Busca, cadastra e atualiza contatos por você</li>
-          <li>Marca reuniões e anota o histórico</li>
-          <li>Resume métricas e despesas do mês</li>
-          <li>Suporte prioritário</li>
+          <li>Fidelidade VIP, despesas e relatórios</li>
+          <li>Thays Copilot inclusa: pergunte ao seu CRM</li>
         </ul>
         <a href="#comecar" class="prod-cta">Agendar demonstração</a>
       </div>
@@ -799,34 +783,19 @@
     <div class="tab-pane on" id="tp-crm">
       <div class="price-note"><strong>Como funciona:</strong> Você faz a demonstração gratuita → decide o plano → paga a implantação (configuração completa pela nossa equipe) → começa a usar. No primeiro mês você paga só a implantação; a mensalidade começa a partir do mês seguinte.</div>
       <div class="pg">
-        <div class="pc">
-          <div class="pc-name">CRM</div>
+        <div class="pc pop" style="grid-column:1/-1;max-width:30rem;width:100%;justify-self:center">
+          <div class="pop-chip">IA inclusa</div>
+          <div class="pc-name">CRM com IA</div>
           <p class="pc-impl">Implantação: <strong>R$ 300</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">197</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">CRM completo para organizar clientes, agenda e financeiro, com o módulo do seu nicho.</p>
+          <p class="pc-desc">Um plano só, completo: organiza clientes, agenda e financeiro com o módulo do seu nicho, e já vem com a Thays Copilot dentro do sistema.</p>
           <ul class="pc-feats">
             <li>Pipeline e gestão de contatos</li>
             <li>Agenda Pro com link de agendamento</li>
             <li>Módulo especializado por nicho</li>
-            <li>Fidelidade VIP com pontos</li>
-            <li>Despesas, receitas, relatórios e metas</li>
+            <li>Fidelidade VIP, despesas, receitas e relatórios</li>
+            <li>Thays Copilot: "o que tenho hoje?", "move o João para proposta"</li>
             <li>Importação via CSV e suporte via WhatsApp</li>
-          </ul>
-          <a href="#comecar" class="pc-btn sec">Agendar demonstração</a>
-        </div>
-        <div class="pc pop">
-          <div class="pop-chip">Com IA</div>
-          <div class="pc-name">CRM com IA</div>
-          <p class="pc-impl">Implantação: <strong>R$ 300</strong></p>
-          <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">247</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">Tudo do CRM com a Thays Copilot dentro do sistema: você pede, ela faz.</p>
-          <ul class="pc-feats">
-            <li>Tudo do CRM</li>
-            <li>Thays Copilot: pergunte ao seu CRM</li>
-            <li>"O que tenho agendado hoje?"</li>
-            <li>"Move o João para proposta"</li>
-            <li>"Marca reunião com a Ana sexta às 10h"</li>
-            <li>Suporte prioritário</li>
           </ul>
           <a href="#comecar" class="pc-btn">Agendar demonstração</a>
         </div>
@@ -895,7 +864,7 @@
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">470</span><span class="pc-mo">/mês</span></div>
           <p class="pc-desc">CRM organizado + atendimento automático no WhatsApp.</p>
           <ul class="pc-feats">
-            <li>CH Intelligence CRM</li>
+            <li>CH Intelligence CRM com Copilot</li>
             <li>Agente Thays I.A Start</li>
             <li>Pipeline e gestão de contatos</li>
             <li>Atendimento automático 24h</li>
@@ -906,11 +875,11 @@
         <div class="pc pop">
           <div class="pop-chip">Mais popular</div>
           <div class="pc-name">Acelere</div>
-          <p class="pc-impl">Pro + CRM com IA · Implantação: <strong>R$ 1.000</strong></p>
+          <p class="pc-impl">Pro + CRM · Implantação: <strong>R$ 1.000</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">720</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">CRM com IA e módulo de nicho + Agente Thays Pro no WhatsApp.</p>
+          <p class="pc-desc">CRM com módulo de nicho + Agente Thays Pro no WhatsApp.</p>
           <ul class="pc-feats">
-            <li>CH Intelligence CRM com IA (Copilot)</li>
+            <li>CH Intelligence CRM com Copilot</li>
             <li>Agente Thays I.A Pro</li>
             <li>Agenda Pro + Fidelidade VIP</li>
             <li>Módulo por nicho incluso</li>
@@ -921,11 +890,11 @@
         </div>
         <div class="pc">
           <div class="pc-name">Domine</div>
-          <p class="pc-impl">Master + CRM com IA · Implantação: <strong>R$ 5.000</strong></p>
+          <p class="pc-impl">Master + CRM · Implantação: <strong>R$ 5.000</strong></p>
           <div class="pc-price"><span class="pc-r">R$</span><span class="pc-val">2.900</span><span class="pc-mo">/mês</span></div>
-          <p class="pc-desc">O ecossistema completo. CRM com IA + Thays Master com voz, imagens e PDF.</p>
+          <p class="pc-desc">O ecossistema completo. CRM + Thays Master com voz, imagens e PDF.</p>
           <ul class="pc-feats">
-            <li>CH Intelligence CRM com IA (Copilot)</li>
+            <li>CH Intelligence CRM com Copilot</li>
             <li>Agente Thays I.A Master</li>
             <li>IA com voz, imagens e PDF</li>
             <li>Follow-up e nurturing automático</li>
@@ -1083,8 +1052,8 @@
     <h2 class="s-title">Perguntas e respostas.</h2>
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Como funciona o período de teste gratuito?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Todos os planos incluem 15 dias de teste gratuito, sem burocracia para começar e sem compromisso. Você acessa o sistema completo durante esse período e decide se quer continuar.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">O CRM já vem com o agente de IA no WhatsApp?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Não. São produtos diferentes. O CRM organiza clientes, agenda, vendas e financeiro dentro do sistema. A Thays I.A atende seus clientes no WhatsApp e está nos planos de IA e nos combos. O plano CRM com IA traz a Thays Copilot, que trabalha dentro do sistema para você, não no WhatsApp.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">O que é a Thays Copilot?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">É a assistente de IA dentro do CH Intelligence, no plano CRM com IA. Você escreve o que precisa e ela faz no sistema: mostra a agenda do dia, encontra um cliente, move um contato no funil, marca reunião, anota no histórico e resume os números do mês. Ela só vê os dados da sua empresa.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O CRM já vem com o agente de IA no WhatsApp?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Não. São produtos diferentes. O CRM organiza clientes, agenda, vendas e financeiro dentro do sistema. A Thays I.A atende seus clientes no WhatsApp e está nos planos de IA e nos combos. O CRM já vem com a Thays Copilot, que trabalha dentro do sistema para você, não no WhatsApp.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O que é a Thays Copilot?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">É a assistente de IA que já vem dentro do CH Intelligence. Você escreve o que precisa e ela faz no sistema: mostra a agenda do dia, encontra um cliente, move um contato no funil, marca reunião, anota no histórico e resume os números do mês. Ela só vê os dados da sua empresa.</div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">O que é a taxa de implantação?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">É um pagamento único, cobrado no primeiro mês, que cobre toda a configuração inicial do sistema — personalização do CRM, setup do agente de IA, integração com WhatsApp e treinamento. No primeiro mês você paga só a implantação; a mensalidade começa a partir do mês seguinte.</div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Preciso de conhecimento técnico para usar?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Não. O sistema foi feito para donos de pequenas empresas sem nenhum conhecimento técnico. Nossa equipe cuida de toda a configuração na implantação e o suporte via WhatsApp está sempre disponível.</div></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Posso migrar minha base de clientes de outro sistema?<span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">Sim. O CH Intelligence aceita importação de contatos via planilha CSV. Basta exportar sua base atual e importar com alguns cliques. Nossa equipe auxilia em todo o processo.</div></div></div>
